@@ -8,6 +8,8 @@ objectives:
 - "Learn the design goals behind Singularity."
 keypoints:
 - "Singularity is a container platform designed by and for scientists."
+- "Single-file based container images facilitates the distribution."
+- "Secure. User inside the container = user outside."
 ---
 
 # Working with containers
