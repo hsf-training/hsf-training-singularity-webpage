@@ -75,7 +75,7 @@ environment and how to execute directly a command.
 
 ## Initializing a shell
 
-The `shell` command initializes a new shell inside the container.
+The `shell` command initializes a new interactive shell inside the container.
 ~~~bash
 $ singularity shell centos7-devel_latest.sif
 ~~~
@@ -95,6 +95,24 @@ uid=1001(myuser) gid=1001(myuser) groups=1001(myuser),500(myothergroup)
 ~~~
 {: .output}
 
+By default, Singularity bind the home of the user, `/tmp` and `$PWD` into the container. It means your files
+at `hostname:~/` are accessible inside the container. You can specify additional bind mounts using the `--bind` option.
+For example, let's say `/cvmfs` is available in the host, and you would like to have access to CVMFS inside the
+container. Then let's do
+
+~~~bash
+$ singularity shell --bind /cvmfs:/cvmfs centos7-devel_latest.sif
+~~~
+{: .source}
+~~~
+Singularity> ls /cvmfs/cms.cern.ch
+bin                        etc                  SITECONF           slc7_aarch64_gcc530
+bootstrap.sh               external             slc5_amd64_gcc434  slc7_aarch64_gcc700
+...
+~~~
+{: .output}  
+
+> ## URLs as input
 > Each of the different commands to set a container from a local `.sif` also accepts the URL of the image
 > as input. For example, starting a shell with Scientific Linux 6 is as easy as
 > ~~~bash
