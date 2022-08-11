@@ -225,7 +225,7 @@ options and more details related to the container creation.
 > ## Write a definition file to build a container with Pythia8 available in Python
 >
 > Following the example of the first section in which a container is built with an interactive session,
-> write a definition file to deploy a container witn Pythia8 available.
+> write a definition file to deploy a container with Pythia8 available.
 >
 > Take a look at
 > [`/opt/pythia/pythia8303/examples/main01.py`](https://github.com/alisw/pythia8/blob/master/examples/main01.py)
