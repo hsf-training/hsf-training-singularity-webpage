@@ -14,21 +14,21 @@ keypoints:
 - "Singularity is also compatible with Docker images, providing access to the large collection of images hosted by Docker Hub."
 ---
 
-# The Singularity Command Line Interface 
+# The Singularity Command Line Interface
 
 Singularity provides a command-line interface (CLI) to interact with the containers. You can search, build or run
-containers in a single line. 
+containers in a single line.
 
-You can check the available options and subcommands using `--help`: 
+You can check the available options and subcommands using `--help`:
 
 ~~~bash
 $ singularity --help
 ~~~
 {: .source}
 
-# Downloading Images 
+# Downloading Images
 
-The [Singularity Container Library](https://cloud.sylabs.io/library) is the official image registry. 
+The [Singularity Container Library](https://cloud.sylabs.io/library) is the official image registry.
 Images built by users are accessible using the CLI, and images become containers at runtime.
 
 The command `search` provides containers of interest
@@ -49,23 +49,23 @@ Found 15 containers for 'centos7'
                 Tags: latest
 ...
 ~~~
-{: .output}  
+{: .output}
 
 Downloading an image from the Container Library is pretty straightforward:
 ~~~bash
 $ singularity pull library://gmk/default/centos7-devel
 ~~~
 {: .source}
-and the image is stored locally as a `.sif` file (`centos7-devel_latest.sif`, in this case). 
+and the image is stored locally as a `.sif` file (`centos7-devel_latest.sif`, in this case).
 
 > ## Docker Images
 >
-> Fortunately, Singularity is also compatible with Docker images. [Docker Hub](https://hub.docker.com/) 
+> Fortunately, Singularity is also compatible with Docker images. [Docker Hub](https://hub.docker.com/)
 > is one of the largest libraries available, and any image hosted on the hub can be easily downloaded
-> with the `docker://` URL as reference: 
+> with the `docker://` URL as reference:
 > ~~~bash
 > $ singularity pull docker://centos:centos7
-> ~~~ 
+> ~~~
 {: .callout}
 
 # Running Containers
@@ -81,9 +81,9 @@ $ singularity shell centos7-devel_latest.sif
 ~~~
 {: .source}
 ~~~
-Singularity> 
+Singularity>
 ~~~
-{: .output} 
+{: .output}
 In this case, the container works as a lightweight virtual machine in which you can execute commands.
 Remember, inside the container you have the same user and permissions.
 ~~~
@@ -110,7 +110,7 @@ bin                        etc                  SITECONF           slc7_aarch64_
 bootstrap.sh               external             slc5_amd64_gcc434  slc7_aarch64_gcc700
 ...
 ~~~
-{: .output}  
+{: .output}
 
 > ## URLs as input
 > Each of the different commands to set a container from a local `.sif` also accepts the URL of the image
@@ -121,16 +121,16 @@ bootstrap.sh               external             slc5_amd64_gcc434  slc7_aarch64_
 > ~~~
 > 2020/12/17 21:42:46  info unpack layer: sha256:e0a6b33502f39d76f7c70213fa5b91688a46c2217ad9ba7a4d1690d33c6675ef
 > INFO:    Creating SIF file...
-> Singularity> 
+> Singularity>
 > ~~~
-> {: .output} 
+> {: .output}
 {: .callout}
 
-## Executing commands 
+## Executing commands
 
 The command `exec` starts the container from an specified image and executes a command inside it.
 Let's use the official [Docker image of ROOT](https://hub.docker.com/r/rootproject/root) to start ROOT
-inside a container:    
+inside a container:
 
 ~~~bash
 $ singularity exec docker://rootproject/root root -b
@@ -149,7 +149,7 @@ INFO:    Starting build...
    ------------------------------------------------------------------
 
 /bin/bash: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8)
-root [0] 
+root [0]
 
 ~~~
 {: .output}
@@ -157,7 +157,7 @@ root [0]
 And just like that, ROOT can be used in any laptop, large-scale cluster or grid system
 with Singularity available.
 
-> ## Execute Python with PyROOT available 
+> ## Execute Python with PyROOT available
 >
 > Using the official Docker image of ROOT, start a Python session with PyROOT available.
 >
@@ -170,10 +170,10 @@ with Singularity available.
 > >
 > > ~~~
 > > INFO:    Using cached SIF image
-> > Python 3.8.5 (default, Jul 28 2020, 12:59:40) 
+> > Python 3.8.5 (default, Jul 28 2020, 12:59:40)
 > > [GCC 9.3.0] on linux
 > > >>> import ROOT
-> > >>> # Now you can work with PyROOT, creating a histogram for example 
+> > >>> # Now you can work with PyROOT, creating a histogram for example
 > > >>> h = ROOT.TH1F("myHistogram", "myTitle", 50, -10, 10)
 > > ~~~
 > > {: .output}
@@ -181,4 +181,3 @@ with Singularity available.
 {: .challenge}
 
 {% include links.md %}
-
