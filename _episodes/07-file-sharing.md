@@ -1,26 +1,50 @@
 ---
 title: "Sharing files between host and container"
 teaching: 40
-exercises: 30
+exercises: 0
 questions:
 - "How to read and write files on the host system from within the container?"
 objectives:
 - "Map directories on your host system to directories within your container."
 - "Learn about the bind paths included automatically in all containers."
 keypoints:
-- "..."
+- "Bind mounts allow reading and writing files within the container."
+- "In Singularity, you have same owner and permissions for files inside and outside the container."
+- "Some paths are mounted by default by Singularity."
+- "Additional directories to bind can be defined using the ``--bind`` option or the environment variable ``$SINGULARITY_BIND``."
 ---
 
-Bind mounts map directories from your host system to directories within your container.
+One of the key features about containers is the isolation of the processes running inside them. It means,
+files on the host system are not accessible within the container.
+However, it is
+very common that some files on the host system are needed inside the container, or you want to write files from the
+container to some directory in the host.
 
+We have already used the option ``--bind`` earlier in the module when exploring the options available to run Singularity
+containers. In this chapter we will explore further options to bind directories from your host system to directories
+within your container.
+
+Remember that in Singularity, your user outside is the same inside the container. And the same happens with permissions and
+ownership for files in bind directories.
 
 ## Bind paths included by default
 
-When executing a container,
+For each container executed, Singularity binds automatically some directories by default, and other defined the system
+admin in the Singularity configuration. By default, Singularity binds:
+* The user's home directory ($HOME)
+* The current directory when the container is executed ($PWD)
+* System-defined paths: ``/tmp``, ``/proc``, ``/dev``, etc.
+Since this is defined in the configuration, it may vary from site to site.
 
-> ### Disabling system binds
+
+> ## Disabling system binds
 >
-> --no-mount
+> If for any reason you want to execute a container removing the default binds, the command-line option ``--no-mount``
+> is available. For example, to disable bind of ``/tmp``
+> ~~~
+> run --no-mount tmp my_container.sif
+> ~~~
+> {: .source}
 {: .callout}
 
 
