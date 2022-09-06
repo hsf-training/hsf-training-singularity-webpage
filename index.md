@@ -3,7 +3,7 @@ layout: lesson
 root: .  # Is the only page that doesn't follow the pattern /:path/index.html
 permalink: index.html  # Is the only page that doesn't follow the pattern /:path/index.html
 ---
-An introduction to Singularity, its motivations and applications in HEP.
+An introduction to Singularity/Apptainer, its motivations and applications in HEP.
 
 Based on the [Singularity user guide](https://sylabs.io/docs/).
 
