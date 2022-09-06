@@ -1,0 +1,13 @@
+{
+  "files": [
+    "README.md",
+    "_includes/authors.html"
+  ],
+  "projectName": "hsf-training-singularity-webpage",
+  "projectOwner": "hsf-training",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true,
+  "contributors": [],
+  "contributorsPerLine": 7
+}
