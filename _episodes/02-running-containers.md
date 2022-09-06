@@ -182,7 +182,7 @@ with Singularity available.
 
 ## Exiting a singularity image
 
-The `exit` command exits a singularity instance. Note that when exiting from the singularity image all the running processes are killed (stopped). However, the work that you have done within the image is saved.
+The `exit` command exits a singularity instance. Note that when exiting from the singularity image all the running processes are killed (stopped). 
 
 ```bash
 Singularity> exit
