@@ -12,10 +12,9 @@ Based on the [Singularity user guide](https://sylabs.io/docs/).
 {% comment %} This is a comment in Liquid {% endcomment %}
 
 > ## Prerequisites
->
-> Access to a computing system with Singularity available.
->
-> Optional: a computer with superuser permissions and Singularity installed.  
+> * Basic knowledge of the Unix Shell, e.g., from the [carpentry course](https://swcarpentry.github.io/shell-novice/).
+> * Access to a computing system with Singularity available.
+>   Optional: a computer with superuser permissions and Singularity installed
 {: .prereq}
 
 {% include curriculum.html %}
