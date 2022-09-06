@@ -32,7 +32,7 @@ For building a container from a existing image in an interactive way, `build` pr
 create a writable directory.
 
 ~~~bash
-$ singularity build --sandbox myCentOS7 docker://centos:centos7
+singularity build --sandbox myCentOS7 docker://centos:centos7
 ~~~
 {: .source}
 
@@ -42,7 +42,7 @@ To initialize an interactive session use `shell`. And to write files within the 
 Additionally, the installation of new components will require superuser access:
 
 ~~~bash
-$ sudo singularity shell --writable myCentOS7
+sudo singularity shell --writable myCentOS7
 
 Singularity> whoami
 ~~~

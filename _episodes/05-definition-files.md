@@ -64,7 +64,7 @@ from the RooFit tutorial.
 Save this definition file as `myUbuntu.def`. To build the container, just provide the definition file as argument
 (executing as superuser):
 ~~~bash
-$ sudo singularity build rootInUbuntu.sif myUbuntu.def
+sudo singularity build rootInUbuntu.sif myUbuntu.def
 ~~~
 {: .source}
 
@@ -73,7 +73,7 @@ execute a command with `singularity exec`. A third option is execute the actions
 simply by calling the container as an executable
 
 ~~~bash
-$ ./rootInUbuntu.sif
+./rootInUbuntu.sif
 ~~~
 {: .source}
 
@@ -149,14 +149,14 @@ options and more details related to the container creation.
 > > Build your container executing
 > >
 > > ~~~bash
-> > $ sudo singularity build pythiaInCentos7.sif myPythia8.def
+> > sudo singularity build pythiaInCentos7.sif myPythia8.def
 > > ~~~
 > > {: .source}
 > >
 > > And finally, execute the container to run [`main01.py`](https://github.com/alisw/pythia8/blob/master/examples/main01.py)
 > >
 >> > ~~~bash
-> > $ ./pythiaInCentos7.sif
+> > ./pythiaInCentos7.sif
 > > ~~~
 > > {: .source}
 > {: .solution}
