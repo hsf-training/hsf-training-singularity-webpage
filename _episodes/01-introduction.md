@@ -29,7 +29,7 @@ system available on the sites.
 
 # Why Singularity?
 
-There are available many solutions to work with containers, for example [Docker](https://www.docker.com/),
+Many solutions are available to work with containers, for example [Docker](https://www.docker.com/),
 one of the most popular platforms. However, the enterprise-based container frameworks were motivated to provide
 _micro-services_, a solution that fits well in the models of the industry, but not so compatible with
 the workflow in the high-performance computing (HPC), in which usually complex applications run exhaustively with
