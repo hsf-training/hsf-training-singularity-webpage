@@ -17,6 +17,15 @@
       "contributions": [
         "content"
       ]
+    },
+    {
+      "login": "mambelli",
+      "name": "Marco Mambelli",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1558058?v=4",
+      "profile": "https://github.com/mambelli",
+      "contributions": [
+        "ideas"
+      ]
     }
   ],
   "contributorsPerLine": 7
