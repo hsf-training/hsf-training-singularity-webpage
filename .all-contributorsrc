@@ -1,9 +1,13 @@
 {
   "files": [
-    "README.md"
+    "README.md",
+    "_includes/authors.html"
   ],
-  "imageSize": 100,
-  "commit": false,
+  "projectName": "hsf-training-singularity-webpage",
+  "projectOwner": "hsf-training",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true,
   "contributors": [
     {
       "login": "michmx",
@@ -15,10 +19,5 @@
       ]
     }
   ],
-  "contributorsPerLine": 7,
-  "projectName": "hsf-training-singularity-webpage",
-  "projectOwner": "hsf-training",
-  "repoType": "github",
-  "repoHost": "https://github.com",
-  "skipCi": true
+  "contributorsPerLine": 7
 }
