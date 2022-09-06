@@ -22,9 +22,10 @@ Building images requires access to a machine with Singularity and superuser perm
 a container in a build environment (like your laptop), either with an interactive session or from a definition file,
 and then deploy the container into a production environment for execution (as your institutional cluster).
 
-<a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0177459">
-<img src="http://singularity.lbl.gov/assets/img/diagram/singularity-2.4-flow.png" alt="Singularity" height="400">
-</a>
+<figure>
+  <img src="https://journals.plos.org/plosone/article/figure/image?size=large&id=10.1371/journal.pone.0177459.g001" alt="Singularity usage workflow"/>
+  <figcaption>'Singularity usage workflow' via <i>Kurtzer GM, Sochat V, Bauer MW (2017) Singularity: Scientific containers for mobility of compute. PLoS ONE 12(5): e0177459. <a href="https://doi.org/10.1371/journal.pone.0177459">https://doi.org/10.1371/journal.pone.0177459</a></i></figcaption>
+</figure>
 
 # Build a container in a interactive session
 
