@@ -1,0 +1,32 @@
+{
+  "files": [
+    "README.md",
+    "_includes/authors.html"
+  ],
+  "projectName": "hsf-training-singularity-webpage",
+  "projectOwner": "hsf-training",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true,
+  "contributors": [
+    {
+      "login": "michmx",
+      "name": "Michel H. Villanueva",
+      "avatar_url": "https://avatars.githubusercontent.com/u/2147367?v=4",
+      "profile": "https://github.com/michmx",
+      "contributions": [
+        "content"
+      ]
+    },
+    {
+      "login": "mambelli",
+      "name": "Marco Mambelli",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1558058?v=4",
+      "profile": "https://github.com/mambelli",
+      "contributions": [
+        "ideas"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7
+}

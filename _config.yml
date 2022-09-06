@@ -102,3 +102,4 @@ exclude:
 highlighter: rouge
 
 remote_theme: hsf-training/hsf-training-theme
+show_authors: true
