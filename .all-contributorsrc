@@ -8,6 +8,16 @@
   "repoType": "github",
   "repoHost": "https://github.com",
   "skipCi": true,
-  "contributors": [],
+  "contributors": [
+    {
+      "login": "michmx",
+      "name": "Michel H. Villanueva",
+      "avatar_url": "https://avatars.githubusercontent.com/u/2147367?v=4",
+      "profile": "https://github.com/michmx",
+      "contributions": [
+        "content"
+      ]
+    }
+  ],
   "contributorsPerLine": 7
 }
