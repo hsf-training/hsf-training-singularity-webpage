@@ -27,6 +27,48 @@ and then deploy the container into a production environment for execution (as yo
   <figcaption>'Singularity usage workflow' via <i>Kurtzer GM, Sochat V, Bauer MW (2017) Singularity: Scientific containers for mobility of compute. PLoS ONE 12(5): e0177459. <a href="https://doi.org/10.1371/journal.pone.0177459">https://doi.org/10.1371/journal.pone.0177459</a></i></figcaption>
 </figure>
 
+# Hello World Singularity
+
+The following recipe shows how to build a hello-world container, and run the container on your local computer.
+
+- Step 1: Open a text editor
+
+  ~~~
+  gedit hello-world.def
+  ~~~
+  {: .source}
+
+
+- Step 2: Include the following script in the `hello-world.def` file to define the environment
+
+  ~~~
+  BootStrap: docker
+  From: ubuntu:20.04
+
+  %runscript
+  echo "Hello World"
+  ~~~
+  {: .source}
+
+    In the above script, the first line - `BootStrap: docker` indicates that singularity will use docker to create the base OS to start the image. The `From: ubuntu:20.04` is feeded to singularity to start from a specific image/OS.  Any content within the  `%runscript` will be written to file that is executed when one runs the singularity image. The `echo "Hello World"` command will print the `Hello World` on the terminal.
+
+- Step 3: Build the image
+
+  ~~~
+  singularity build helloworld.sif hello-world.def
+  ~~~
+  {: .source}
+
+    The `helloworld.sif` file specifies the name of the output file that is built when using the `singularity build` command.
+
+- Step 4: Run the image
+
+  ~~~
+  ./helloworld.sif
+  ~~~
+  {: .source}
+
+
 # Build a container in a interactive session
 
 For building a container from a existing image in an interactive way, `build` provides a flag `--sandbox` that will
