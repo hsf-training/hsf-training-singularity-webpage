@@ -31,43 +31,37 @@ and then deploy the container into a production environment for execution (as yo
 
 The following recipe shows how to build a hello-world container, and run the container on your local computer.
 
-- Step 1: Open a text editor
+- Step 1: Open a text editor (e.g., nano, vim, or gedit in a graphical environment)
 
-  ~~~
-  gedit hello-world.def
-  ~~~
-  {: .source}
-
+  ```bash
+  nano hello-world.def
+  ```
 
 - Step 2: Include the following script in the `hello-world.def` file to define the environment
 
-  ~~~
+  ```bash
   BootStrap: docker
   From: ubuntu:20.04
 
   %runscript
   echo "Hello World"
-  ~~~
-  {: .source}
+  ```
 
     In the above script, the first line - `BootStrap: docker` indicates that singularity will use docker to create the base OS to start the image. The `From: ubuntu:20.04` is given to singularity to start from a specific image/OS.  Any content within the  `%runscript` will be written to file that is executed when one runs the singularity image. The `echo "Hello World"` command will print the `Hello World` on the terminal.
 
 - Step 3: Build the image
 
-  ~~~
+  ```bash
   singularity build helloworld.sif hello-world.def
-  ~~~
-  {: .source}
+  ```
 
     The `helloworld.sif` file specifies the name of the output file that is built when using the `singularity build` command.
 
 - Step 4: Run the image
 
-  ~~~
+  ```bash
   ./helloworld.sif
-  ~~~
-  {: .source}
-
+  ```
 
 # Build a container in a interactive session
 
