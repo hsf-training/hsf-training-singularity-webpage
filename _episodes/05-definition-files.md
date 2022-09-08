@@ -113,7 +113,7 @@ options and more details related to the container creation.
 > write a definition file to deploy a container with Pythia8 available.
 >
 > Take a look at
-> [`/opt/pythia/pythia8303/examples/main01.py`](https://github.com/alisw/pythia8/blob/master/examples/main01.py)
+> [`/opt/pythia/pythia8303/examples/main01.py`](https://gitlab.com/Pythia8/releases/-/blob/pythia8303/examples/main01.py)
 > and define the `%runscript` to execute it using `python3`.
 >
 > (Tip: notice that main01.py requires `Makefile.inc`).
@@ -153,7 +153,7 @@ options and more details related to the container creation.
 > > ~~~
 > > {: .source}
 > >
-> > And finally, execute the container to run [`main01.py`](https://github.com/alisw/pythia8/blob/master/examples/main01.py)
+> > And finally, execute the container to run [`main01.py`](https://gitlab.com/Pythia8/releases/-/blob/pythia8303/examples/main01.py)
 > >
 >> > ~~~bash
 > > ./pythiaInCentos7.sif
