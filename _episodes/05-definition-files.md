@@ -52,7 +52,7 @@ The following recipe shows how to build a hello-world container, and run the con
   ```
 
 
-# Example of a more elaborated definition file 
+# Example of a more elaborated definition file
 
 Let's look at the structure of the definition file with another example. Let's prepare a container from an [official
 Ubuntu image](https://hub.docker.com/_/ubuntu), but this time we will install ROOT with RooFit and Python integration.
