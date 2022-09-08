@@ -4,7 +4,7 @@ teaching: 10
 exercises:
 questions:
 - "What issues motivated the creation of Apptainer/Singularity?"
-- "What are the differences between Docker, Singularity and Apptainer?
+- "What are the differences between Docker, Singularity and Apptainer?"
 objectives:
 - "Learn the design goals behind Apptainer/Singularity."
 keypoints:
