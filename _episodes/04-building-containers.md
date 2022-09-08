@@ -27,7 +27,6 @@ and then deploy the container into a production environment for execution (as yo
   <figcaption>'Singularity usage workflow' via <i>Kurtzer GM, Sochat V, Bauer MW (2017) Singularity: Scientific containers for mobility of compute. PLoS ONE 12(5): e0177459. <a href="https://doi.org/10.1371/journal.pone.0177459">https://doi.org/10.1371/journal.pone.0177459</a></i></figcaption>
 </figure>
 
-
 # Build a container in a interactive session
 
 For building a container from a existing image in an interactive way, `build` provides a flag `--sandbox` that will
