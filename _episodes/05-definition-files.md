@@ -32,10 +32,11 @@ The following recipe shows how to build a hello-world container, and run the con
   From: ubuntu:20.04
 
   %runscript
-  echo "Hello World"
+    echo "Hello World"
+  # Print Hellow world when the image is loaded
   ```
 
-    In the above script, the first line - `BootStrap: docker` indicates that singularity will use docker to create the base OS to start the image. The `From: ubuntu:20.04` is given to singularity to start from a specific image/OS.  Any content within the  `%runscript` will be written to file that is executed when one runs the singularity image. The `echo "Hello World"` command will print the `Hello World` on the terminal.
+    In the above script, the first line - `BootStrap: docker` indicates that singularity will use docker to create the base OS to start the image. The `From: ubuntu:20.04` is given to singularity to start from a specific image/OS.  Any content within the  `%runscript` will be written to file that is executed when one runs the singularity image. The `echo "Hello World"` command will print the `Hello World` on the terminal. Finally the `#` hash is used to include comments within the definition file. 
 
 - Step 3: Build the image
 
