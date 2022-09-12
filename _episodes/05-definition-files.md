@@ -15,7 +15,7 @@ become as complicated as the setup is needed.
 A Singularity definition file provides an easy way to build and deploy containers.
 
 
-# Hello World Singularity
+## Hello World Singularity
 
 The following recipe shows how to build a hello-world container, and run the container on your local computer.
 
@@ -52,8 +52,16 @@ The following recipe shows how to build a hello-world container, and run the con
   ./helloworld.sif
   ```
 
+### Deleting Singularity image
 
-# Example of a more elaborated definition file
+To delete the helloworld Singularity image, use the following command:
+
+```bash
+singularity delete helloworld.sif
+```
+
+
+## Example of a more elaborated definition file
 
 Let's look at the structure of the definition file with another example. Let's prepare a container from an [official
 Ubuntu image](https://hub.docker.com/_/ubuntu), but this time we will install ROOT with RooFit and Python integration.
