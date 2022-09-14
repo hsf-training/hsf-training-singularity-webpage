@@ -112,19 +112,18 @@ from the RooFit tutorial.
 
 Save this definition file as `myUbuntu.def`. To build the container, just provide the definition file as argument
 (executing as superuser):
-~~~bash
+```bash
 sudo singularity build rootInUbuntu.sif myUbuntu.def
-~~~
-{: .source}
+```
+
 
 Then, an interactive shell inside the container can be initialized with `singularity shell`, or
 execute a command with `singularity exec`. A third option is execute the actions defined inside `%runscript`
 simply by calling the container as an executable
 
-~~~bash
+```bash
 ./rootInUbuntu.sif
-~~~
-{: .source}
+```
 
 ~~~
 RooFit v3.60 -- Developed by Wouter Verkerke and David Kirkby
@@ -197,16 +196,14 @@ options and more details related to the container creation.
 > >
 > > Build your container executing
 > >
-> > ~~~bash
+> > ```bash
 > > sudo singularity build pythiaInCentos7.sif myPythia8.def
-> > ~~~
-> > {: .source}
+> > ```
 > >
 > > And finally, execute the container to run [`main01.py`](https://gitlab.com/Pythia8/releases/-/blob/pythia8303/examples/main01.py)
 > >
->> > ~~~bash
+>> > ```bash
 > > ./pythiaInCentos7.sif
-> > ~~~
-> > {: .source}
+> > ```
 > {: .solution}
 {: .challenge}
