@@ -3,9 +3,10 @@ title: "Bonus Episode"
 teaching: 40
 exercises: 0
 questions:
-- add question
+- How to build singularity container for python packages?
+- How to share singularity images?
 objectives:
-- add objectives
+- To be able to build a singularity container and share it via GitHub packages
 keypoints:
 - Add keypoints
 ---
