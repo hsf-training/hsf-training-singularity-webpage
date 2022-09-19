@@ -90,3 +90,6 @@ export SINGULARITY_BIND="/cvmfs"
 ```
 will bind CVMFS to all your Singularity containers (`/cvmfs` must be available in the host, of course).
 You can also bind multiple directories using commas between each `source:destination`.
+
+
+{% include links.md %}
