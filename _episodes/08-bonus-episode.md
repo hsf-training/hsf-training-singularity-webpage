@@ -19,7 +19,7 @@ keypoints:
 
 ## Singularity Container for python packages
 
-Python packages can be install using a Singularity image. The following example illustrates how an image containing python packages is built:
+Python packages can be installed using a Singularity image. The following example illustrates how to write an definition file for building an image containing python packages.
 
 ```text
 BootStrap: docker
@@ -52,21 +52,21 @@ From: ubuntu:20.04
     pip3 install fastjet
     pip3 install iminuit
 ```
-(This script is taken from [GitHub Repo Link](https://github.com/amanmdesai/singularity-scikit-hep))
+(This script is taken from [GitHub Repo Link](https://github.com/amanmdesai/singularity-scikit-hep)).
 
 
 As we see, several packages are installed and this installation is done over several layers.
 
-_Why is installation over several advantageous?_
+_Why is installation over several layers advantageous?_
 
 
 
 ## Publish Singularity images with GitHub Packages and share them!
 
-It is possible to publish singularity images with GitHub packages. To do so, one needs to needs to use GitHub CI/CD. A step-by-step guide is presented here.
+It is possible to publish singularity images with GitHub packages. To do so, one needs to use GitHub CI/CD. A step-by-step guide is presented here.
 
 * Step 1: Create a GitHub repository and clone it locally.
-* Step 2: In the empty repository, make a folder called `.github/workflows`. In this folder we will store the file containing the YAML script for GitHub action, called `singularity-build-deploy.yml`.
+* Step 2: In the empty repository, make a folder called `.github/workflows`. In this folder we will store the file containing the YAML script for GitHub action, named `singularity-build-deploy.yml` (name doesn't really matter).
 * Step 3: In the top directory of your github repo, create a file named `Singularity`.
 * Step 4: Copy-paste the content above and add to the Singularity file. (In principle it is possible to build this image locally, but we will not do that here, as we wish to build it with GitHub CI/CD).
 * Step 5: In the `singularity-build-deploy.yml` file, add the following content:
