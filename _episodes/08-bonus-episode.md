@@ -8,7 +8,8 @@ questions:
 objectives:
 - To be able to build a singularity container and share it via GitHub packages
 keypoints:
-- Add keypoints
+-  Python packages can be installed in singularity images along with ubuntu packages.
+-  It is possible to publish and share singularity images over github packages.
 ---
 
 > ## Prerequisites
