@@ -62,10 +62,10 @@ As we see, several packages are installed and this installation is done over sev
 > ### Bonus question: Why is installation over several layers advantageous?
 {: .challenge}
 
-> ### Solution: 
+> ### Solution:
 > The reason is as follows:
 > Building images is faster
-> Pulling and pushing images is more efficient 
+> Pulling and pushing images is more efficient
 {: .solution}
 
 
