@@ -15,7 +15,7 @@ keypoints:
 > ## Prerequisites
 > For this lesson, you will need,
 > * Knowledge of Git [SW Carpentry Git-Novice Lesson](https://swcarpentry.github.io/git-novice/)
-> * Some knowledge of GitHub CI/CD [HSF Github CI/CD Lesson](https://github.com/hsf-training/hsf-training-cicd-github)
+> * Knowledge of GitHub CI/CD [HSF Github CI/CD Lesson](https://github.com/hsf-training/hsf-training-cicd-github)
 {: .prereq}
 
 ## Singularity Container for python packages
@@ -58,7 +58,15 @@ From: ubuntu:20.04
 
 As we see, several packages are installed and this installation is done over several layers.
 
-_Why is installation over several layers advantageous?_
+
+> ### Bonus question: Why is installation over several layers advantageous?
+{: .challenge}
+
+> ### Solution: 
+> The reason is as follows:
+> Building images is faster
+> Pulling and pushing images is more efficient 
+{: .solution}
 
 
 
