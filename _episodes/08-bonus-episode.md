@@ -20,7 +20,7 @@ keypoints:
 
 ## Singularity Container for python packages
 
-Python packages can be installed using a Singularity image. The following example illustrates how to write an definition file for building an image containing python packages.
+Python packages can be installed using a Singularity image. The following example illustrates how to write a definition file for building an image containing python packages.
 
 ```text
 BootStrap: docker
