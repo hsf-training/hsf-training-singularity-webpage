@@ -59,14 +59,14 @@ From: ubuntu:20.04
 As we see, several packages are installed and this installation is done over several layers.
 
 
-> ### Bonus question: Why is installation over several layers advantageous?
+> ## Bonus question
+> Why is installation over several layers advantageous?
+>> ## Solution:
+>> The reason is as follows:
+>> - Building images is faster
+>> - Pulling and pushing images is more efficient
+> {: .solution}
 {: .challenge}
-
-> ### Solution:
-> The reason is as follows:
-> Building images is faster
-> Pulling and pushing images is more efficient
-{: .solution}
 
 
 
@@ -74,11 +74,11 @@ As we see, several packages are installed and this installation is done over sev
 
 It is possible to publish singularity images with GitHub packages. To do so, one needs to use GitHub CI/CD. A step-by-step guide is presented here.
 
-* Step 1: Create a GitHub repository and clone it locally.
-* Step 2: In the empty repository, make a folder called `.github/workflows`. In this folder we will store the file containing the YAML script for GitHub action, named `singularity-build-deploy.yml` (name doesn't really matter).
-* Step 3: In the top directory of your github repo, create a file named `Singularity`.
-* Step 4: Copy-paste the content above and add to the Singularity file. (In principle it is possible to build this image locally, but we will not do that here, as we wish to build it with GitHub CI/CD).
-* Step 5: In the `singularity-build-deploy.yml` file, add the following content:
+* **Step 1**: Create a GitHub repository and clone it locally.
+* **Step 2**: In the empty repository, make a folder called `.github/workflows`. In this folder we will store the file containing the YAML script for GitHub action, named `singularity-build-deploy.yml` (name doesn't really matter).
+* **Step 3**: In the top directory of your github repo, create a file named `Singularity`.
+* **Step 4**: Copy-paste the content above and add to the Singularity file. (In principle it is possible to build this image locally, but we will not do that here, as we wish to build it with GitHub CI/CD).
+* **Step 5**: In the `singularity-build-deploy.yml` file, add the following content:
 
 ```text
 name: Singularity Build Deploy
@@ -115,7 +115,7 @@ jobs:
            singularity push container.sif oras://ghcr.io/${GITHUB_REPOSITORY}:${tag}
 ```
 
-The above script is designed to build and publish any Singularity image with GitHub packages.
+The above script is designed to build and publish a Singularity image with GitHub packages.
 (The source code can be found here: [Link](https://github.com/amanmdesai/hello-world-singularity)).
 
-* Step 6: Optionally add LICENSE and README, and then the repository is good to go.
+* **Step 6**: Optionally add LICENSE and README, and then the repository is good to go.
