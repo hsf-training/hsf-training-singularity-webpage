@@ -8,8 +8,8 @@ questions:
 objectives:
 - To be able to build a singularity container and share it via GitHub packages
 keypoints:
--  Python packages can be installed in singularity images along with ubuntu packages.
--  It is possible to publish and share singularity images over github packages.
+-  Python packages can be installed in singularity images along with ubuntu packages.
+-  It is possible to publish and share singularity images over github packages.
 ---
 
 > ## Prerequisites
@@ -27,33 +27,32 @@ BootStrap: docker
 From: ubuntu:20.04
 
 %post
-    apt-get update -y
-    apt-get install wget -y
-    export DEBIAN_FRONTEND=noninteractive
-    apt-get install dpkg-dev cmake g++ gcc binutils libx11-dev libxpm-dev \
-    libxft-dev libxext-dev python3 libssl-dev libgsl0-dev libtiff-dev \
-    python3-pip -y
+    apt-get update -y
+    apt-get install wget -y
+    export DEBIAN_FRONTEND=noninteractive
+    apt-get install dpkg-dev cmake g++ gcc binutils libx11-dev libxpm-dev \
+    libxft-dev libxext-dev python3 libssl-dev libgsl0-dev libtiff-dev \
+    python3-pip -y
 
 %post
-    pip3 install numpy
-    pip3 install awkward
-    pip3 install matplotlib
-    pip3 install zfit
+    pip3 install numpy
+    pip3 install awkward
+    pip3 install uproot4
 
 %post
-    pip3 install uproot4
-    pip3 install particle
-    pip3 install hepunits
-    pip3 install scikit-hep-testdata
+    pip3 install particle
+    pip3 install hepunits
 
 %post
-    pip3 install hist
-    pip3 install boost-histogram
-    pip3 install vector
-    pip3 install fastjet
-    pip3 install iminuit
+    pip3 install matplotlib
+    pip3 install hist
+    pip3 install mplhep
+
+%post
+    pip3 install vector
+    pip3 install fastjet
+    pip3 install iminuit
 ```
-(This script is taken from [GitHub Repo Link](https://github.com/amanmdesai/singularity-scikit-hep)).
 
 
 As we see, several packages are installed and this installation is done over several layers.
@@ -84,38 +83,38 @@ It is possible to publish singularity images with GitHub packages. To do so, one
 name: Singularity Build Deploy
 
 on:
-  pull_request:
-  push:
-    branches: master
+  pull_request:
+  push:
+    branches: master
 
 jobs:
-  build-test-container:
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      packages: write
+  build-test-container:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
 
-    container:
-        image: quay.io/singularity/singularity:v3.8.1
-        options: --privileged
+    container:
+        image: quay.io/singularity/singularity:v3.8.1
+        options: --privileged
 
-    name: Build Container
-    steps:
+    name: Build Container
+    steps:
 
-      - name: Check out code for the container builds
-        uses: actions/checkout@v2
+      - name: Check out code for the container builds
+        uses: actions/checkout@v2
 
-      - name: Build Container
-        run: |
-         sudo -E singularity build container.sif Singularity
+      - name: Build Container
+        run: |
+         sudo -E singularity build container.sif Singularity
 
-      - name: Login and Deploy Container
-        run: |
-           echo ${{ secrets.GITHUB_TOKEN }} | singularity remote login -u ${{ secrets.GHCR_USERNAME }} --password-stdin oras://ghcr.io
-           singularity push container.sif oras://ghcr.io/${GITHUB_REPOSITORY}:${tag}
+      - name: Login and Deploy Container
+        run: |
+           echo ${{ secrets.GITHUB_TOKEN }} | singularity remote login -u ${{ secrets.GHCR_USERNAME }} --password-stdin oras://ghcr.io
+           singularity push container.sif oras://ghcr.io/${GITHUB_REPOSITORY}:${tag}
 ```
 
 The above script is designed to build and publish a Singularity image with GitHub packages.
-(The source code can be found here: [Link](https://github.com/amanmdesai/hello-world-singularity)).
+
 
 * **Step 6**: Optionally add LICENSE and README, and then the repository is good to go.
