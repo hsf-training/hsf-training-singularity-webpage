@@ -27,12 +27,12 @@ BootStrap: docker
 From: ubuntu:20.04
 
 %post
-    apt-get update -y
-    apt-get install wget -y
-    export DEBIAN_FRONTEND=noninteractive
-    apt-get install dpkg-dev cmake g++ gcc binutils libx11-dev libxpm-dev \
-    libxft-dev libxext-dev python3 libssl-dev libgsl0-dev libtiff-dev \
-    python3-pip -y
+    apt-get update -y
+    apt-get install wget -y
+    export DEBIAN_FRONTEND=noninteractive
+    apt-get install dpkg-dev cmake g++ gcc binutils libx11-dev libxpm-dev \
+    libxft-dev libxext-dev python3 libssl-dev libgsl0-dev libtiff-dev \
+    python3-pip -y
 
 %post
     pip3 install numpy
