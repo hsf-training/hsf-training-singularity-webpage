@@ -83,35 +83,35 @@ It is possible to publish singularity images with GitHub packages. To do so, one
 name: Singularity Build Deploy
 
 on:
-  pull_request:
-  push:
-    branches: master
+  pull_request:
+  push:
+    branches: master
 
 jobs:
-  build-test-container:
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      packages: write
+  build-test-container:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
 
-    container:
-        image: quay.io/singularity/singularity:v3.8.1
-        options: --privileged
+    container:
+        image: quay.io/singularity/singularity:v3.8.1
+        options: --privileged
 
-    name: Build Container
-    steps:
+    name: Build Container
+    steps:
 
-      - name: Check out code for the container builds
-        uses: actions/checkout@v2
+      - name: Check out code for the container builds
+        uses: actions/checkout@v2
 
-      - name: Build Container
-        run: |
-         sudo -E singularity build container.sif Singularity
+      - name: Build Container
+        run: |
+         sudo -E singularity build container.sif Singularity
 
-      - name: Login and Deploy Container
-        run: |
-           echo ${{ secrets.GITHUB_TOKEN }} | singularity remote login -u ${{ secrets.GHCR_USERNAME }} --password-stdin oras://ghcr.io
-           singularity push container.sif oras://ghcr.io/${GITHUB_REPOSITORY}:${tag}
+      - name: Login and Deploy Container
+        run: |
+           echo ${{ secrets.GITHUB_TOKEN }} | singularity remote login -u ${{ secrets.GHCR_USERNAME }} --password-stdin oras://ghcr.io
+           singularity push container.sif oras://ghcr.io/${GITHUB_REPOSITORY}:${tag
 ```
 
 The above script is designed to build and publish a Singularity image with GitHub packages.
