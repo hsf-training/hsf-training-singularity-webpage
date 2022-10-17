@@ -111,7 +111,7 @@ jobs:
       - name: Login and Deploy Container
         run: |
            echo ${{ secrets.GITHUB_TOKEN }} | singularity remote login -u ${{ secrets.GHCR_USERNAME }} --password-stdin oras://ghcr.io
-           singularity push container.sif oras://ghcr.io/${GITHUB_REPOSITORY}:${tag
+           singularity push container.sif oras://ghcr.io/${GITHUB_REPOSITORY}:${tag}
 ```
 
 The above script is designed to build and publish a Singularity image with GitHub packages.
