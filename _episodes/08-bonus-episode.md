@@ -8,8 +8,8 @@ questions:
 objectives:
 - To be able to build a singularity container and share it via GitHub packages
 keypoints:
--  Python packages can be installed in singularity images along with ubuntu packages.
--  It is possible to publish and share singularity images over github packages.
+-  Python packages can be installed in singularity images along with ubuntu packages.
+-  It is possible to publish and share singularity images over github packages.
 ---
 
 > ## Prerequisites
@@ -33,41 +33,21 @@ From: ubuntu:20.04
     apt-get install dpkg-dev cmake g++ gcc binutils libx11-dev libxpm-dev \
     libxft-dev libxext-dev python3 libssl-dev libgsl0-dev libtiff-dev \
     python3-pip -y
-
-%post
     pip3 install numpy
     pip3 install awkward
-    pip3 install matplotlib
-    pip3 install zfit
-
-%post
     pip3 install uproot4
     pip3 install particle
     pip3 install hepunits
-    pip3 install scikit-hep-testdata
-
-%post
+    pip3 install matplotlib
     pip3 install hist
-    pip3 install boost-histogram
+    pip3 install mplhep
     pip3 install vector
     pip3 install fastjet
     pip3 install iminuit
 ```
-(This script is taken from [GitHub Repo Link](https://github.com/amanmdesai/singularity-scikit-hep)).
 
 
-As we see, several packages are installed and this installation is done over several layers.
-
-
-> ## Bonus question
-> Why is installation over several layers advantageous?
->> ## Solution:
->> The reason is as follows:
->> - Building images is faster
->> - Pulling and pushing images is more efficient
-> {: .solution}
-{: .challenge}
-
+As we see, several packages are installed.
 
 
 ## Publish Singularity images with GitHub Packages and share them!
@@ -116,6 +96,6 @@ jobs:
 ```
 
 The above script is designed to build and publish a Singularity image with GitHub packages.
-(The source code can be found here: [Link](https://github.com/amanmdesai/hello-world-singularity)).
+
 
 * **Step 6**: Optionally add LICENSE and README, and then the repository is good to go.
