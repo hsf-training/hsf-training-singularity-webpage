@@ -28,8 +28,9 @@ and then deploy the container into a production environment for execution (as yo
 
 ## Build a container in an interactive session
 
-While images contained in the `.sif` files are immutable objects, ideal for reproducibility, for building images in an
-interactive session is convenient the usage of a _sandbox_.
+Images contained in the `.sif` files are immutable objects, ideal for reproducibility. However, it is convenient to
+build images interactively.
+
 The command `build` provides a flag `--sandbox` that will create a writable directory:
 ```bash
 singularity build --sandbox myPython docker://python:3.9
@@ -37,9 +38,10 @@ singularity build --sandbox myPython docker://python:3.9
 The container name is `myPython`, and it has been initialized from the [Docker image](https://hub.docker.com/_/python)
 of Python using the tag 3.9.
 
-To initialize an interactive session use `shell`. And to write files within the container use the flag `--writable`:
+To initialize an interactive session use `shell`.
+Add the --writable flag to modify files within the container.
 ```bash
-singularity shell --writable myUbuntu
+singularity shell --writable myPython
 ```
 Once inside the container, you can make changes as needed for your work. For example, making
 [Uproot](https://uproot.readthedocs.io/en/latest/index.html) available
@@ -58,11 +60,11 @@ Uproot: ROOT I/O in pure Python and NumPy.
 
 ## Building a container with superuser permissions
 
-Some operations, like the installation of new components will require superuser access. To be superuser inside the container,
-you must be also outside (in the host machine). You can either open a shell as root, or use `sudo`:
+Some operations, like the installation of new components, will require superuser access. To be superuser inside the container,
+you must be a superuser outside (in the host machine). You can either open a shell as root, or use `sudo`:
 
 ```bash
-$ sudo singularity shell --writable myCentOS7
+sudo singularity shell --writable myCentOS7
 ```
 The container name is `myCentOS7`, and it has been initialized from the [official Docker image](https://hub.docker.com/_/centos)
 of CentOS7. You can verify that opening a shell with `sudo` makes you root inside the container
@@ -80,6 +82,8 @@ First, we need to install the development tools (remember that in this interacti
 Singularity> yum groupinstall 'Development Tools'
 Singularity> yum install python3-devel
 ```
+where `yum` is the [package manager used in RHEL distributions](https://en.wikipedia.org/wiki/Yum_(software))
+(like CentOS).
 
 We will follow the
 installation steps described in the [Pythia website](http://home.thep.lu.se/~torbjorn/Pythia.html).
