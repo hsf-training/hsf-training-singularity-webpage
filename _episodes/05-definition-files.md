@@ -14,6 +14,55 @@ As shown in the previous chapter, building containers with an interactive sessio
 become as complicated as the setup is needed.
 A Singularity definition file provides an easy way to build and deploy containers.
 
+
+## Hello World Singularity
+
+The following recipe shows how to build a hello-world container, and run the container on your local computer.
+
+- Step 1: Open a text editor (e.g., nano, vim, or gedit in a graphical environment)
+
+  ```bash
+  nano hello-world.def
+  ```
+
+- Step 2: Include the following script in the `hello-world.def` file to define the environment
+
+  ```bash
+  BootStrap: docker
+  From: ubuntu:20.04
+
+  %runscript
+    echo "Hello World"
+  # Print Hello world when the image is loaded
+  ```
+
+    In the above script, the first line - `BootStrap: docker` indicates that singularity will use docker to create the base OS to start the image. The `From: ubuntu:20.04` is given to singularity to start from a specific image/OS.  Any content within the  `%runscript` will be written to file that is executed when one runs the singularity image. The `echo "Hello World"` command will print the `Hello World` on the terminal. Finally the `#` hash is used to include comments within the definition file.
+
+- Step 3: Build the image
+
+  ```bash
+  singularity build helloworld.sif hello-world.def
+  ```
+
+    The `helloworld.sif` file specifies the name of the output file that is built when using the `singularity build` command.
+
+- Step 4: Run the image
+
+  ```bash
+  ./helloworld.sif
+  ```
+
+### Deleting Singularity image
+
+To delete the helloworld Singularity image, use the following command:
+
+```bash
+singularity delete helloworld.sif
+```
+
+
+## Example of a more elaborated definition file
+
 Let's look at the structure of the definition file with another example. Let's prepare a container from an [official
 Ubuntu image](https://hub.docker.com/_/ubuntu), but this time we will install ROOT with RooFit and Python integration.
 
@@ -63,19 +112,18 @@ from the RooFit tutorial.
 
 Save this definition file as `myUbuntu.def`. To build the container, just provide the definition file as argument
 (executing as superuser):
-~~~bash
-$ sudo singularity build rootInUbuntu.sif myUbuntu.def
-~~~
-{: .source}
+```bash
+sudo singularity build rootInUbuntu.sif myUbuntu.def
+```
+
 
 Then, an interactive shell inside the container can be initialized with `singularity shell`, or
 execute a command with `singularity exec`. A third option is execute the actions defined inside `%runscript`
 simply by calling the container as an executable
 
-~~~bash
-$ ./rootInUbuntu.sif
-~~~
-{: .source}
+```bash
+./rootInUbuntu.sif
+```
 
 ~~~
 RooFit v3.60 -- Developed by Wouter Verkerke and David Kirkby
@@ -113,7 +161,7 @@ options and more details related to the container creation.
 > write a definition file to deploy a container with Pythia8 available.
 >
 > Take a look at
-> [`/opt/pythia/pythia8303/examples/main01.py`](https://github.com/alisw/pythia8/blob/master/examples/main01.py)
+> [`/opt/pythia/pythia8303/examples/main01.py`](https://gitlab.com/Pythia8/releases/-/blob/pythia8303/examples/main01.py)
 > and define the `%runscript` to execute it using `python3`.
 >
 > (Tip: notice that main01.py requires `Makefile.inc`).
@@ -148,16 +196,14 @@ options and more details related to the container creation.
 > >
 > > Build your container executing
 > >
-> > ~~~bash
-> > $ sudo singularity build pythiaInCentos7.sif myPythia8.def
-> > ~~~
-> > {: .source}
+> > ```bash
+> > sudo singularity build pythiaInCentos7.sif myPythia8.def
+> > ```
 > >
-> > And finally, execute the container to run [`main01.py`](https://github.com/alisw/pythia8/blob/master/examples/main01.py)
+> > And finally, execute the container to run [`main01.py`](https://gitlab.com/Pythia8/releases/-/blob/pythia8303/examples/main01.py)
 > >
->> > ~~~bash
-> > $ ./pythiaInCentos7.sif
-> > ~~~
-> > {: .source}
+>> > ```bash
+> > ./pythiaInCentos7.sif
+> > ```
 > {: .solution}
 {: .challenge}

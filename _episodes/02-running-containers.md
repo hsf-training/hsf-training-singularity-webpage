@@ -21,10 +21,9 @@ containers in a single line.
 
 You can check the available options and subcommands using `--help`:
 
-~~~bash
-$ singularity --help
-~~~
-{: .source}
+```bash
+singularity --help
+```
 
 # Downloading Images
 
@@ -33,10 +32,10 @@ Images built by users are accessible using the CLI, and images become containers
 
 The command `search` provides containers of interest
 and information about groups and collections. For example:
-~~~bash
-$ singularity search centos7
-~~~
-{: .source}
+
+```bash
+singularity search centos7
+```
 
 ~~~
 No users found for 'centos7'
@@ -52,10 +51,9 @@ Found 15 containers for 'centos7'
 {: .output}
 
 Downloading an image from the Container Library is pretty straightforward:
-~~~bash
-$ singularity pull library://gmk/default/centos7-devel
-~~~
-{: .source}
+```bash
+singularity pull library://gmk/default/centos7-devel
+```
 and the image is stored locally as a `.sif` file (`centos7-devel_latest.sif`, in this case).
 
 > ## Docker Images
@@ -63,9 +61,9 @@ and the image is stored locally as a `.sif` file (`centos7-devel_latest.sif`, in
 > Fortunately, Singularity is also compatible with Docker images. [Docker Hub](https://hub.docker.com/)
 > is one of the largest libraries available, and any image hosted on the hub can be easily downloaded
 > with the `docker://` URL as reference:
-> ~~~bash
-> $ singularity pull docker://centos:centos7
-> ~~~
+> ```bash
+> singularity pull docker://centos:centos7
+> ```
 {: .callout}
 
 # Running Containers
@@ -76,20 +74,22 @@ environment and how to execute directly a command.
 ## Initializing a shell
 
 The `shell` command initializes a new interactive shell inside the container.
-~~~bash
-$ singularity shell centos7-devel_latest.sif
-~~~
-{: .source}
+
+```bash
+singularity shell centos7-devel_latest.sif
+```
+
 ~~~
 Singularity>
 ~~~
 {: .output}
 In this case, the container works as a lightweight virtual machine in which you can execute commands.
 Remember, inside the container you have the same user and permissions.
-~~~
+
+```bash
 Singularity> id
-~~~
-{: .source}
+```
+
 ~~~
 uid=1001(myuser) gid=1001(myuser) groups=1001(myuser),500(myothergroup)
 ~~~
@@ -100,10 +100,10 @@ at `hostname:~/` are accessible inside the container. You can specify additional
 For example, let's say `/cvmfs` is available in the host, and you would like to have access to CVMFS inside the
 container. Then let's do
 
-~~~bash
-$ singularity shell --bind /cvmfs:/cvmfs centos7-devel_latest.sif
-~~~
-{: .source}
+```bash
+singularity shell --bind /cvmfs:/cvmfs centos7-devel_latest.sif
+```
+
 ~~~
 Singularity> ls /cvmfs/cms.cern.ch
 bin                        etc                  SITECONF           slc7_aarch64_gcc530
@@ -115,9 +115,9 @@ bootstrap.sh               external             slc5_amd64_gcc434  slc7_aarch64_
 > ## URLs as input
 > Each of the different commands to set a container from a local `.sif` also accepts the URL of the image
 > as input. For example, starting a shell with Scientific Linux 6 is as easy as
-> ~~~bash
-> $ singularity shell docker://sl:6
-> ~~~
+> ```bash
+> singularity shell docker://sl:6
+> ```
 > ~~~
 > 2020/12/17 21:42:46  info unpack layer: sha256:e0a6b33502f39d76f7c70213fa5b91688a46c2217ad9ba7a4d1690d33c6675ef
 > INFO:    Creating SIF file...
@@ -132,10 +132,10 @@ The command `exec` starts the container from an specified image and executes a c
 Let's use the official [Docker image of ROOT](https://hub.docker.com/r/rootproject/root) to start ROOT
 inside a container:
 
-~~~bash
-$ singularity exec docker://rootproject/root root -b
-~~~
-{: .source}
+```bash
+singularity exec docker://rootproject/root root -b
+```
+
 ~~~
 INFO:    Converting OCI blobs to SIF format
 INFO:    Starting build...
@@ -163,10 +163,9 @@ with Singularity available.
 >
 > > ## Solution
 > >
-> > ~~~
-> > $ singularity exec docker://rootproject/root python3
-> > ~~~
-> > {: .source}
+> > ```bash
+> > singularity exec docker://rootproject/root python3
+> > ```
 > >
 > > ~~~
 > > INFO:    Using cached SIF image
@@ -179,5 +178,13 @@ with Singularity available.
 > > {: .output}
 > {: .solution}
 {: .challenge}
+
+## Exiting a singularity image
+
+The `exit` command exits a singularity instance. Note that when exiting from the singularity image all the running processes are killed (stopped).
+
+```bash
+Singularity> exit
+```
 
 {% include links.md %}
