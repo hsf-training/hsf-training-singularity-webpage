@@ -27,9 +27,43 @@ singularity --help
 
 # Downloading Images
 
-The [Singularity Container Library](https://cloud.sylabs.io/library) is the official image registry.
-Images built by users are accessible using the CLI, and images become containers at runtime.
+Apptainer/Singularity can store, search and retrieve images in registries.
+Images built by other users can be accessible using the CLI, can be pulled down, and become containers at runtime.
 
+Sylabs, the developers of one Singularity flavor, hosts a public image registry, the
+[Singularity Container Library](https://cloud.sylabs.io/library) where many user built images are available.
+
+The Linux Foundation flavor, Apptainer, does not point by default to the Sylab registry as previous versions did.
+You can change that running these commands (documented [here](https://apptainer.org/docs/user/main/endpoint.html#restoring-pre-apptainer-library-behavior)):
+```bash
+apptainer remote add --no-login SylabsCloud cloud.sycloud.io
+```
+~~~
+INFO:    Remote "SylabsCloud" added.
+~~~
+{: .output}
+```bash
+apptainer remote use SylabsCloud
+```
+~~~
+INFO:    Remote "SylabsCloud" now in use.
+~~~
+{: .output}
+```bash
+apptainer remote list
+```
+~~~
+Cloud Services Endpoints
+========================
+
+NAME           URI                  ACTIVE  GLOBAL  EXCLUSIVE
+DefaultRemote  cloud.apptainer.org  NO      YES     NO
+SylabsCloud    cloud.sycloud.io     YES     NO      NO
+...
+~~~
+{: .output}
+
+Once you have setup a working registry you can use search and pull.
 The command `search` provides containers of interest
 and information about groups and collections. For example:
 
@@ -58,9 +92,9 @@ and the image is stored locally as a `.sif` file (`centos7-devel_latest.sif`, in
 
 > ## Docker Images
 >
-> Fortunately, Singularity is also compatible with Docker images. [Docker Hub](https://hub.docker.com/)
-> is one of the largest libraries available, and any image hosted on the hub can be easily downloaded
-> with the `docker://` URL as reference:
+> Fortunately, Singularity is also compatible with Docker images. There are many more registries with Docker images.
+> [Docker Hub](https://hub.docker.com/) is one of the largest libraries available,
+> and any image hosted on the hub can be easily downloaded with the `docker://` URL as reference:
 > ```bash
 > singularity pull docker://centos:centos7
 > ```
@@ -95,6 +129,8 @@ uid=1001(myuser) gid=1001(myuser) groups=1001(myuser),500(myothergroup)
 ~~~
 {: .output}
 
+When an outside directory is accessible also inside Singularity we say it is bound, or bind mounted. The path to access it
+may differ but anything you do to its content outside is visible inside and vice-versa.
 By default, Singularity bind the home of the user, `/tmp` and `$PWD` into the container. It means your files
 at `hostname:~/` are accessible inside the container. You can specify additional bind mounts using the `--bind` option.
 For example, let's say `/cvmfs` is available in the host, and you would like to have access to CVMFS inside the
@@ -181,7 +217,8 @@ with Singularity available.
 
 ## Exiting a singularity image
 
-The `exit` command exits a singularity instance. Note that when exiting from the singularity image all the running processes are killed (stopped).
+The `exit` command (Control+d) exits a singularity instance. Note that when exiting from the singularity image all the running processes are killed (stopped).
+Changes saved into bound directories are preserved. By default anything else in the container is lost (we'll see later about writable images).
 
 ```bash
 Singularity> exit

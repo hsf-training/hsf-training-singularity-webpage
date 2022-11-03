@@ -15,7 +15,7 @@ keypoints:
 > ## Prerequisites
 > For this lesson, you will need,
 > * Knowledge of Git [SW Carpentry Git-Novice Lesson](https://swcarpentry.github.io/git-novice/)
-> * Knowledge of GitHub CI/CD [HSF Github CI/CD Lesson](https://github.com/hsf-training/hsf-training-cicd-github)
+> * Knowledge of GitHub CI/CD [HSF Github CI/CD Lesson](https://hsf-training.github.io/hsf-training-cicd-github/)
 {: .prereq}
 
 ## Singularity Container for python packages
@@ -52,11 +52,12 @@ As we see, several packages are installed.
 
 ## Publish Singularity images with GitHub Packages and share them!
 
-It is possible to publish singularity images with GitHub packages. To do so, one needs to use GitHub CI/CD. A step-by-step guide is presented here.
+It is possible to publish singularity images with [GitHub packages](https://github.com/features/packages).
+To do so, one needs to use GitHub CI/CD. A step-by-step guide is presented here.
 
 * **Step 1**: Create a GitHub repository and clone it locally.
-* **Step 2**: In the empty repository, make a folder called `.github/workflows`. In this folder we will store the file containing the YAML script for GitHub action, named `singularity-build-deploy.yml` (name doesn't really matter).
-* **Step 3**: In the top directory of your github repo, create a file named `Singularity`.
+* **Step 2**: In the empty repository, make a folder called `.github/workflows`. In this folder we will store the file containing the YAML script for a GitHub workflow, named `singularity-build-deploy.yml` (the name doesn't really matter).
+* **Step 3**: In the top directory of your GitHub repository, create a file named `Singularity`.
 * **Step 4**: Copy-paste the content above and add to the Singularity file. (In principle it is possible to build this image locally, but we will not do that here, as we wish to build it with GitHub CI/CD).
 * **Step 5**: In the `singularity-build-deploy.yml` file, add the following content:
 
@@ -87,7 +88,7 @@ jobs:
 
       - name: Build Container
         run: |
-         sudo -E singularity build container.sif Singularity
+           singularity build container.sif Singularity
 
       - name: Login and Deploy Container
         run: |
@@ -95,7 +96,7 @@ jobs:
            singularity push container.sif oras://ghcr.io/${GITHUB_REPOSITORY}:${tag}
 ```
 
-The above script is designed to build and publish a Singularity image with GitHub packages.
+The above script is designed to build and publish a Singularity image with [GitHub packages](https://github.com/features/packages).
 
 
-* **Step 6**: Optionally add LICENSE and README, and then the repository is good to go.
+* **Step 6**: Add LICENSE and README as recommended in the [SW Carpentry Git-Novice Lesson](https://swcarpentry.github.io/git-novice/), and then the repository is good to go.
