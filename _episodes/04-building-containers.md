@@ -5,20 +5,19 @@ exercises: 30
 questions:
 - "How to build containers with my requirements?"
 objectives:
-- "Download and assemble containers from the available images in the Singularity Library and the Docker Hub."
+- "Download and assemble containers from available images in the repositories."
 keypoints:
 - "The command `build` is the basic tool for the creation of containers."
 - "A _sandbox_ is a writable directory where containers can be built interactively."
+- "Superuser permissions are required to build containers if you need to install packages or manipulate the operating system."
 ---
 
 Running containers from the available public images is not the only option. In many cases, it is required to modify
 an image or even to create a new one from scratch. For such purposes, Singularity provides the command `build`,
 defined in the documentation as the _Swiss army knife_ of container creation.
 
-While images contained in the `.sif` files are immutable objects, ideal for reproducibility, for building images is
-more convenient the usage of a _sandbox_.
-
-Building images requires access to a machine with Singularity and superuser permissions. The usual workflow is prepare
+Sometimes, building images requires access to a machine with Singularity and superuser permissions
+(if you need to manipulate the packager manager, for example). In such case the usual workflow is to prepare
 a container in a build environment (like your laptop), either with an interactive session or from a definition file,
 and then deploy the container into a production environment for execution (as your institutional cluster).
 
@@ -27,40 +26,64 @@ and then deploy the container into a production environment for execution (as yo
   <figcaption>'Singularity usage workflow' via <i>Kurtzer GM, Sochat V, Bauer MW (2017) Singularity: Scientific containers for mobility of compute. PLoS ONE 12(5): e0177459. <a href="https://doi.org/10.1371/journal.pone.0177459">https://doi.org/10.1371/journal.pone.0177459</a></i></figcaption>
 </figure>
 
-# Build a container in a interactive session
+## Build a container in an interactive session
 
-For building a container from a existing image in an interactive way, `build` provides a flag `--sandbox` that will
-create a writable directory.
+Images contained in the `.sif` files are immutable objects, ideal for reproducibility. However, it is convenient to
+build images interactively.
 
-~~~bash
-singularity build --sandbox myCentOS7 docker://centos:centos7
+The command `build` provides a flag `--sandbox` that will create a writable directory:
+```bash
+singularity build --sandbox myPython docker://python:3.9
+```
+The container name is `myPython`, and it has been initialized from the [Docker image](https://hub.docker.com/_/python)
+of Python using the tag 3.9.
+
+To initialize an interactive session use `shell`.
+Add the --writable flag to modify files within the container.
+```bash
+singularity shell --writable myPython
+```
+Once inside the container, you can make changes as needed for your work. For example, making
+[Uproot](https://uproot.readthedocs.io/en/latest/index.html) available
+```bash
+Singularity> pip install uproot awkward
+```
+Exit the container. Then confirm that uproot is available even after closing the shell:
+```bash
+singularity exec myPython python -c "import uproot; print(uproot.__doc__)"
+```
 ~~~
-{: .source}
+Uproot: ROOT I/O in pure Python and NumPy.
+...
+~~~
+{: .output}
 
-The sandbox name is `myCentOS7`, and it has been initialized from the [official Docker image](https://hub.docker.com/_/centos)
-of CentOS7.
-To initialize an interactive session use `shell`. And to write files within the sandbox directory  `--writable`.
-Additionally, the installation of new components will require superuser access:
+## Building a container with superuser permissions
 
-~~~bash
+Some operations, like the installation of new components, will require superuser access. To be superuser inside the container,
+you must be a superuser outside (in the host machine). You can either open a shell as root, or use `sudo`:
+
+```bash
 sudo singularity shell --writable myCentOS7
-
+```
+The container name is `myCentOS7`, and it has been initialized from the [official Docker image](https://hub.docker.com/_/centos)
+of CentOS7. You can verify that opening a shell with `sudo` makes you root inside the container
+```bash
 Singularity> whoami
-~~~
-{: .source}
+```
 ~~~
 root
 ~~~
 {: .output}
 
-As an example, let's create a container with Pythia8 available using the `myCentOS7` sandbox.
+As a second example, let's create a container with Pythia8 available using the `myCentOS7` sandbox.
 First, we need to install the development tools (remember that in this interactive session we are superuser):
-
-~~~bash
+```bash
 Singularity> yum groupinstall 'Development Tools'
 Singularity> yum install python3-devel
-~~~
-{: .source}
+```
+where `yum` is the [package manager used in RHEL distributions](https://en.wikipedia.org/wiki/Yum_(software))
+(like CentOS).
 
 We will follow the
 installation steps described in the [Pythia website](http://home.thep.lu.se/~torbjorn/Pythia.html).
