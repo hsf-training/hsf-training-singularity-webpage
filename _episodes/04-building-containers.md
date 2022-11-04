@@ -147,4 +147,3 @@ We will automate this in the next section.
 > > Notice how we did not need `--fakeroot` for the installation since pip installs user packages.
 > {: .solution}
 {: .challenge}
-
