@@ -24,7 +24,8 @@
       "avatar_url": "https://avatars.githubusercontent.com/u/1558058?v=4",
       "profile": "https://github.com/mambelli",
       "contributions": [
-        "ideas"
+        "ideas",
+        "content"
       ]
     },
     {
@@ -46,5 +47,6 @@
       ]
     }
   ],
-  "contributorsPerLine": 7
+  "contributorsPerLine": 7,
+  "commitConvention": "angular"
 }
