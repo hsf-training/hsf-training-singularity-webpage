@@ -52,12 +52,14 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <!-- prettier-ignore-start -->
 <!-- markdownlint-disable -->
 <table>
-  <tr>
-    <td align="center"><a href="https://github.com/michmx"><img src="https://avatars.githubusercontent.com/u/2147367?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Michel H. Villanueva</b></sub></a><br /><a href="#content-michmx" title="Content">🖋</a></td>
-    <td align="center"><a href="https://github.com/mambelli"><img src="https://avatars.githubusercontent.com/u/1558058?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Marco Mambelli</b></sub></a><br /><a href="#ideas-mambelli" title="Ideas, Planning, & Feedback">🤔</a></td>
-    <td align="center"><a href="https://github.com/amangoel185"><img src="https://avatars.githubusercontent.com/u/10528392?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Aman Goel</b></sub></a><br /><a href="#content-amangoel185" title="Content">🖋</a></td>
-    <td align="center"><a href="https://github.com/amanmdesai"><img src="https://avatars.githubusercontent.com/u/98302868?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Aman Desai</b></sub></a><br /><a href="#content-amanmdesai" title="Content">🖋</a></td>
-  </tr>
+  <tbody>
+    <tr>
+      <td align="center"><a href="https://github.com/michmx"><img src="https://avatars.githubusercontent.com/u/2147367?v=4?s=100" width="100px;" alt="Michel H. Villanueva"/><br /><sub><b>Michel H. Villanueva</b></sub></a><br /><a href="#content-michmx" title="Content">🖋</a></td>
+      <td align="center"><a href="https://github.com/mambelli"><img src="https://avatars.githubusercontent.com/u/1558058?v=4?s=100" width="100px;" alt="Marco Mambelli"/><br /><sub><b>Marco Mambelli</b></sub></a><br /><a href="#ideas-mambelli" title="Ideas, Planning, & Feedback">🤔</a> <a href="#content-mambelli" title="Content">🖋</a></td>
+      <td align="center"><a href="https://github.com/amangoel185"><img src="https://avatars.githubusercontent.com/u/10528392?v=4?s=100" width="100px;" alt="Aman Goel"/><br /><sub><b>Aman Goel</b></sub></a><br /><a href="#content-amangoel185" title="Content">🖋</a></td>
+      <td align="center"><a href="https://github.com/amanmdesai"><img src="https://avatars.githubusercontent.com/u/98302868?v=4?s=100" width="100px;" alt="Aman Desai"/><br /><sub><b>Aman Desai</b></sub></a><br /><a href="#content-amanmdesai" title="Content">🖋</a></td>
+    </tr>
+  </tbody>
 </table>
 
 <!-- markdownlint-restore -->
