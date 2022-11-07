@@ -7,7 +7,7 @@ questions:
 objectives:
 - "Refresh your mind."
 keypoints:
-- Todd is a champion. 
+- Todd is a champion.
 - Tucker, such a smart boy.
 ---
 

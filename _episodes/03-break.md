@@ -8,7 +8,7 @@ objectives:
 - "Refresh your mind!"
 keypoints:
 - Pen + apple = Apple-pen.
-- Pen + pineapple = Pinneaple-pen. 
+- Pen + pineapple = Pinneaple-pen.
 ---
 
 <center>
