@@ -1,8 +1,18 @@
 ---
-title: "Break"
-teaching: 10
-exercises: 0
+title: "Coffee break!"
+teaching: 0
+exercises: 15
 questions:
+- "Get up, stretch out, and dance!"
 objectives:
+- "Refresh your mind!"
 keypoints:
+- Pen + apple = Apple-pen.
+- Pen + pineapple = Pinneaple-pen. 
 ---
+
+<center>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/HFlgNoUsr4k" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</center>
+
+{% include links.md %}
