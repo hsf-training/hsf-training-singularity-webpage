@@ -24,13 +24,13 @@ We have already used the option `--bind` earlier in the module when exploring th
 containers. In this chapter we will explore further options to bind directories from your host system to directories
 within your container.
 
-Remember that in Singularity, your user outside is the same inside the container. And the same happens with permissions and
-ownership for files in bind directories.
+Remember that in Singularity, your user outside is the same inside the container (except when using fakeroot).
+And the same happens with permissions and ownership for files in bind directories.
 
 ## Bind paths included by default
 
-For each container executed, Singularity binds automatically some directories by default, and other defined the system
-admin in the Singularity configuration. By default, Singularity binds:
+For each container executed, Singularity binds automatically some directories by default, and other defined
+by the system admin in the Singularity configuration. By default, Singularity binds:
 * The user's home directory ($HOME)
 * The current directory when the container is executed ($PWD)
 * System-defined paths: `/tmp`, `/proc`, `/dev`, etc.
@@ -40,7 +40,7 @@ Since this is defined in the configuration, it may vary from site to site.
 > ## Disabling system binds
 >
 > If for any reason you want to execute a container removing the default binds, the command-line option `--no-mount`
-> is available. For example, to disable bind of `/tmp`
+> is available. For example, to disable the bind of `/tmp`
 > ```bash
 > run --no-mount tmp my_container.sif
 > ```
@@ -49,7 +49,9 @@ Since this is defined in the configuration, it may vary from site to site.
 ## User-defined bind paths
 
 Singularity provides mechanisms to specify additional binds when executing a container via command-line
-or environment variables.
+or environment variables. Singularity offers a complex set of mechanism for binds or other mounts.
+Here we present the main points, refer to the
+[Bind Paths and Mounts documentation](https://apptainer.org/docs/user/main/bind_paths_and_mounts.html) for more.
 
 ### Bind with command-line options
 
@@ -63,8 +65,8 @@ paths will be rejected). For example
 singularity shell --bind /home/user/mydata:/data my_container.sif
 ```
 will bind the directory `mydata/` from the host as `/data` inside the container. If multiple directories must be
-available in the container, they can be defined with a comma between each pair of directories, i.e. using the
-syntax `source1:destination1,source2:destination2`.
+available in the container, you can repeat the option or they can be defined with a comma between each pair of directories,
+i.e. using the syntax `source1:destination1,source2:destination2`.
 
 Also. If the destination is not specified, it will be set as equal as the source. For example
 ```bash
