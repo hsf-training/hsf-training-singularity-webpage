@@ -18,7 +18,7 @@ keypoints:
 Containers are packages of software that encapsulates a system environment. An OS-level virtualization is delivered
 in a container, and any program running on it will use the contextualization isolated inside the container. They have
 the advantage that you can build a container on any system, your laptop for example, and then execute it anywhere
-as far as the plataform compatible with the container is available.
+as far as the platform compatible with the container is available.
 
 Concepts as reproducibility, preservation, distribution,
 are important in the HEP community, and the containers provide a solution totally compatible with such concepts:

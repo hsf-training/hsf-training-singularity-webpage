@@ -164,7 +164,7 @@ bootstrap.sh               external             slc5_amd64_gcc434  slc7_aarch64_
 
 ## Executing commands
 
-The command `exec` starts the container from an specified image and executes a command inside it.
+The command `exec` starts the container from a specified image and executes a command inside it.
 Let's use the official [Docker image of ROOT](https://hub.docker.com/r/rootproject/root) to start ROOT
 inside a container:
 
