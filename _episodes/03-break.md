@@ -6,9 +6,6 @@ questions:
 - "Get up, stretch out, and dance!"
 objectives:
 - "Refresh your mind!"
-keypoints:
-- Pen + apple = Apple-pen.
-- Pen + pineapple = Pinneaple-pen.
 ---
 
 <center>
