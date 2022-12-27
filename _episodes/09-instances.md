@@ -213,7 +213,7 @@ a cell to confirm that ROOT is available:
 import ROOT
 # Now you can work with PyROOT, creating a histogram for example
 h = ROOT.TH1F("myHistogram", "myTitle", 50, -10, 10)
-h.FillRandom("gaus", 10000)
+h.FillRandom("gauss", 10000)
 
 c = ROOT.TCanvas("myCanvasName","The Canvas Title",800,600)
 h.Draw()
