@@ -116,7 +116,9 @@ From: ubuntu:20.04
 If you remember the chapter about [definition files](https://hsf-training.github.io/hsf-training-singularity-webpage/05-definition-files/index.html),
 this definition file will pull the official Ubuntu image from Dockerhub, and will install Python3.9.
 In addition, it copies `index.html` on `/tmp` **inside** the container.
-When the container (or instance) starts, http. server will be executed serving a page in the port 8850.
+
+When the instance starts, commands specified on `%startscript` are executed. On this example, `http.server` will be
+executed serving a page in the port 8850.
 
 Now, let's build an image from the definition as
 ```bash
@@ -130,6 +132,12 @@ singularity instance start --no-mount tmp basicServer.sif myWebService
 Reminder from the previous chapter: with `--no-mount tmp` we are asking Singularity to NOT bind `/tmp` from the host
 to the instance (it is mounted by default), we use instead an isolated `/tmp` inside the instance where index.html has
 been copied.
+
+You can confirm in the terminal that the web service is up with
+```bash
+curl http://localhost:8850
+```
+If you are executing Singularity locally, try to open http://localhost:8850.
 
 > ## SSH tunneling
 >
@@ -149,14 +157,27 @@ been copied.
 > Please consult the allowed ports and rules with your institution.
 {: .callout}
 
+Remember to stop the instance once you are done.
 
 ## Serving a Jupyter notebook with custom environment
 
 As an example of the capabilities of instances as services, let's extend our definition file example to deploy a
 JupyterLab server with a customized environment.
 
-```bash
+```
+Bootstrap: docker
+From: ubuntu:20.04
 
+%post
+    apt-get update -y
+    apt-get install -y python3
+    apt-get install -y python3-pip
+    pip install notebook
+
+%files
+
+%startscript
+   jupyter notebook --port 8850
 ```
 
 
