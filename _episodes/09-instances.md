@@ -1,16 +1,17 @@
 ---
 title: "Singularity/Apptainer instances"
-teaching: 40
-exercises: 0
+teaching: 60
+exercises: 10
 questions:
 - "How can I keep my container running in the background?"
 - "What are the use cases for instances?"
 objectives:
 - "Run containers in a detached mode to keep services up."
 - "Deploy instances via definition files."
-- "Bind directories from the host to instances."
 keypoints:
-- TBD
+- Instances allow to setup services via Singularity images or definition files.
+- Code provided in Jupyter notebooks can be accompanied by a definition file with the environment needed for its execution,
+ensuring the reproducibility of the results.
 ---
 
 As we have studied in previous chapters, commands such as `run` and `shell` allocate Singularity/Apptainer
@@ -161,9 +162,12 @@ Remember to stop the instance once you are done.
 
 ## Serving a Jupyter notebook with custom environment
 
-As an example of the capabilities of instances as services, let's extend our definition file example to deploy a
-JupyterLab server with a customized environment.
+As an example of the capabilities of instances as services, let's extend our definition file to deploy a
+Jupyter notebook server with a customized environment.
 
+What if we provide a Jupyter notebook ready to use ROOT? If you remember our example from the
+[definition files chapter](https://hsf-training.github.io/hsf-training-singularity-webpage/05-definition-files/index.html),
+at this point it must be almost straightforward:
 ```
 Bootstrap: docker
 From: ubuntu:20.04
@@ -172,12 +176,79 @@ From: ubuntu:20.04
     apt-get update -y
     apt-get install -y python3
     apt-get install -y python3-pip
-    pip install notebook
+    pip install --user notebook  # Non root
 
-%files
+    apt-get install wget -y
+    export DEBIAN_FRONTEND=noninteractive
+    apt-get install dpkg-dev cmake g++ gcc binutils libx11-dev libxpm-dev \
+    libxft-dev libxext-dev python libssl-dev libgsl0-dev libtiff-dev -y
+    cd /opt
+    wget https://root.cern/download/root_v6.22.06.Linux-ubuntu20-x86_64-gcc9.3.tar.gz
+    tar -xzvf root_v6.22.06.Linux-ubuntu20-x86_64-gcc9.3.tar.gz
+
+%environment
+    export PATH=/opt/root/bin:$PATH
+    export LD_LIBRARY_PATH=/opt/root/lib:$LD_LIBRARY_PATH
+    export PYTHONPATH=/opt/root/lib
 
 %startscript
    jupyter notebook --port 8850
 ```
 
+If you go to http://localhost:8850 (with SSH tunneling if needed), you will find out that for security reasons the
+Jupyter webapp will ask for an access token. Fortunately, you can get the token listing the URL of active servers using
+the `jupyter notebook list` command. To execute the command inside the instance, use
+```bash
+singularity run instance://notebook jupyter notebook list
+```
+~~~
+Currently running servers:
+http://localhost:8850/?token=fakeTokenc9b2084f9b664b39a6246022312bc9c605b :: /home/myHome
+~~~
+{: .output}
 
+Open the URL with the token, and you will be able to see the Jupyter interface. Try to open a new notebook and write in
+a cell to confirm that ROOT is available:
+```python
+import ROOT
+# Now you can work with PyROOT, creating a histogram for example
+h = ROOT.TH1F("myHistogram", "myTitle", 50, -10, 10)
+h.FillRandom("gaus", 10000)
+
+c = ROOT.TCanvas("myCanvasName","The Canvas Title",800,600)
+h.Draw()
+c.Draw()
+```
+
+The bottom line: with any Jupyter notebook that you write, can provide a Singularity definition file that will
+set the environment required for execute the cells. It doesn't matter if yourself or someone else comes in one, five,
+ten years, your code will work independently of the software available in your computer as far as Singularity/Apptainer
+is available!
+
+> ## A Jupyter notebook with Uproot available
+>
+> Can you setup a Jupyter notebook server with Uproot available in Singularity?
+>
+> > ## Solution
+> >
+> >```
+> >Bootstrap: docker
+> >From: ubuntu:20.04
+> >
+> >%post
+> >    apt-get update -y
+> >    apt-get install -y python3
+> >    apt-get install -y python3-pip
+> >    pip install --user notebook
+> >    pip install --user uproot
+> >
+> >%startscript
+> >   jupyter notebook --port 8850
+> >```
+> >Confirm that Uproot is available opening a notebook and executing in a cell
+>> ```python
+>> import uproot
+>> print(uproot.__doc__)
+>>```
+> {: .solution}
+{: .challenge}
