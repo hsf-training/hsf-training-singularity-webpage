@@ -10,8 +10,7 @@ objectives:
 - "Deploy instances via definition files."
 keypoints:
 - Instances allow to setup services via Singularity images or definition files.
-- Code provided in Jupyter notebooks can be accompanied by a definition file with the environment needed for its execution,
-ensuring the reproducibility of the results.
+- Code provided in Jupyter notebooks can be accompanied by a Singularity/Apptainer image with the environment needed for its execution, ensuring the reproducibility of the results.
 ---
 
 As we have studied in previous chapters, commands such as `run` and `shell` allocate Singularity/Apptainer
@@ -21,8 +20,10 @@ are cases when running processes in the background is convenient. For example, w
 Jupyter notebook is deployed inside a container, it is desired to keep the container up waiting for connections
 from the web browser.
 
-Singularity/Apptainer provide the concept of instances for deploy services in the background. In this chapter
-we will learn the basics about their capabilities and some use cases as examples.
+Singularity/Apptainer provide the concept of instances for deploy services in the background. While Docker is a common
+choice of tool for setting services, Singularity has the advantage of working without requiring any special permissions
+(like when you are working in a cluster provided by your university/laboratory).
+In this chapter we will learn the basics about their capabilities and some use cases as examples.
 
 ## Instances from image files
 
@@ -67,12 +68,11 @@ You can confirm the instance doesn't exist with `instance list`.
 
 > ## Instances with bind paths
 >
-> When starting an instance, the same options for bind directories between the host and the container when running
+> When starting an instance, the same options for bind directories between the host and the container as running
 > an interactive session are available. For example, if you want a directory mounted inside the instance, use the
 > `--bind` option:
 > ```bash
 > singularity instance start --bind /home/user/mydata:/data centos_centos7.sif mycentos7
-> run --no-mount tmp my_container.sif
 > ```
 > binding the directory `mydata/` from the host as `/data` inside the instance.
 {: .callout}
@@ -96,6 +96,8 @@ Let's write a basic `index.html` file as:
 </body>
 </html>
 ```
+If you are not familiar with HTML take a quick look at the [HTML Tutorial](https://www.w3schools.com/html/), but it is
+not mandatory. What it really matters is having a minimal webpage that our server will show.
 
 Now, let's prepare a basic web server using [Python http.server](https://docs.python.org/3.9/library/http.server.html).
 Create a definition file, saved as `basicServer.def`, which contains:
@@ -114,19 +116,19 @@ From: ubuntu:20.04
    cd /tmp
    python3.9 -m http.server 8850
 ```
-If you remember the chapter about [definition files](https://hsf-training.github.io/hsf-training-singularity-webpage/05-definition-files/index.html),
+If you recall the chapter about [definition files](https://hsf-training.github.io/hsf-training-singularity-webpage/05-definition-files/index.html),
 this definition file will pull the official Ubuntu image from Dockerhub, and will install Python3.9.
-In addition, it copies `index.html` on `/tmp` **inside** the container.
+In addition, it copies `index.html` on `/tmp` **inside** the container. When the instance starts, commands specified on
+`%startscript` are executed. On this example, `http.server` will be executed serving a page in the port 8850 (you can
+use any other port if 8850 is busy with another service).
 
-When the instance starts, commands specified on `%startscript` are executed. On this example, `http.server` will be
-executed serving a page in the port 8850.
-
-Now, let's build an image from the definition as
+Let's build an image from the definition. Remember that building images requires either superuser permissions or
+using the flag `--fakeroot` as
 ```bash
 singularity build --fakeroot basicServer.sif basicServer.def
 ```
 
-And let's start an instance with the image called `myWebService`:
+Now, let's start an instance named `myWebService` with the image that we just built
 ```bash
 singularity instance start --no-mount tmp basicServer.sif myWebService
 ```
@@ -134,7 +136,7 @@ Reminder from the previous chapter: with `--no-mount tmp` we are asking Singular
 to the instance (it is mounted by default), we use instead an isolated `/tmp` inside the instance where index.html has
 been copied.
 
-You can confirm in the terminal that the web service is up with
+You can confirm in the terminal that the web service is up using `curl` as
 ```bash
 curl http://localhost:8850
 ```
@@ -142,7 +144,7 @@ If you are executing Singularity locally, try to open http://localhost:8850.
 
 > ## SSH tunneling
 >
-> If you are deploying a service in the machines of your institution (as LXPLUS at CERN) it is likely that you need
+> If you are deploying a service in a cluster of your institution (as LXPLUS at CERN) it is likely that you need
 > SSH tunneling for opening pages served by your service with a web browser. A basic port forwarding can be configured as:
 > ```bash
 > ssh -L <port>:localhost:<port> myuser@<server>
@@ -176,7 +178,7 @@ From: ubuntu:20.04
     apt-get update -y
     apt-get install -y python3
     apt-get install -y python3-pip
-    pip install --user notebook  # Non root
+    pip install --user notebook  # Don't install as root
 
     apt-get install wget -y
     export DEBIAN_FRONTEND=noninteractive
@@ -195,15 +197,33 @@ From: ubuntu:20.04
    jupyter notebook --port 8850
 ```
 
+Save the definition file as `jupyterWithROOT.def`, and let's build an image called `jupyterWithROOT.sif`
+```bash
+singularity build --fakeroot jupyterWithROOT.sif jupyterWithROOT.def
+```
+Now, start an instance named `mynotebook` with our brand-new image
+```bash
+singularity instance start jupyterWithROOT.sif mynotebook
+```
+and confirm that the instance is up
+```bash
+singularity instance list
+```
+~~~
+INSTANCE NAME    PID      IP    IMAGE
+mynotebook       10720          /home/myuser/jupyterWithROOT.sif
+~~~
+{: .output}
+
 If you go to http://localhost:8850 (with SSH tunneling if needed), you will find out that for security reasons the
 Jupyter webapp will ask for an access token. Fortunately, you can get the token listing the URL of active servers using
-the `jupyter notebook list` command. To execute the command inside the instance, use
+the `jupyter notebook list` command. To execute the command inside the instance, use `sigularity exec`:
 ```bash
-singularity run instance://notebook jupyter notebook list
+singularity exec instance://notebook jupyter notebook list
 ```
 ~~~
 Currently running servers:
-http://localhost:8850/?token=fakeTokenc9b2084f9b664b39a6246022312bc9c605b :: /home/myHome
+http://localhost:8850/?token=12asldc9b2084f9b664b39a6246022312bc9c605b :: /home/myHome
 ~~~
 {: .output}
 
@@ -220,14 +240,16 @@ h.Draw()
 c.Draw()
 ```
 
-The bottom line: with any Jupyter notebook that you write, can provide a Singularity definition file that will
+The bottom line: with any Jupyter notebook that you write, can provide a Singularity image that will
 set the environment required for execute the cells. It doesn't matter if yourself or someone else comes in one, five,
 ten years, your code will work independently of the software available in your computer as far as Singularity/Apptainer
 is available!
 
 > ## A Jupyter notebook with Uproot available
 >
-> Can you setup a Jupyter notebook server with Uproot available in Singularity?
+> Can you setup a Jupyter notebook server with [Uproot](https://uproot.readthedocs.io/en/latest/index.html) available in Singularity?
+>
+> Hint: Uproot can be installed using `pip`.
 >
 > > ## Solution
 > >
@@ -240,7 +262,7 @@ is available!
 > >    apt-get install -y python3
 > >    apt-get install -y python3-pip
 > >    pip install --user notebook
-> >    pip install --user uproot
+> >    pip install --user uproot awkard
 > >
 > >%startscript
 > >   jupyter notebook --port 8850
