@@ -6,9 +6,6 @@ questions:
 - "Get up, stretch out, take a short break."
 objectives:
 - "Refresh your mind."
-keypoints:
-- Todd is a champion.
-- Tucker, such a smart boy.
 ---
 
 <center>
