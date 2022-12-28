@@ -262,7 +262,7 @@ is available!
 > >    apt-get install -y python3
 > >    apt-get install -y python3-pip
 > >    pip install --user notebook
-> >    pip install --user uproot awkard
+> >    pip install --user uproot awkward
 > >
 > >%startscript
 > >   jupyter notebook --port 8850
