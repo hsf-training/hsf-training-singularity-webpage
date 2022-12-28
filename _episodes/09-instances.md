@@ -17,17 +17,17 @@ As we have studied in previous chapters, commands such as `run` and `shell` allo
 containers in the foreground, stopping any process running inside the container after logout. This behavior
 suits the use case of containers for executing interactive commands in a well-defined environment, but there
 are cases when running processes in the background is convenient. For example, when a web application like a
-Jupyter notebook is deployed inside a container, it is desired to keep the container up waiting for connections
+Jupyter notebook is deployed inside a container, it is desired to keep the container up while it waits for connections
 from the web browser.
 
-Singularity/Apptainer provide the concept of instances for deploy services in the background. While Docker is a common
+Singularity provides the concept of _instances_ to deploy services in the background. While Docker is a common
 choice of tool for setting services, Singularity has the advantage of working without requiring any special permissions
 (like when you are working in a cluster provided by your university/laboratory).
 In this chapter we will learn the basics about their capabilities and some use cases as examples.
 
 ## Instances from image files
 
-To start an instance, Singularity provide the command `instance`. To exemplify let's pull the CentOS image used
+To start an instance, Singularity provide the command `instance`. To exemplify, let's pull the CentOS image used
 in previous chapters
 ```bash
 singularity pull docker://centos:centos7
@@ -38,7 +38,7 @@ The image must be started in the following way:
 singularity instance start centos_centos7.sif mycentos7
 ```
 In this example, the `.sif` is the image downloaded from Dockerhub, and `mycentos7` is the name that we have
-assigned to the instance. Instead of opening a shell session or executing a command, the container is running on
+assigned to the instance. Instead of opening a shell session or executing a command, the container is running in
 the background.
 
 Confirm that the instance is running using the `instance list` command
@@ -51,7 +51,7 @@ mycentos7        10782          /home/myuser/centos_centos7.sif
 ~~~
 {: .output}
 
-To interact with the instance, the commands `exec` and `shell` available. The instance must be referred as
+To interact with the instance, the commands `exec` and `shell` are available. The instance must be referred as
 `instance://name`.
 For example, to open a shell inside the CentOS instance:
 ```bash
@@ -97,7 +97,7 @@ Let's write a basic `index.html` file as:
 </html>
 ```
 If you are not familiar with HTML take a quick look at the [HTML Tutorial](https://www.w3schools.com/html/), but it is
-not mandatory. What it really matters is having a minimal webpage that our server will show.
+not mandatory. What really matters is having a minimal webpage that our server will show.
 
 Now, let's prepare a basic web server using [Python http.server](https://docs.python.org/3.9/library/http.server.html).
 Create a definition file, saved as `basicServer.def`, which contains:
@@ -118,8 +118,8 @@ From: ubuntu:20.04
 ```
 If you recall the chapter about [definition files](https://hsf-training.github.io/hsf-training-singularity-webpage/05-definition-files/index.html),
 this definition file will pull the official Ubuntu image from Dockerhub, and will install Python3.9.
-In addition, it copies `index.html` on `/tmp` **inside** the container. When the instance starts, commands specified on
-`%startscript` are executed. On this example, `http.server` will be executed serving a page in the port 8850 (you can
+In addition, it copies `index.html` in `/tmp` **inside** the container. When the instance starts, commands specified on
+`%startscript` are executed. On this example, `http.server` will be executed, serving a page in the port 8850 (you can
 use any other port if 8850 is busy with another service).
 
 Let's build an image from the definition. Remember that building images requires either superuser permissions or
@@ -140,6 +140,20 @@ You can confirm in the terminal that the web service is up using `curl` as
 ```bash
 curl http://localhost:8850
 ```
+~~~
+<!DOCTYPE html>
+<html>
+<head>
+<title>Welcome to my service!</title>
+</head>
+<body>
+<h1>Hello world!</h1>
+<p>If you see this page, my awesome service is up and running.</p>
+</body>
+</html>
+~~~
+{: .output}
+
 If you are executing Singularity locally, try to open http://localhost:8850.
 
 > ## SSH tunneling
@@ -240,8 +254,8 @@ h.Draw()
 c.Draw()
 ```
 
-The bottom line: with any Jupyter notebook that you write, can provide a Singularity image that will
-set the environment required for execute the cells. It doesn't matter if yourself or someone else comes in one, five,
+The bottom line: with any Jupyter notebook that you write, you can provide a Singularity image that will
+set the environment required to execute the cells. It doesn't matter if yourself or someone else comes in one, five,
 ten years, your code will work independently of the software available in your computer as far as Singularity/Apptainer
 is available!
 
@@ -262,7 +276,7 @@ is available!
 > >    apt-get install -y python3
 > >    apt-get install -y python3-pip
 > >    pip install --user notebook
-> >    pip install --user uproot awkward
+> >    pip install --user uproot
 > >
 > >%startscript
 > >   jupyter notebook --port 8850
