@@ -3,7 +3,12 @@
 [![All Contributors](https://img.shields.io/badge/all_contributors-4-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
-[![HSF Training Center](https://img.shields.io/badge/HSF%20Training%20Center-browse-ff69b4)](https://hepsoftwarefoundation.org/training/curriculum.html)
+[![HSF Training Center][training-center-badge]][hsf-training-center]
+[![Upcoming Events][schools-badge]][schools]
+[![Twitter Follow][twitter-badge]][twitter]
+
+[![pre-commit.ci status](https://results.pre-commit.ci/badge/github/hsf-training/hsf-training-singularity-webpage/main.svg)](https://results.pre-commit.ci/latest/github/hsf-training/hsf-training-singularity-webpage/main)
+[![pages-build-deployment](https://github.com/hsf-training/hsf-training-singularity-webpage/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/hsf-training/hsf-training-singularity-webpage/actions/workflows/pages/pages-build-deployment)
 
 This repository generates the corresponding lesson website from [The Carpentries](https://carpentries.org/) repertoire of lessons.
 
@@ -68,3 +73,20 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
+
+
+
+[lesson-example]: https://carpentries.github.io/lesson-example
+[pre-commit]: https://pre-commit.com/
+[hsf-training-community]: https://hepsoftwarefoundation.org/training/community
+[hsf-training-center]: https://hepsoftwarefoundation.org/training/curriculum.html
+[training-center-badge]: https://img.shields.io/badge/HSF%20Training%20Center-browse-ff69b4
+[schools]: https://hepsoftwarefoundation.org/Schools/events.html
+[issues]: https://github.com/hsf-training/hsf-training-singularity-webpage/issues
+[progit]: http://git-scm.com/book/en/v2/GitHub-Contributing-to-a-Project
+[jekyll]: https://jekyllrb.com/
+[allcontrib-emoji-key]: https://allcontributors.org/docs/en/emoji-key
+[gfi-badge]: https://img.shields.io/badge/-good%20first%20issue-gold.svg
+[schools-badge]: https://img.shields.io/badge/upcoming%20events-browse-ff69b4
+[twitter-badge]: https://img.shields.io/twitter/follow/hsftraining?style=social
+[twitter]: https://twitter.com/hsftraining
