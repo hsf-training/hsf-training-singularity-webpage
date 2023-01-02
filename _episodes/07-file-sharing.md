@@ -46,7 +46,6 @@ pwd
 ~~~
 {: .output}
 Open a shell inside the container and try to use `pwd` again
-container
 ```bash
 singularity shell rootInUbuntu.sif
 
