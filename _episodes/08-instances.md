@@ -192,7 +192,7 @@ From: ubuntu:20.04
     apt-get update -y
     apt-get install -y python3
     apt-get install -y python3-pip
-    pip install --user notebook  # Don't install as root
+    pip install notebook
 
     apt-get install wget -y
     export DEBIAN_FRONTEND=noninteractive
@@ -275,8 +275,8 @@ is available!
 > >    apt-get update -y
 > >    apt-get install -y python3
 > >    apt-get install -y python3-pip
-> >    pip install --user notebook
-> >    pip install --user uproot
+> >    pip install notebook
+> >    pip install uproot
 > >
 > >%startscript
 > >   jupyter notebook --port 8850
