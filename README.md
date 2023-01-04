@@ -7,7 +7,7 @@
 [![Upcoming Events][schools-badge]][schools]
 [![Twitter Follow][twitter-badge]][twitter]
 
-[![pre-commit.ci status](https://results.pre-commit.ci/badge/github/hsf-training/hsf-training-singularity-webpage/main.svg)](https://results.pre-commit.ci/latest/github/hsf-training/hsf-training-singularity-webpage/main)
+[![pre-commit.ci status](https://results.pre-commit.ci/badge/github/hsf-training/hsf-training-singularity-webpage/gh-pages.svg)](https://results.pre-commit.ci/latest/github/hsf-training/hsf-training-singularity-webpage/gh-pages)
 [![pages-build-deployment](https://github.com/hsf-training/hsf-training-singularity-webpage/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/hsf-training/hsf-training-singularity-webpage/actions/workflows/pages/pages-build-deployment)
 
 This repository generates the corresponding lesson website from [The Carpentries](https://carpentries.org/) repertoire of lessons.
