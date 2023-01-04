@@ -1,6 +1,6 @@
 ---
 title: "Sharing files between host and container"
-teaching: 40
+teaching: 30
 exercises: 0
 questions:
 - "How to read and write files on the host system from within the container?"
@@ -36,6 +36,26 @@ by the system admin in the Singularity configuration. By default, Singularity bi
 * System-defined paths: `/tmp`, `/proc`, `/dev`, etc.
 Since this is defined in the configuration, it may vary from site to site.
 
+Let's use for example the container built during the last chapter called `rootInUbuntu.sif`. Take a look at your
+current directory
+```bash
+pwd
+```
+~~~
+/home/myuser/somedirectory
+~~~
+{: .output}
+Open a shell inside the container and try to use `pwd` again
+```bash
+singularity shell rootInUbuntu.sif
+
+Singularity> pwd
+```
+~~~
+/home/myuser/somedirectory
+~~~
+you will notice that the files stored on the host are located inside the container! As we explained above, Singularity
+mounts automatically your `$HOME` inside the container.
 
 > ## Disabling system binds
 >
@@ -45,6 +65,19 @@ Since this is defined in the configuration, it may vary from site to site.
 > run --no-mount tmp my_container.sif
 > ```
 {: .callout}
+
+Try this time with
+```bash
+singularity shell --no-mount home rootInUbuntu.sif
+```
+and you will notice that `$HOME` is not mounted anymore
+```bash
+ls /home/myuser
+```
+~~~
+ls: cannot access '/home/myuser': No such file or directory
+~~~
+{: .output}
 
 ## User-defined bind paths
 
@@ -60,18 +93,36 @@ host and the container. It is available for `run`, `exec` and `shell` (as well f
 not covered yet).
 
 The syntax for using the bind option is `"source:destination"`, and the paths must be absolute (relative
-paths will be rejected). For example
+paths will be rejected). For example, let's create a directory in the host containing a constant that can be useful
+for your analysis
 ```bash
-singularity shell --bind /home/user/mydata:/data my_container.sif
+mkdir $HOME/mydata
+echo "MUONMASS=105.66 MeV" > $HOME/mydata/muonMass.txt
 ```
-will bind the directory `mydata/` from the host as `/data` inside the container. If multiple directories must be
-available in the container, you can repeat the option or they can be defined with a comma between each pair of directories,
+It is very, very important in your analysis workflow to know the mass of the muon, right? It may have sense to put the data
+in a high-level directory within the container, like `/data`
+```bash
+singularity shell --bind $HOME/mydata:/data rootInUbuntu.sif
+```
+This will bind the directory `mydata/` from the host as `/data` inside the container:
+```bash
+ls -l /data
+```
+~~~
+-rw-rw-r-- 1 myuser myuser 20 Jan  2 12:46 muonMass.txt
+~~~
+{: .output}
+
+Now you can use the mass of the muon from a root-level directory!
+
+If multiple directories must be available in the container, you can repeat the option or they can be defined with a comma between each pair of directories,
 i.e. using the syntax `source1:destination1,source2:destination2`.
 
 Also. If the destination is not specified, it will be set as equal as the source. For example
 ```bash
-singularity shell --bind /cvmfs,/home/user/my_data:/data my_container.sif
+singularity shell --bind /cvmfs rootInUbuntu.sif
 ```
+Will mount `/cvmfs` inside the container. Try it!
 
 > ## Binding directories with Docker-like syntax using `--mount`
 >
@@ -84,13 +135,14 @@ singularity shell --bind /cvmfs,/home/user/my_data:/data my_container.sif
 
 ### Bind with environment variables
 
-If the environment variable `$SINGULARITY_BIND` is defined, singularity will bind inside any container
+If the environment variable `$SINGULARITY_BIND` is defined, singularity will bind inside ANY container
 the directories specified in the format `source`, with the destination being optional (in the same way as using
 `--bind`). For example:
 ```bash
 export SINGULARITY_BIND="/cvmfs"
 ```
 will bind CVMFS to all your Singularity containers (`/cvmfs` must be available in the host, of course).
+
 You can also bind multiple directories using commas between each `source:destination`.
 
 
