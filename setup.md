@@ -22,11 +22,24 @@ You will need a Linux system (including WSL on Windows computers) to run Apptain
 [install if you have root access](https://apptainer.org/docs/user/main/quick_start.html#quick-installation).
 If your local computing system does not have Apptainer/Singularity installed, you may
 [request it to your system administrator as suggested here](https://apptainer.org/docs/user/main/quick_start.html#apptainer-on-a-shared-resource).
-If the above is not possible and you cannot use the CVMFS distribution you can
-[install from source without root privileges](https://github.com/apptainer/apptainer/blob/main/INSTALL.md).
-If you have user namespaces (`cat /proc/sys/user/max_user_namespaces` is bigger than 0) you have one more option, you can use [cvmfsexec](https://github.com/cvmfs/cvmfsexec) to get CVMFS.
-This is a bit more complex, you can follow the instrictions summarized also in
+
+If the above is not possible and you cannot use the CVMFS distribution you have still an option if user namespace is enabled on your system:
+1. Check if user namespaces are enabled  (`cat /proc/sys/user/max_user_namespaces` is bigger than 0):
+    ```bash
+    [[ $(cat /proc/sys/user/max_user_namespaces) -gt 0 ]] && \
+        echo "User namespaces enabled, continue the Apptainer installation" || \
+        echo ""User namespaces NOT enabled, your use of Apptainer will be very limited"
+    ```
+1. If enabled, install unprivileged Apptainer with one of these three methods (in order of preference):
+    1. Chose your `INSTALL_DIR` and [install there the relocatable Apptainer (recommended)](https://apptainer.org/docs/admin/main/installation.html#install-unprivileged-from-pre-built-binaries). Run:
+        ```bash
+        curl -s https://raw.githubusercontent.com/apptainer/apptainer/main/tools/install-unprivileged.sh | \
+            bash -s - INSTALL_DIR
+        ```
+    1. Alternatively [install from source without root privileges](https://github.com/apptainer/apptainer/blob/main/INSTALL.md).
+    1. Or use [cvmfsexec](https://github.com/cvmfs/cvmfsexec) to get CVMFS. This is a bit more complex, you can follow the instrictions summarized also in
 [this paper](https://indico.cern.ch/event/885212/contributions/4120683/attachments/2181040/3684201/CernVMWorkshopCvmfsExec20210201.pdf).
 
+If user namespaces are not enabled, apptainers/singularity is not installed, and you have no root access to the host, then your use of apptainer/singularity will be very limited even if you install it with one of the three methods above. You need to request to your system administrator to either [install Apptainer/Singularity](https://apptainer.org/docs/user/main/quick_start.html#apptainer-on-a-shared-resource) or to enable [user namespaces](https://apptainer.org/docs/admin/main/user_namespace.html).
 
 {% include links.md %}
