@@ -21,7 +21,7 @@ The usual workflow is to prepare and test a container in a build environment (li
 either with an interactive session or from a definition file,
 and then to deploy the container into a production environment for execution (as your institutional cluster).
 Interactive sessions are great to experiment and test your new container.
-If you wand to distribute the container or use it in production, then we recommend to build it from a definition file, as described in the next episode,
+If you want to distribute the container or use it in production, then we recommend to build it from a definition file, as described in the next episode,
 This ensures the greatest possibility of reproducibility and transparency.
 
 <figure>
