@@ -16,21 +16,51 @@ This repository generates the corresponding lesson website from [The Carpentries
 
 Apptainer (formerly known as Singularity) is a free and open-source container platform that allows you to create and run applications in isolated images (also called "containers") in a simple, portable, fast, and secure manner. It performs operating system level virtualization known as containerization. Many container platforms are available, but Apptainer is designed to bring containers and reproducibility to the scientific community and High-Performance Computing (HPC) use cases. Using Apptainer, developers can work in reproducible environments of their choice and design, and these complete environments can be easily copied and executed on other platforms.
 
-## Contributing
+## 📅 Past events and videos
+
+* 🎥 [Jan 2023](https://indico.cern.ch/event/1219810/)
+
+Emoji key: 🎥 (full video recordings availabile), ⛏️ (hackathon)
+
+## 🤗 Contributing
+<!-- CENTRALLY MAINTAINED SECTION -->
+<!-- Remove the above marker to disable having this section be overwritten -->
 
 We welcome all contributions to improve the lesson! Maintainers will do their best to help you if you have any
 questions, concerns, or experience any difficulties along the way.
+
+If you make non-trivial changes (i.e., more than fixing a simple typo), you are eligible to be added to the [HSF Training Community page][hsf-training-community],
+as well as to the list of contributors [below](#contributors-).
 
 We'd like to ask you to familiarize yourself with our [Contribution Guide](CONTRIBUTING.md) and have a look at
 the [more detailed guidelines][lesson-example] on proper formatting, ways to render the lesson locally, and even
 how to write new episodes.
 
-Please see the current list of [issues][FIXME] for ideas for contributing to this
-repository. For making your contribution, we use the GitHub flow, which is
-nicely explained in the chapter [Contributing to a Project](http://git-scm.com/book/en/v2/GitHub-Contributing-to-a-Project) in Pro Git
-by Scott Chacon.
-Look for the tag ![good_first_issue](https://img.shields.io/badge/-good%20first%20issue-gold.svg). This indicates that the maintainers will welcome a pull request fixing this issue.
+Quick summary of how to get a local preview: Install [jekyll][jekyll] and then run
 
+```
+bundle install
+bundle update
+bundle exec jekyll serve
+```
+
+Unless we change framework versions, only the last command needs to be typed after the first time.
+
+Before committing anything, we also ask you to install the [pre-commit][pre-commit] hooks of this repository:
+
+```bash
+pip3 install pre-commit
+pre-commit install
+```
+
+Please see the current list of [issues][issues] for ideas for contributing to this
+repository. For making your contribution, we use the GitHub flow, which is
+nicely explained in the chapter [Contributing to a Project][progit] in Pro Git
+by Scott Chacon.
+Look for the tag [![good_first_issue]][gfi-badge], which marks particularly simple issues to get you started.
+
+<!-- END CENTRALLY MAINTAINED SECTION -->
+## 💖 Authors
 
 ## Maintainer(s)
 
