@@ -10,6 +10,7 @@ keypoints:
 - "The command `build` is the basic tool for the creation of containers."
 - "A _sandbox_ is a writable directory where containers can be built interactively."
 - "Superuser permissions are required to build containers if you need to install packages or manipulate the operating system."
+- "Use interactive builds only for development and tests, use definition files for production or publicly distributed containers."
 ---
 
 Running containers from the available public images is not the only option. In many cases, it is required to modify
@@ -19,6 +20,9 @@ defined in the documentation as the _Swiss army knife_ of container creation.
 The usual workflow is to prepare and test a container in a build environment (like your laptop),
 either with an interactive session or from a definition file,
 and then to deploy the container into a production environment for execution (as your institutional cluster).
+Interactive sessions are great to experiment and test your new container.
+If you want to distribute the container or use it in production, then we recommend to build it from a definition file, as described in the next episode,
+This ensures the greatest possibility of reproducibility and transparency.
 
 <figure>
   <img src="https://journals.plos.org/plosone/article/figure/image?size=large&id=10.1371/journal.pone.0177459.g001" alt="Singularity usage workflow"/>
