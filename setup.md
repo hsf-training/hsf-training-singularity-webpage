@@ -28,7 +28,7 @@ If the above is not possible and you cannot use the CVMFS distribution you have 
     ```bash
     [[ $(cat /proc/sys/user/max_user_namespaces) -gt 0 ]] && \
         echo "User namespaces enabled, continue the Apptainer installation" || \
-        echo ""User namespaces NOT enabled, your use of Apptainer will be very limited"
+        echo "User namespaces NOT enabled, your use of Apptainer will be very limited"
     ```
 1. If enabled, install unprivileged Apptainer with one of these three methods (in order of preference):
     1. Chose your `INSTALL_DIR` and [install there the relocatable Apptainer (recommended)](https://apptainer.org/docs/admin/main/installation.html#install-unprivileged-from-pre-built-binaries). Run:
