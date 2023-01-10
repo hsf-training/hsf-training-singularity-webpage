@@ -61,6 +61,7 @@ To do so, one needs to use GitHub CI/CD. A step-by-step guide is presented here.
 * **Step 4**: Copy-paste the content above and add to the Singularity file. (In principle it is possible to build this image locally, but we will not do that here, as we wish to build it with GitHub CI/CD).
 * **Step 5**: In the `singularity-build-deploy.yml` file, add the following content:
 
+{% raw %}
 ```text
 name: Singularity Build Deploy
 
@@ -95,6 +96,7 @@ jobs:
            echo ${{ secrets.GITHUB_TOKEN }} | singularity remote login -u ${{ secrets.GHCR_USERNAME }} --password-stdin oras://ghcr.io
            singularity push container.sif oras://ghcr.io/${GITHUB_REPOSITORY}:${tag}
 ```
+{% endraw %}
 
 The above script is designed to build and publish a Singularity image with [GitHub packages](https://github.com/features/packages).
 
