@@ -99,6 +99,11 @@ From: ubuntu:20.04
 
 %labels
     Author HEPTraining
+    Version v0.0.1
+
+%help
+    Example container running the RooFit tutorial and producing the rf101_basics.png image.
+    The container provides ROOT with RooFit and Python integration running on Ubuntu.
 ~~~
 {: .source}
 
@@ -113,6 +118,7 @@ variables required to execute ROOT and PyROOT.
 To illustrate the functionality, we will just run [rf101_basics.py](https://root.cern/doc/master/rf101__basics_8py.html)
 from the RooFit tutorial.
 * `%labels` add custom metadata to the container.
+* `%help` it is the container documentation: what it is and how to use it. Can be displayed using `singularity run-help`
 
 Save this definition file as `rootInUbuntu.def`. To build the container, just provide the definition file as argument
 (executing as superuser):
@@ -152,6 +158,13 @@ Here we have covered the basics with a few examples focused to HEP software.
 Check the [Apptainer docs](https://apptainer.org/docs/user/main/build_a_container.html) to see all the available
 options and more details related to the container creation.
 
+A few [best practices for your containers](https://apptainer.org/docs/user/1.0/definition_files.html#best-practices-for-build-recipes) to make them more usable, portable, and secure:
+1. Always install packages, programs, data, and files into operating system locations (e.g. not `/home`, `/tmp` , or any other directories that might get commonly binded on).
+1. Document your container. If your runscript doesn’t supply help, write a `%help` or `%apphelp` section. A good container tells the user how to interact with it.
+1. If you require any special environment variables to be defined, add them to the %environment and %appenv sections of the build recipe.
+1. Files should always be owned by a system account (UID less than 500).
+1. Ensure that sensitive files like `/etc/passwd`, `/etc/group`, and `/etc/shadow` do not contain secrets.
+1. Build production containers from a definition file instead of a sandbox that has been manually changed. This ensures the greatest possibility of reproducibility and mitigates the “black box” effect.
 
 > ## Deploying your containers
 > Keep in mind that, while building a container may be time consuming, the execution can be immediate and anywhere your image is available.
@@ -202,7 +215,12 @@ and [distribute custom images via CVMFS](https://portal.osg-htc.org/documentatio
 > >
 > > %labels
 > >     Author HEPTraining
-> > ~~~
+> >     Version v0.0.1
+> >
+> > %help
+> >     Container providing Pythia 8.307. Execute the container to run an example.
+> >     Open it in a shell to use the Pythia installation with Python 3.6
+>> > ~~~
 > > {: .source}
 > >
 > > Build your container executing
