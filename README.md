@@ -60,26 +60,16 @@ by Scott Chacon.
 Look for the tag [![good_first_issue]][gfi-badge], which marks particularly simple issues to get you started.
 
 <!-- END CENTRALLY MAINTAINED SECTION -->
-## 💖 Authors
-
-## Maintainer(s)
-
-Current maintainers of this lesson are
-
-* Michel Villanueva ([michmx](https://github.com/michmx))
-
-
-## Authors
-
-A list of contributors to the lesson can be found in [AUTHORS](AUTHORS)
 
 ## Citation
 
 To cite this lesson, please consult with [CITATION](CITATION)
 
-[lesson-example]: https://carpentries.github.io/lesson-example
+## 💖 Authors
 
-## Contributors ✨
+Current maintainers of this lesson are
+
+* Michel Villanueva ([michmx](https://github.com/michmx))
 
 Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
 
