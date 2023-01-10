@@ -161,7 +161,7 @@ options and more details related to the container creation.
 A few [best practices for your containers](https://apptainer.org/docs/user/1.0/definition_files.html#best-practices-for-build-recipes) to make them more usable, portable, and secure:
 1. Always install packages, programs, data, and files into operating system locations (e.g. not `/home`, `/tmp` , or any other directories that might get commonly binded on).
 1. Document your container. If your runscript doesn’t supply help, write a `%help` or `%apphelp` section. A good container tells the user how to interact with it.
-1. If you require any special environment variables to be defined, add them to the %environment and %appenv sections of the build recipe.
+1. If you require any special environment variables to be defined, add them to the `%environment` and `%appenv` sections of the build recipe.
 1. Files should always be owned by a system account (UID less than 500).
 1. Ensure that sensitive files like `/etc/passwd`, `/etc/group`, and `/etc/shadow` do not contain secrets.
 1. Build production containers from a definition file instead of a sandbox that has been manually changed. This ensures the greatest possibility of reproducibility and mitigates the “black box” effect.
