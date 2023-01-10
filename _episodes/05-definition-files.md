@@ -45,19 +45,19 @@ Finally the `#` hash is used to include comments within the definition file.
 - Step 3: Build the image
 
   ```bash
-  singularity build helloworld.sif hello-world.def
+  singularity build hello-world.sif hello-world.def
   ```
 
-    The `helloworld.sif` file specifies the name of the output file that is built when using the `singularity build` command.
+    The `hello-world.sif` file specifies the name of the output file that is built when using the `singularity build` command.
 
 - Step 4: Run the image
 
   ```bash
-  ./helloworld.sif
+  ./hello-world.sif
   ```
 
 ### Deleting Singularity image
-To delete the helloworld Singularity image, simply delete the `helloworld.sif` file.
+To delete the hello-world Singularity image, simply delete the `hello-world.sif` file.
 
 > Note that there is also a `singularity delete` command, but it is to delete an image from a remote library.
 > To learn more about using remote endpoints and pulling and pushing images from or to libraries, read
