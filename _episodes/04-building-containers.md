@@ -50,6 +50,8 @@ Singularity> whoami
 root
 ~~~
 {: .output}
+If you get an error when using `--fakeroot` have a look at the [fakeroot documentation](https://apptainer.org/docs/admin/main/user_namespace.html#rootless-fakeroot-feature). You may be running in
+unprivileged mode without having `newuidmap` and `newgidmap`.
 > ## `--fakeroot` is not root
 > ATTENTION! [`--fakeroot`](https://apptainer.org/docs/user/main/fakeroot.html) allows you to be root inside a container that you own but is not changing who you are outside.
 > All the outside actions and the writing on bound files and directories will happen as your outside user, even if in the container is done by root.
@@ -132,7 +134,7 @@ We will automate this in the next section.
 > > Start from the [Python 3.9 Docker image](https://hub.docker.com/_/python) and create the `myPython` sandbox:
 > > ```bash
 > > singularity build --sandbox myPython docker://python:3.9
-> > singularity shell --writable myPython
+> > singularity shell myPython
 > > ```
 > > Once inside the container, you can install [Uproot](https://uproot.readthedocs.io/en/latest/index.html).
 > > ```bash
@@ -148,6 +150,8 @@ We will automate this in the next section.
 > > ...
 > > ~~~
 > > {: .output}
-> > Notice how we did not need `--fakeroot` for the installation since pip installs user packages.
+> > Notice how we did not need neither `--writable ` nor `--fakeroot` for the installation, but everything worked fine since pip installs user packages in the user $HOME directory.
+> > In addition, Singularity/Apptainer by default mounts the user home directory as read+write, even if the container is read-only.
+> > This is why a _sandbox_ is great to test and experiment locally, but should not be used for containers that will be shared or deployed. Manual changes and local directories are difficult to reproduce and control. Once you are happy with the content, you should use definition files, described in the next episode.
 > {: .solution}
 {: .challenge}
