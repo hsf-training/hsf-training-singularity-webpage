@@ -36,12 +36,18 @@ It is easiest to
 ### If not
 
 If the above is not possible and you cannot use the CVMFS distribution you have still an option if user namespace is enabled on your system:
-1. Check if user namespaces are enabled  (`cat /proc/sys/user/max_user_namespaces` is bigger than 0):
+1. Check if user namespaces are enabled:
     ```bash
+    # on Debian/Ubuntu
+    grep -q 'kernel.unprivileged_userns_clone=1' /etc/sysctl.d/90-unprivileged_userns.conf && \
+        echo "User namespaces enabled, continue the Apptainer installation" || \
+        echo "User namespaces NOT enabled, your use of Apptainer will be very limited"
+    # on RHEL/CentOS cat /proc/sys/user/max_user_namespaces` is bigger than 0
     [[ $(cat /proc/sys/user/max_user_namespaces) -gt 0 ]] && \
         echo "User namespaces enabled, continue the Apptainer installation" || \
         echo "User namespaces NOT enabled, your use of Apptainer will be very limited"
     ```
+   See [these full instructions](https://apptainer.org/docs/admin/main/user_namespace.html#user-namespace-requirements) for more about checking for and enabling user namespaces.
 1. If enabled, install unprivileged Apptainer with one of these three methods (in order of preference):
     1. Chose your `INSTALL_DIR` and [install there the relocatable Apptainer (recommended)](https://apptainer.org/docs/admin/main/installation.html#install-unprivileged-from-pre-built-binaries). Run:
         ```bash
