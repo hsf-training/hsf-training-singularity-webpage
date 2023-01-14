@@ -2,7 +2,7 @@
 title: Setup
 ---
 
-In this document we use Apptainer and Singularity interchangeably. See the [Introduction]({{ page.root }}{% link _episodes/01-introduction.md %})
+In this document we use the names *Apptainer* and *Singularity* interchangeably. See the [Introduction]({{ page.root }}{% link _episodes/01-introduction.md %})
 for more details about existing Apptainer and Singularity versions and the differences between them.
 
 ## Option 1: Use pre-installed singularity on a cluster
@@ -13,9 +13,9 @@ Check if singularity is available with
 singularity --version
 ```
 If installed, you will see `apptainer version ...` or `singularity version ...`, depending on the flavor installed.
-If it is not in your PATH you may still be able to use it via CVMFS: check if you have user namespaces enabled and CVMFS to run singularity that way:
+If it is not in your [`$PATH`](https://www.makeuseof.com/set-path-variable-in-linux/#what-is-path-in-linux) you may still be able to use it via [CVMFS](https://cernvm.cern.ch/fs/): check if you have user namespaces enabled and CVMFS to run singularity that way:
 ```bash
-[[ $(cat /proc/sys/user/max_user_namespaces) -gt 0 ]] && ls /cvmfs/oasis.opensciencegrid.org/mis/ &>/dev/null && { export PATH=/cvmfs/oasis.opensciencegrid.org/mis/apptainer/bin/:"$PATH"; echo "Added to PATH"; singularity --version; } || echo "Unable to run Singularity/Apptainer via CVMFS"
+[[ $(cat /proc/sys/user/max_user_namespaces) -gt 0 ]] && ls /cvmfs/oasis.opensciencegrid.org/mis/ &>/dev/null && { export PATH=/cvmfs/oasis.opensciencegrid.org/mis/apptainer/bin/:"$PATH"; echo "Success: Added to PATH"; singularity --version; } || echo "Failure: Unable to run Singularity/Apptainer via CVMFS"
 ```
 If this works, it will be added to your path and you will see your singularity/apptainer version.
 
