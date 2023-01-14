@@ -30,7 +30,7 @@ system available on the sites.
 
 > ## What about virtual machines?
 > Virtual Machines (VMs) provide the same isolation and reproducibility.
-> However, they emulate the hardware, so they are computationally heavier to run, 
+> However, they emulate the hardware, so they are computationally heavier to run,
 > require bigger files when distributed and are less flexible than containers, that run only what you require to be different.
 {: .callout}
 
