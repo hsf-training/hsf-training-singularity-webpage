@@ -9,9 +9,10 @@ objectives:
 - "Learn to search and pull images from the Singularity library and Docker Hub."
 - "Interact with the containers using the command-line interface."
 keypoints:
-- "Singularity images are accessible from the CLI, and they become containers during the execution."
-- "A container can be  from a local `.sif` or directly with the URL of the image."
+- "A container can be started from a local `.sif` or directly with the URL of the image."
 - "Singularity is also compatible with Docker images, providing access to the large collection of images hosted by Docker Hub."
+- Get a shell inside of your container with `singularity shell <path/URL to image>`
+- Bind directories with `--bind`
 ---
 
 # The Singularity Command Line Interface
@@ -64,10 +65,11 @@ SylabsCloud    cloud.sycloud.io     YES     NO      NO
 {: .output}
 
 Once you have setup a working registry you can use search and pull.
-The command `search` provides containers of interest
-and information about groups and collections. For example:
+The command `search` lists containers of interest
+and shows information about groups and collections. For example:
 
 ```bash
+# this command can take around a minute to complete
 singularity search centos7
 ```
 
@@ -105,7 +107,7 @@ and the image is stored locally as a `.sif` file (`centos7-devel_latest.sif`, in
 There are several ways to interact with images and start containers. Here we will review how to initialize a shell
 environment and how to execute directly a command.
 
-## Initializing a shell
+## Initializing a shell and exiting it
 
 The `shell` command initializes a new interactive shell inside the container.
 
@@ -129,19 +131,37 @@ uid=1001(myuser) gid=1001(myuser) groups=1001(myuser),500(myothergroup)
 ~~~
 {: .output}
 
-When an outside directory is accessible also inside Singularity we say it is bound, or bind mounted. The path to access it
-may differ but anything you do to its content outside is visible inside and vice-versa.
-By default, Singularity bind the home of the user, `/tmp` and `$PWD` into the container. It means your files
-at `hostname:~/` are accessible inside the container. You can specify additional bind mounts using the `--bind` option.
-For example, let's say `/cvmfs` is available in the host, and you would like to have access to CVMFS inside the
-container. Then let's do
+Now quit the container by typing
 
 ```bash
-singularity shell --bind /cvmfs:/cvmfs centos7-devel_latest.sif
+Singularity> exit
 ```
 
+or hitting `Ctrl + D`.
+Note that when exiting from the singularity image all the running processes are killed (stopped).
+Changes saved into bound directories are preserved. By default anything else in the container is lost (we'll see later about writable images).
+
+## Bound directories
+
+When an outside directory is accessible also inside Singularity we say it is *bound*, or bind mounted. The path to access it
+may differ but anything you do to its content outside is visible inside and vice-versa.
+By default, Singularity binds the home of the user, `/tmp` and `$PWD` into the container. This means your files
+at `hostname:~/` are accessible inside the container. You can specify additional bind mounts using the `--bind` option.
+For example, let's say `/cvmfs` is available in the host, and you would like to have access to CVMFS inside the
+container (here, *host* refers to the computer/server that you are running singularity on). Then let's do
+
+```bash
+singularity shell --bind /cvmfs:/mnt centos7-devel_latest.sif
+```
+
+Here, the colon `:` separates the path to the directory on the host (`/cvmfs/`) from the mounting point (`/tmp/`) inside of the
+container.
+If you do not have CVMFS, you can try the command with [`/opt`](https://stackoverflow.com/a/12649407/), for example.
+
+Let's check that this works:
+
 ~~~
-Singularity> ls /cvmfs/cms.cern.ch
+Singularity> ls /mnt/cms.cern.ch
 bin                        etc                  SITECONF           slc7_aarch64_gcc530
 bootstrap.sh               external             slc5_amd64_gcc434  slc7_aarch64_gcc700
 ...
@@ -214,14 +234,5 @@ with Singularity available.
 > > {: .output}
 > {: .solution}
 {: .challenge}
-
-## Exiting a singularity image
-
-The `exit` command (Control+d) exits a singularity instance. Note that when exiting from the singularity image all the running processes are killed (stopped).
-Changes saved into bound directories are preserved. By default anything else in the container is lost (we'll see later about writable images).
-
-```bash
-Singularity> exit
-```
 
 {% include links.md %}
