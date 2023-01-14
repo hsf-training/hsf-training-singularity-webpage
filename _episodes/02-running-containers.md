@@ -12,7 +12,8 @@ keypoints:
 - "A container can be started from a local `.sif` or directly with the URL of the image."
 - "Singularity is also compatible with Docker images, providing access to the large collection of images hosted by Docker Hub."
 - Get a shell inside of your container with `singularity shell <path/URL to image>`
-- Bind directories with `--bind`
+- Execute a command inside of your container with `singularity exec <path/URL> <command>`
+- Bind outside directories with `--bind`
 ---
 
 # The Singularity Command Line Interface
@@ -157,6 +158,7 @@ singularity shell --bind /cvmfs:/mnt centos7-devel_latest.sif
 Here, the colon `:` separates the path to the directory on the host (`/cvmfs/`) from the mounting point (`/tmp/`) inside of the
 container.
 If you do not have CVMFS, you can try the command with [`/opt`](https://stackoverflow.com/a/12649407/), for example.
+More information on binding is provided [later]({{ site.baseurl }}/07-file-sharing).
 
 Let's check that this works:
 
