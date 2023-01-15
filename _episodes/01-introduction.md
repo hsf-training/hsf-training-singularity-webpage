@@ -20,7 +20,7 @@ in a container, and any program running on it will use the contextualization iso
 the advantage that you can build a container on any system, your laptop for example, and then execute it anywhere
 as far as the platform compatible with the container is available.
 
-Concepts as reproducibility, preservation, distribution,
+Concepts such as reproducibility, preservation, and distribution
 are important in the HEP community, and the containers provide a solution totally compatible with such concepts:
 * The version of some specific software used to perform an analysis can be preserved in a container with exactly the same
 environment used at that time.
@@ -28,9 +28,11 @@ environment used at that time.
 * All the necessary packages to process data can be easily distributed in containers, independently of the operating
 system available on the sites.
 
-Virtual Machines (VMs) provide the same isolation and reproducibility but emulate the hardware, everything in the computer,
-so they are computationally heavier to run, require bigger files when distributed and are less flexible than containers,
-that run only what you require to be different.
+> ## What about virtual machines?
+> Virtual Machines (VMs) provide the same isolation and reproducibility.
+> However, they emulate the hardware, so they are computationally heavier to run,
+> require bigger files when distributed and are less flexible than containers, that run only what you require to be different.
+{: .callout}
 
 # Why Apptainer/Singularity?
 
@@ -48,19 +50,22 @@ a few steps in most of the cases, and its design presents key concepts for the s
 * Preserves the permissions in the environment. The user outside the container can be the same user inside.
 * Simple integration with resource managers and distributed computing frameworks because it runs as a regular application.
 
-
  <a href="https://apptainer.org/docs/user/">
 <img src="https://apptainer.org/docs/user/main/_static/logo.png" alt="Apptainer/Singularity" width="220">
 </a>
 
+> ## Docker and Apptainer/Singularity
+> As you will learn in this training module, Apptainer/Singularity [*can* be used with Docker images](https://apptainer.org/docs/user/main/docker_and_oci.html).
+> If you want to learn more about docker, check out [our docker training](https://hsf-training.github.io/hsf-training-docker/index.html).
+{: .callout}
+
 # Apptainer vs Singularity
-In these lessons you see the name Apptainer or Apptainer/Singularity, but the command `singularity`.
-And probably you are more familiar with the name Singularity.
-As stated in the [move and renaming announcement](https://apptainer.org/news/community-announcement-20211130/) "Singularity IS Apptainer".
+In these lessons you see the name *Apptainer* or *Apptainer/Singularity*, but the command `singularity`.
+As stated in the [move and renaming announcement](https://apptainer.org/news/community-announcement-20211130/), "Singularity IS Apptainer".
 Currently there are three products derived from the original Singularity project from 2015:
-* Singularity: commercial software by [Sylabs](https://sylabs.io/).
-* [SingularityCE](https://sylabs.io/2022/06/singularityce-is-singularity/): open source Singularity supported by Sylabs.
-* Apptainer: open source Singularity, recently renamed and hosted by the [Linux Foundation](https://www.linuxfoundation.org/).
+* *Singularity*: commercial software by [Sylabs](https://sylabs.io/).
+* [*SingularityCE*](https://sylabs.io/2022/06/singularityce-is-singularity/): open source Singularity supported by Sylabs.
+* *Apptainer*: open source Singularity, recently renamed and hosted by the [Linux Foundation](https://www.linuxfoundation.org/).
 As of Fall 2022 all three Apptainer/Singularity versions are compatible and practically the same, but have different roadmaps.
 There is hope that in the future they will join forces, but this is not currently the case.
 To understand how this came to be you can read the [Singularity history on Wikipedia](https://en.wikipedia.org/wiki/Singularity_%28software%29#History).
