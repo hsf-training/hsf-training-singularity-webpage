@@ -155,7 +155,7 @@ container (here, *host* refers to the computer/server that you are running singu
 singularity shell --bind /cvmfs:/mnt centos7-devel_latest.sif
 ```
 
-Here, the colon `:` separates the path to the directory on the host (`/cvmfs/`) from the mounting point (`/tmp/`) inside of the
+Here, the colon `:` separates the path to the directory on the host (`/cvmfs/`) from the mounting point (`/mnt/`) inside of the
 container.
 If you do not have CVMFS, you can try the command with [`/opt`](https://stackoverflow.com/a/12649407/), for example.
 More information on binding is provided [later]({{ site.baseurl }}/07-file-sharing).
