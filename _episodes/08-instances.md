@@ -12,7 +12,7 @@ keypoints:
 - Instances allow to setup services via Singularity images or definition files.
 - Code provided in Jupyter notebooks can be accompanied by a Singularity/Apptainer image with the environment needed for its execution, ensuring the reproducibility of the results.
 ---
-
+<iframe width="427" height="251" src="https://www.youtube.com/embed/10s8yUScYM8&list=PLKZ9c4ONm-VkxWW98Gcn9H6WwykMiqtnF" title="Intro to Singularity/Apptainer #6 - Instances"  frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 As we have studied in previous chapters, commands such as `run` and `shell` allocate Singularity/Apptainer
 containers in the foreground, stopping any process running inside the container after logout. This behavior
