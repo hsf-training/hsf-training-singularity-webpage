@@ -9,6 +9,7 @@ objectives:
 keypoints:
 - "A Singularity definition file provides an easy way to build and deploy containers."
 ---
+<iframe width="427" height="251" src="https://www.youtube.com/embed/v2ZJ0L3TF48?list=PLKZ9c4ONm-VkxWW98Gcn9H6WwykMiqtnF" title="Intro to Singularity/Apptainer #4 - Definition files"  frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 As shown in the previous chapter, building containers with an interactive session may take several steps, and it can
 become as complicated as the setup is needed.

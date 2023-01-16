@@ -12,6 +12,7 @@ keypoints:
 - "Superuser permissions are required to build containers if you need to install packages or manipulate the operating system."
 - "Use interactive builds only for development and tests, use definition files for production or publicly distributed containers."
 ---
+<iframe width="427" height="251" src="https://www.youtube.com/embed/aqjxxc2kMlU?list=PLKZ9c4ONm-VkxWW98Gcn9H6WwykMiqtnF" title="Intro to Singularity/Apptainer #3 - Building Containers"  frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 Running containers from the available public images is not the only option. In many cases, it is required to modify
 an image or even to create a new one from scratch. For such purposes, Singularity provides the command `build`,

@@ -15,6 +15,7 @@ keypoints:
 - Execute a command inside of your container with `singularity exec <path/URL> <command>`
 - Bind outside directories with `--bind`
 ---
+<iframe width="427" height="251" src="https://www.youtube.com/embed/puSbnD415Ow?list=PLKZ9c4ONm-VkxWW98Gcn9H6WwykMiqtnF" title="Intro to Singularity/Apptainer #2 - Containers and Images"  frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 # The Singularity Command Line Interface
 

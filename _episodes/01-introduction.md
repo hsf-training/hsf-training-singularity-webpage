@@ -12,6 +12,7 @@ keypoints:
 - "Single-file based container images facilitates the distribution."
 - "Secure. User inside the container = user outside."
 ---
+<iframe width="427" height="251" src="https://www.youtube.com/embed/v5WbqtRbH6M?list=PLKZ9c4ONm-VkxWW98Gcn9H6WwykMiqtnF" title="Intro to Singularity/Apptainer #1 - Introduction"  frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 # Working with containers
 

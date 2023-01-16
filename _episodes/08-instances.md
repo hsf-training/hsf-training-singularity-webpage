@@ -13,6 +13,7 @@ keypoints:
 - Code provided in Jupyter notebooks can be accompanied by a Singularity/Apptainer image with the environment needed for its execution, ensuring the reproducibility of the results.
 ---
 
+
 As we have studied in previous chapters, commands such as `run` and `shell` allocate Singularity/Apptainer
 containers in the foreground, stopping any process running inside the container after logout. This behavior
 suits the use case of containers for executing interactive commands in a well-defined environment, but there
