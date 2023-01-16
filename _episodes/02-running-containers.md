@@ -38,21 +38,21 @@ Sylabs, the developers of one Singularity flavor, hosts a public image registry,
 The Linux Foundation flavor, Apptainer, does not point by default to the Sylab registry as previous versions did.
 You can change that running these commands (documented [here](https://apptainer.org/docs/user/main/endpoint.html#restoring-pre-apptainer-library-behavior)):
 ```bash
-apptainer remote add --no-login SylabsCloud cloud.sycloud.io
+singularity remote add --no-login SylabsCloud cloud.sycloud.io
 ```
 ~~~
 INFO:    Remote "SylabsCloud" added.
 ~~~
 {: .output}
 ```bash
-apptainer remote use SylabsCloud
+singularity remote use SylabsCloud
 ```
 ~~~
 INFO:    Remote "SylabsCloud" now in use.
 ~~~
 {: .output}
 ```bash
-apptainer remote list
+singularity remote list
 ```
 ~~~
 Cloud Services Endpoints
