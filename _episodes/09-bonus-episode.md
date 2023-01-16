@@ -18,6 +18,8 @@ keypoints:
 > * Knowledge of GitHub CI/CD [HSF Github CI/CD Lesson](https://hsf-training.github.io/hsf-training-cicd-github/)
 {: .prereq}
 
+<iframe width="427" height="251" src="https://www.youtube.com/embed/BRRaSsrK7-k" title="Intro to Singularity/Apptainer #7 - Bonus episode" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 ## Singularity Container for python packages
 
 Python packages can be installed using a Singularity image. The following example illustrates how to write a definition file for building an image containing python packages.
