@@ -61,7 +61,7 @@ singularity shell instance://mycentos7
 
 Remember that exiting the shell instance will not stop the container. For doing so, use `instance stop`:
 ```bash
-singularity instance stop mycentos
+singularity instance stop mycentos7
 ```
 You can confirm the instance doesn't exist with `instance list`.
 
