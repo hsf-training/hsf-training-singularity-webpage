@@ -85,7 +85,7 @@ From: ubuntu:20.04
     apt-get install wget -y
     export DEBIAN_FRONTEND=noninteractive
     apt-get install dpkg-dev cmake g++ gcc binutils libx11-dev libxpm-dev \
-    libxft-dev libxext-dev python libssl-dev libgsl0-dev libtiff-dev -y
+        libxft-dev libxext-dev python libssl-dev libgsl0-dev libtiff-dev -y
     cd /opt
     wget https://root.cern/download/root_v6.22.06.Linux-ubuntu20-x86_64-gcc9.3.tar.gz
     tar -xzvf root_v6.22.06.Linux-ubuntu20-x86_64-gcc9.3.tar.gz
