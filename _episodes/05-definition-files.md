@@ -221,7 +221,7 @@ and [distribute custom images via CVMFS](https://portal.osg-htc.org/documentatio
 > > %help
 > >     Container providing Pythia 8.307. Execute the container to run an example.
 > >     Open it in a shell to use the Pythia installation with Python 3.6
->> > ~~~
+> > ~~~
 > > {: .source}
 > >
 > > Build your container executing
@@ -232,7 +232,7 @@ and [distribute custom images via CVMFS](https://portal.osg-htc.org/documentatio
 > >
 > > And finally, execute the container to run [`main01.py`](https://gitlab.com/Pythia8/releases/-/blob/pythia8307/examples/main01.py)
 > >
->> > ```bash
+> > ```bash
 > > ./pythiaInCentos7.sif
 > > ```
 > {: .solution}
