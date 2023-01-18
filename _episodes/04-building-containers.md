@@ -40,7 +40,7 @@ The command `build` provides a flag `--sandbox` that will create a writable dire
 singularity build --sandbox myCentOS7 docker://centos:centos7
 ```
 
-> ## Notes on AFS 
+> ## Notes on AFS
 > Avoid using the [`AFS` (Andrew File System)](https://en.wikipedia.org/wiki/Andrew_File_System) that is used on [`lxplus`](https://cern.service-now.com/service-portal?id=service_element&name=lxplus-service) as sandbox directory.
 > Instead, use e.g., `--sandbox /tmp/$LOGNAME/myCentOS7`, where `$LOGNAME` stands for your user name.
 {:.callout}
