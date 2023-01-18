@@ -39,6 +39,12 @@ The command `build` provides a flag `--sandbox` that will create a writable dire
 ```bash
 singularity build --sandbox myCentOS7 docker://centos:centos7
 ```
+
+> ## Notes on AFS 
+> Avoid using the [`AFS` (Andrew File System)](https://en.wikipedia.org/wiki/Andrew_File_System) that is used on [`lxplus`](https://cern.service-now.com/service-portal?id=service_element&name=lxplus-service) as sandbox directory.
+> Instead, use e.g., `--sandbox /tmp/$LOGNAME/myCentOS7`, where `$LOGNAME` stands for your user name.
+{:.callout}
+
 The container name is `myCentOS7`, and it has been initialized from the [official Docker image](https://hub.docker.com/_/centos)
 of CentOS7.
 To initialize an interactive session use the `shell` command. And to write files within the sandbox directory use the `--writable` option.
