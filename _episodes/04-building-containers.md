@@ -44,8 +44,8 @@ singularity build --sandbox myCentOS7 docker://centos:centos7
 > Avoid using the [`AFS` (Andrew File System)](https://en.wikipedia.org/wiki/Andrew_File_System) and possibly other shared file systems
 > as sandbox directory, asa these systems can lead to permission issues.
 > In particular, this applies to your home directory on [`lxplus`](https://cern.service-now.com/service-portal?id=service_element&name=lxplus-service).
-> Instead, make sure to use the local file system by creating a folder in `/tmp/`: `mkdir /tmp/$LOGNAME`, where `$LOGNAME` stands for your user name.
-> Then, replace `myCentOS7` in the previous (and next) command with `/tmp/$LOGNAME/myCentOS7`.
+> Instead, make sure to use the local file system by creating a folder in `/tmp/`: `mkdir /tmp/$USER`.
+> Then, replace `myCentOS7` in the previous (and next) command with `/tmp/$USER/myCentOS7`.
 {:.callout}
 
 The container name is `myCentOS7`, and it has been initialized from the [official Docker image](https://hub.docker.com/_/centos)
