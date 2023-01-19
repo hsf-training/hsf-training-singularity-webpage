@@ -35,7 +35,7 @@ This ensures the greatest possibility of reproducibility and transparency.
 While images contained in the `.sif` files are more compact and immutable objects, ideal for reproducibility, for building and testing images is
 more convenient the use of a _sandbox_, which can be easily modified.
 
-The command `build` provides a flag `--sandbox` that will create a writable directory, `myCentOS7` in your work directory:
+The command `build` provides a flag `--sandbox` that will create a writable directory, `myCentOS7`, in your work directory:
 ```bash
 singularity build --sandbox myCentOS7 docker://centos:centos7
 ```
