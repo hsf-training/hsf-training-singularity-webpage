@@ -60,6 +60,7 @@ Finally the `#` hash is used to include comments within the definition file.
 ### Deleting Singularity image
 To delete the hello-world Singularity image, simply delete the `hello-world.sif` file.
 
+> ## `singularity delete`
 > Note that there is also a `singularity delete` command, but it is to delete an image from a remote library.
 > To learn more about using remote endpoints and pulling and pushing images from or to libraries, read
 > [Remote Endpoints](https://apptainer.org/docs/user/main/endpoint.html) and [Library API Registries](https://apptainer.org/docs/user/main/library_api.html).
