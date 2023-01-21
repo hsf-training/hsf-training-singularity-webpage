@@ -1,5 +1,5 @@
 ---
-title: "Bonus Episode"
+title: "Bonus Episode: Building and deploying a Singularity container to Github Packages"
 teaching: 40
 exercises: 0
 questions:
