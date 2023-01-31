@@ -60,8 +60,8 @@ Singularity> whoami
 root
 ~~~
 {: .output}
-If you get an error when using `--fakeroot` have a look at the [fakeroot documentation](https://apptainer.org/docs/admin/main/user_namespace.html#rootless-fakeroot-feature). You may be running in
-unprivileged mode without having `newuidmap` and `newgidmap`.
+Depending on the Apptainer/Singularity installation (privileged or unprivileged) and the version, you may have some requirements, like the `fakeroot` utility or `newuidmap` and `newgidmap`.
+If you get an error when using `--fakeroot` have a look at the [fakeroot documentation](https://apptainer.org/docs/user/main/fakeroot.html).
 > ## `--fakeroot` is not root
 > ATTENTION! [`--fakeroot`](https://apptainer.org/docs/user/main/fakeroot.html) allows you to be root inside a container that you own but is not changing who you are outside.
 > All the outside actions and the writing on bound files and directories will happen as your outside user, even if in the container is done by root.
