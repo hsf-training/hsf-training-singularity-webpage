@@ -7,16 +7,16 @@ questions:
 objectives:
 - "Create a container from a definition file."
 keypoints:
-- "A Singularity definition file provides an easy way to build and deploy containers."
+- "An Apptainer definition file provides an easy way to build and deploy containers."
 ---
-<iframe width="427" height="251" src="https://www.youtube.com/embed/v2ZJ0L3TF48?list=PLKZ9c4ONm-VkxWW98Gcn9H6WwykMiqtnF" title="Intro to Singularity/Apptainer #4 - Definition files"  frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="427" height="251" src="https://www.youtube.com/embed/v2ZJ0L3TF48?list=PLKZ9c4ONm-VkxWW98Gcn9H6WwykMiqtnF" title="Intro to Apptainer/Singularity #4 - Definition files"  frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 As shown in the previous chapter, building containers with an interactive session may take several steps, and it can
 become as complicated as the setup is needed.
-A Singularity definition file provides an easy way to build and deploy containers.
+An Apptainer definition file provides an easy way to build and deploy containers.
 
 
-## Hello World Singularity
+## Hello World Apptainer
 
 The following recipe shows how to build a hello-world container, and run the container on your local computer.
 
@@ -37,19 +37,19 @@ The following recipe shows how to build a hello-world container, and run the con
   # Print Hello world when the image is loaded
   ```
 
-    In the above script, the first line - `BootStrap: docker` indicates that singularity will use the docker protocol to retrieve the base OS to start the image.
-The `From: ubuntu:20.04` is given to singularity to start from a specific image/OS in Docker Hub.
-Any content within the  `%runscript` will be written to a file that is executed when one runs the singularity image.
+    In the above script, the first line - `BootStrap: docker` indicates that apptainer will use the docker protocol to retrieve the base OS to start the image.
+The `From: ubuntu:20.04` is given to apptainer to start from a specific image/OS in Docker Hub.
+Any content within the  `%runscript` will be written to a file that is executed when one runs the apptainer image.
 The `echo "Hello World"` command will print the `Hello World` on the terminal.
 Finally the `#` hash is used to include comments within the definition file.
 
 - Step 3: Build the image
 
   ```bash
-  singularity build hello-world.sif hello-world.def
+  apptainer build hello-world.sif hello-world.def
   ```
 
-    The `hello-world.sif` file specifies the name of the output file that is built when using the `singularity build` command.
+    The `hello-world.sif` file specifies the name of the output file that is built when using the `apptainer build` command.
 
 - Step 4: Run the image
 
@@ -57,11 +57,11 @@ Finally the `#` hash is used to include comments within the definition file.
   ./hello-world.sif
   ```
 
-### Deleting Singularity image
-To delete the hello-world Singularity image, simply delete the `hello-world.sif` file.
+### Deleting Apptainer image
+To delete the hello-world Apptainer image, simply delete the `hello-world.sif` file.
 
-> ## `singularity delete`
-> Note that there is also a `singularity delete` command, but it is to delete an image from a remote library.
+> ## `apptainer delete`
+> Note that there is also a `apptainer delete` command, but it is to delete an image from a remote library.
 > To learn more about using remote endpoints and pulling and pushing images from or to libraries, read
 > [Remote Endpoints](https://apptainer.org/docs/user/main/endpoint.html) and [Library API Registries](https://apptainer.org/docs/user/main/library_api.html).
 {: .callout}
@@ -116,21 +116,21 @@ steps that we would follow to install ROOT with a precompiled binary in an inter
 Notice that the binary used corresponds with the Ubuntu version defined at the second line.
 * `%environment` is used to define environment variables available inside the container. Here we are setting the env
 variables required to execute ROOT and PyROOT.
-* Singularity containers can be executable. `%runscript` define the actions to take when the container is executed.
+* Apptainer containers can be executable. `%runscript` define the actions to take when the container is executed.
 To illustrate the functionality, we will just run [rf101_basics.py](https://root.cern/doc/master/rf101__basics_8py.html)
 from the RooFit tutorial.
 * `%labels` add custom metadata to the container.
-* `%help` it is the container documentation: what it is and how to use it. Can be displayed using `singularity run-help`
+* `%help` it is the container documentation: what it is and how to use it. Can be displayed using `apptainer run-help`
 
 Save this definition file as `rootInUbuntu.def`. To build the container, just provide the definition file as argument
 (executing as superuser):
 ```bash
-singularity build rootInUbuntu.sif rootInUbuntu.def
+apptainer build rootInUbuntu.sif rootInUbuntu.def
 ```
 
 
-Then, an interactive shell inside the container can be initialized with `singularity shell`, or
-a command executed with `singularity exec`. A third option is execute the actions defined inside `%runscript`
+Then, an interactive shell inside the container can be initialized with `apptainer shell`, or
+a command executed with `apptainer exec`. A third option is execute the actions defined inside `%runscript`
 simply by calling the container as an executable
 
 ```bash
@@ -171,7 +171,7 @@ A few [best practices for your containers](https://apptainer.org/docs/user/1.0/d
 > ## Deploying your containers
 > Keep in mind that, while building a container may be time consuming, the execution can be immediate and anywhere your image is available.
 > Once your container is built with the requirements of your analysis, you can deploy it in a large cluster and execute it
-> as far as Singularity is available on the site.
+> as far as Apptainer is available on the site.
 >
 > Libraries like [Sylabs Cloud Library](https://cloud.sylabs.io/library) ease the distribution of images.
 > Organizations like OSG provide instructions to [use available images](https://portal.osg-htc.org/documentation/htc_workloads/using_software/containers/)
@@ -228,7 +228,7 @@ and [distribute custom images via CVMFS](https://portal.osg-htc.org/documentatio
 > > Build your container executing
 > >
 > > ```bash
-> > singularity build pythiaInCentos7.sif myPythia8.def
+> > apptainer build pythiaInCentos7.sif myPythia8.def
 > > ```
 > >
 > > And finally, execute the container to run [`main01.py`](https://gitlab.com/Pythia8/releases/-/blob/pythia8307/examples/main01.py)

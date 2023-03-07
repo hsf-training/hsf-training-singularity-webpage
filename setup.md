@@ -2,29 +2,33 @@
 title: Setup
 ---
 
-<iframe width="427" height="251" src="https://www.youtube.com/embed/g0cCErlveiI?list=PLKZ9c4ONm-VkxWW98Gcn9H6WwykMiqtnF" title="Intro to Singularity/Apptainer #0 - Setup" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="427" height="251" src="https://www.youtube.com/embed/g0cCErlveiI?list=PLKZ9c4ONm-VkxWW98Gcn9H6WwykMiqtnF" title="Intro to Apptainer/Singularity #0 - Setup" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 In this document we use the names *Apptainer* and *Singularity* interchangeably. See the [Introduction]({{ page.root }}{% link _episodes/01-introduction.md %})
 for more details about existing Apptainer and Singularity versions and the differences between them.
 
-## Option 1: Use pre-installed singularity on a cluster
+## Option 1: Use pre-installed apptainer on a cluster
 
 Apptainer/Singularity has become popular and usually it is available in the institutional computing resources.
-Check if singularity is available with
+Check if apptainer or singularity are available with
 ```bash
+apptainer --version
 singularity --version
 ```
 If installed, you will see `apptainer version ...` or `singularity version ...`, depending on the flavor installed.
-If it is not in your [`$PATH`](https://www.makeuseof.com/set-path-variable-in-linux/#what-is-path-in-linux) you may still be able to use it via [CVMFS](https://cernvm.cern.ch/fs/): check if you have user namespaces enabled and CVMFS to run singularity that way:
+Apptainer is preferable but either one is OK, so if apptainer is there, no need to check for singularity (which most likely will be a link to apptainer).
+This tutorial requires at least Apptainer 1.0.x or Singularity 3.5.x. Previous versions may not have all the required features.
+If none is in your [`$PATH`](https://www.makeuseof.com/set-path-variable-in-linux/#what-is-path-in-linux) or if the available version is too old,
+you may still be able to use an updated apptainer via [CVMFS](https://cernvm.cern.ch/fs/): check if you have user namespaces enabled and CVMFS to run singularity that way:
 ```bash
 [[ $(cat /proc/sys/user/max_user_namespaces) -gt 0 ]] && ls /cvmfs/oasis.opensciencegrid.org/mis/ &>/dev/null && { export PATH=/cvmfs/oasis.opensciencegrid.org/mis/apptainer/bin/:"$PATH"; echo "Success: Added to PATH"; singularity --version; } || echo "Failure: Unable to run Singularity/Apptainer via CVMFS"
 ```
-If this works, it will be added to your path and you will see your singularity/apptainer version.
+If this works, it will be added to your path and you will see your apptainer/singularity version.
 
 If your local computing system does not have Apptainer/Singularity installed, you may
 [request it to your system administrator as suggested here](https://apptainer.org/docs/user/main/quick_start.html#apptainer-on-a-shared-resource).
 
-## Option 2: Install singularity/Apptainer
+## Option 2: Install Apptainer/Singularity
 
 You will need a **Linux system (including WSL on Windows computers)** to run Apptainer/Singularity natively.
 **MacOS is not supported**.

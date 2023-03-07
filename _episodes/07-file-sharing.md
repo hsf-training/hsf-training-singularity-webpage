@@ -9,11 +9,11 @@ objectives:
 - "Learn about the bind paths included automatically in all containers."
 keypoints:
 - "Bind mounts allow reading and writing files within the container."
-- "In Singularity, you have same owner and permissions for files inside and outside the container."
-- "Some paths are mounted by default by Singularity."
+- "In Apptainer, you have same owner and permissions for files inside and outside the container."
+- "Some paths are mounted by default by Apptainer."
 - "Additional directories to bind can be defined using the `--bind` option or the environment variable `$SINGULARITY_BIND`."
 ---
-<iframe width="427" height="251" src="https://www.youtube.com/embed/E-vlXHEsacE?list=PLKZ9c4ONm-VkxWW98Gcn9H6WwykMiqtnF" title="Intro to Singularity/Apptainer #5 - Sharing files between host and container"  frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="427" height="251" src="https://www.youtube.com/embed/E-vlXHEsacE?list=PLKZ9c4ONm-VkxWW98Gcn9H6WwykMiqtnF" title="Intro to Apptainer/Singularity #5 - Sharing files between host and container"  frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 One of the key features about containers is the isolation of the processes running inside them. It means,
 files on the host system are not accessible within the container.
@@ -21,17 +21,17 @@ However, it is
 very common that some files on the host system are needed inside the container, or you want to write files from the
 container to some directory in the host.
 
-We have already used the option `--bind` earlier in the module when exploring the options available to run Singularity
+We have already used the option `--bind` earlier in the module when exploring the options available to run Apptainer
 containers. In this chapter we will explore further options to bind directories from your host system to directories
 within your container.
 
-Remember that in Singularity, your user outside is the same inside the container (except when using fakeroot).
+Remember that in Apptainer, your user outside is the same inside the container (except when using fakeroot).
 And the same happens with permissions and ownership for files in bind directories.
 
 ## Bind paths included by default
 
-For each container executed, Singularity binds automatically some directories by default, and other defined
-by the system admin in the Singularity configuration. By default, Singularity binds:
+For each container executed, Apptainer binds automatically some directories by default, and other defined
+by the system admin in the Apptainer configuration. By default, Apptainer binds:
 * The user's home directory ($HOME)
 * The current directory when the container is executed ($PWD)
 * System-defined paths: `/tmp`, `/proc`, `/dev`, etc.
@@ -48,14 +48,14 @@ pwd
 {: .output}
 Open a shell inside the container and try to use `pwd` again
 ```bash
-singularity shell rootInUbuntu.sif
+apptainer shell rootInUbuntu.sif
 
-Singularity> pwd
+Apptainer> pwd
 ```
 ~~~
 /home/myuser/somedirectory
 ~~~
-you will notice that the files stored on the host are located inside the container! As we explained above, Singularity
+you will notice that the files stored on the host are located inside the container! As we explained above, Apptainer
 mounts automatically your `$HOME` inside the container.
 
 > ## Disabling system binds
@@ -69,7 +69,7 @@ mounts automatically your `$HOME` inside the container.
 
 Try this time with
 ```bash
-singularity shell --no-mount home rootInUbuntu.sif
+apptainer shell --no-mount home rootInUbuntu.sif
 ```
 and you will notice that `$HOME` is not mounted anymore
 ```bash
@@ -82,8 +82,8 @@ ls: cannot access '/home/myuser': No such file or directory
 
 ## User-defined bind paths
 
-Singularity provides mechanisms to specify additional binds when executing a container via command-line
-or environment variables. Singularity offers a complex set of mechanism for binds or other mounts.
+Apptainer provides mechanisms to specify additional binds when executing a container via command-line
+or environment variables. Apptainer offers a complex set of mechanism for binds or other mounts.
 Here we present the main points, refer to the
 [Bind Paths and Mounts documentation](https://apptainer.org/docs/user/main/bind_paths_and_mounts.html) for more.
 
@@ -103,7 +103,7 @@ echo "MUONMASS=105.66 MeV" > $HOME/mydata/muonMass.txt
 It is very, very important in your analysis workflow to know the mass of the muon, right? It may have sense to put the data
 in a high-level directory within the container, like `/data`
 ```bash
-singularity shell --bind $HOME/mydata:/data rootInUbuntu.sif
+apptainer shell --bind $HOME/mydata:/data rootInUbuntu.sif
 ```
 This will bind the directory `mydata/` from the host as `/data` inside the container:
 ```bash
@@ -121,7 +121,7 @@ i.e. using the syntax `source1:destination1,source2:destination2`.
 
 Also. If the destination is not specified, it will be set as equal as the source. For example
 ```bash
-singularity shell --bind /cvmfs rootInUbuntu.sif
+apptainer shell --bind /cvmfs rootInUbuntu.sif
 ```
 Will mount `/cvmfs` inside the container. Try it!
 
@@ -136,13 +136,13 @@ Will mount `/cvmfs` inside the container. Try it!
 
 ### Bind with environment variables
 
-If the environment variable `$SINGULARITY_BIND` is defined, singularity will bind inside ANY container
+If the environment variable `$APPTAINER_BIND` is defined, apptainer will bind inside ANY container
 the directories specified in the format `source`, with the destination being optional (in the same way as using
 `--bind`). For example:
 ```bash
 export SINGULARITY_BIND="/cvmfs"
 ```
-will bind CVMFS to all your Singularity containers (`/cvmfs` must be available in the host, of course).
+will bind CVMFS to all your Apptainer containers (`/cvmfs` must be available in the host, of course).
 
 You can also bind multiple directories using commas between each `source:destination`.
 

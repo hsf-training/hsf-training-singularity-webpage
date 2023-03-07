@@ -4,7 +4,7 @@ teaching: 10
 exercises:
 questions:
 - "What issues motivated the creation of Apptainer/Singularity?"
-- "What are the differences between Docker, Singularity and Apptainer?"
+- "What are the differences between Docker, Apptainer and Singularity?"
 objectives:
 - "Learn the design goals behind Apptainer/Singularity."
 keypoints:
@@ -12,7 +12,7 @@ keypoints:
 - "Single-file based container images facilitates the distribution."
 - "Secure. User inside the container = user outside."
 ---
-<iframe width="427" height="251" src="https://www.youtube.com/embed/v5WbqtRbH6M?list=PLKZ9c4ONm-VkxWW98Gcn9H6WwykMiqtnF" title="Intro to Singularity/Apptainer #1 - Introduction"  frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="427" height="251" src="https://www.youtube.com/embed/v5WbqtRbH6M?list=PLKZ9c4ONm-VkxWW98Gcn9H6WwykMiqtnF" title="Intro to Apptainer/Singularity #1 - Introduction"  frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 # Working with containers
 
@@ -61,7 +61,7 @@ a few steps in most of the cases, and its design presents key concepts for the s
 {: .callout}
 
 # Apptainer vs Singularity
-In these lessons you see the name *Apptainer* or *Apptainer/Singularity*, but the command `singularity`.
+In these lessons you see the name *Apptainer* or *Apptainer/Singularity*, and the command `apptainer`.
 As stated in the [move and renaming announcement](https://apptainer.org/news/community-announcement-20211130/), "Singularity IS Apptainer".
 Currently there are three products derived from the original Singularity project from 2015:
 * *Singularity*: commercial software by [Sylabs](https://sylabs.io/).
@@ -71,11 +71,12 @@ As of Fall 2022 all three Apptainer/Singularity versions are compatible and prac
 There is hope that in the future they will join forces, but this is not currently the case.
 To understand how this came to be you can read the [Singularity history on Wikipedia](https://en.wikipedia.org/wiki/Singularity_%28software%29#History).
 
-We are following Apptainer, the most adopted variation in the scientific community.
-But since its previous version was named Singularity and it is providing the `singularity` alias and
-[full compatibility with the previous Singularity environment](https://apptainer.org/docs/user/main/singularity_compatibility.html),
-we'll keep using the `singularity` command and the `SINGULARITY_` and  `SINGULARITYENV_` variable prefixes until
-we are sure that most installation migrated to the most recent version named `apptainer`.
+We are following Apptainer, the most adopted variation in the scientific community, so we are using the `apptainer` command.
+If you are using Singularity or SingularityCE, just replace the command `apptainer` with `singularity` and the
+`APPTAINER_` and  `APPTAINERENV_` variable prefixes  with `SINGULARITY_` and  `SINGULARITYENV_`.
+ But since its previous version was named Singularity and it
+If you have older scripts still using the `singularity` command they will work also in Apptainer because it is providing the `singularity` alias
+and [full compatibility with the previous Singularity environment](https://apptainer.org/docs/user/main/singularity_compatibility.html).
 
 # Documentation
 
