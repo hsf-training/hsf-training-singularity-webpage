@@ -22,6 +22,16 @@ keypoints:
 Singularity provides a command-line interface (CLI) to interact with the containers. You can search, build or run
 containers in a single line.
 
+You can check the version of the Apptainer or Singularity command you are using with the `--version` option:
+```bash
+singularity --version
+# This works for both Singularity and Apptainer, which installs a link named `singularity` to maintain compatibility.
+# In the future you may need to use `apptainer --version`
+```
+For this training we recommend Apptainer >= 1.0 or Singularity >= 3.5. Older versions may not have some of the features or behave differently.
+If you need to install or upgrade Apptainer/Singularity please refer to the [Setup section]({{ page.root }}{% link setup.md}).
+When asking for support please remember to include the version of Apptainer or Singularity being used, as in the output of the above commands.
+
 You can check the available options and subcommands using `--help`:
 
 ```bash
