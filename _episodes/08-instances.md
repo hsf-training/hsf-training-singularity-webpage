@@ -1,5 +1,5 @@
 ---
-title: "Singularity/Apptainer instances"
+title: "Apptainer/Singularity instances"
 teaching: 60
 exercises: 10
 questions:
@@ -9,34 +9,34 @@ objectives:
 - "Run containers in a detached mode to keep services up."
 - "Deploy instances via definition files."
 keypoints:
-- Instances allow to setup services via Singularity images or definition files.
-- Code provided in Jupyter notebooks can be accompanied by a Singularity/Apptainer image with the environment needed for its execution, ensuring the reproducibility of the results.
+- Instances allow to setup services via Apptainer images or definition files.
+- Code provided in Jupyter notebooks can be accompanied by a Apptainer/Singularity image with the environment needed for its execution, ensuring the reproducibility of the results.
 ---
-<iframe width="427" height="251" src="https://www.youtube.com/embed/10s8yUScYM8" title="Intro to Singularity/Apptainer #6 - Instances"  frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="427" height="251" src="https://www.youtube.com/embed/10s8yUScYM8" title="Intro to Apptainer/Singularity #6 - Instances"  frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-As we have studied in previous chapters, commands such as `run` and `shell` allocate Singularity/Apptainer
+As we have studied in previous chapters, commands such as `run` and `shell` allocate Apptainer/Singularity
 containers in the foreground, stopping any process running inside the container after logout. This behavior
 suits the use case of containers for executing interactive commands in a well-defined environment, but there
 are cases when running processes in the background is convenient. For example, when a web application like a
 Jupyter notebook is deployed inside a container, it is desired to keep the container up while it waits for connections
 from the web browser.
 
-Singularity provides the concept of _instances_ to deploy services in the background. While Docker is a common
-choice of tool for setting services, Singularity has the advantage of working without requiring any special permissions
+Apptainer provides the concept of _instances_ to deploy services in the background. While Docker is a common
+choice of tool for setting services, Apptainer has the advantage of working without requiring any special permissions
 (like when you are working in a cluster provided by your university/laboratory).
 In this chapter we will learn the basics about their capabilities and some use cases as examples.
 
 ## Instances from image files
 
-To start an instance, Singularity provide the command `instance`. To exemplify, let's pull the CentOS image used
+To start an instance, Apptainer provides the command `instance`. To exemplify, let's pull the CentOS image used
 in previous chapters
 ```bash
-singularity pull docker://centos:centos7
+apptainer pull docker://centos:centos7
 ```
 
 The image must be started in the following way:
 ```bash
-singularity instance start centos_centos7.sif mycentos7
+apptainer instance start centos_centos7.sif mycentos7
 ```
 In this example, the `.sif` is the image downloaded from Dockerhub, and `mycentos7` is the name that we have
 assigned to the instance. Instead of opening a shell session or executing a command, the container is running in
@@ -44,7 +44,7 @@ the background.
 
 Confirm that the instance is running using the `instance list` command
 ```bash
-singularity instance list
+apptainer instance list
 ```
 ~~~
 INSTANCE NAME    PID      IP    IMAGE
@@ -56,12 +56,12 @@ To interact with the instance, the commands `exec` and `shell` are available. Th
 `instance://name`.
 For example, to open a shell inside the CentOS instance:
 ```bash
-singularity shell instance://mycentos7
+apptainer shell instance://mycentos7
 ```
 
 Remember that exiting the shell instance will not stop the container. For doing so, use `instance stop`:
 ```bash
-singularity instance stop mycentos7
+apptainer instance stop mycentos7
 ```
 You can confirm the instance doesn't exist with `instance list`.
 
@@ -73,7 +73,7 @@ You can confirm the instance doesn't exist with `instance list`.
 > an interactive session are available. For example, if you want a directory mounted inside the instance, use the
 > `--bind` option:
 > ```bash
-> singularity instance start --bind /home/user/mydata:/data centos_centos7.sif mycentos7
+> apptainer instance start --bind /home/user/mydata:/data centos_centos7.sif mycentos7
 > ```
 > binding the directory `mydata/` from the host as `/data` inside the instance.
 {: .callout}
@@ -81,7 +81,7 @@ You can confirm the instance doesn't exist with `instance list`.
 
 ## A web server as an instance
 
-One of the main purposes of the Singularity instances is deploying services with customized environments. Before moving
+One of the main purposes of the Apptainer instances is deploying services with customized environments. Before moving
 to more complex use cases, let's start with a basic example: a web service showing a HTML with a message.
 
 Let's write a basic `index.html` file as:
@@ -117,7 +117,7 @@ From: ubuntu:20.04
    cd /tmp
    python3.9 -m http.server 8850
 ```
-If you recall the chapter about [definition files](https://hsf-training.github.io/hsf-training-singularity-webpage/05-definition-files/index.html),
+If you recall the chapter about [definition files]({{ page.root }}{% link _episodes/05-definition-files.md %}),
 this definition file will pull the official Ubuntu image from Dockerhub, and will install Python3.9.
 In addition, it copies `index.html` in `/tmp` **inside** the container. When the instance starts, commands specified on
 `%startscript` are executed. On this example, `http.server` will be executed, serving a page in the port 8850 (you can
@@ -126,14 +126,14 @@ use any other port if 8850 is busy with another service).
 Let's build an image from the definition. Remember that building images requires either superuser permissions or
 using the flag `--fakeroot` as
 ```bash
-singularity build --fakeroot basicServer.sif basicServer.def
+apptainer build --fakeroot basicServer.sif basicServer.def
 ```
 
 Now, let's start an instance named `myWebService` with the image that we just built
 ```bash
-singularity instance start --no-mount tmp basicServer.sif myWebService
+apptainer instance start --no-mount tmp basicServer.sif myWebService
 ```
-Reminder from the previous chapter: with `--no-mount tmp` we are asking Singularity to NOT bind `/tmp` from the host
+Reminder from the previous chapter: with `--no-mount tmp` we are asking Apptainer to NOT bind `/tmp` from the host
 to the instance (it is mounted by default), we use instead an isolated `/tmp` inside the instance where index.html has
 been copied.
 
@@ -155,7 +155,7 @@ curl http://localhost:8850
 ~~~
 {: .output}
 
-If you are executing Singularity locally, try to open http://localhost:8850.
+If you are executing Apptainer locally, try to open http://localhost:8850.
 
 > ## SSH tunneling
 >
@@ -183,7 +183,7 @@ As an example of the capabilities of instances as services, let's extend our def
 Jupyter notebook server with a customized environment.
 
 What if we provide a Jupyter notebook ready to use ROOT? If you remember our example from the
-[definition files chapter](https://hsf-training.github.io/hsf-training-singularity-webpage/05-definition-files/index.html),
+[definition files chapter]({{ page.root }}{% link _episodes/05-definition-files.md %}),
 at this point it must be almost straightforward:
 ```
 Bootstrap: docker
@@ -214,15 +214,15 @@ From: ubuntu:20.04
 
 Save the definition file as `jupyterWithROOT.def`, and let's build an image called `jupyterWithROOT.sif`
 ```bash
-singularity build --fakeroot jupyterWithROOT.sif jupyterWithROOT.def
+apptainer build --fakeroot jupyterWithROOT.sif jupyterWithROOT.def
 ```
 Now, start an instance named `mynotebook` with our brand-new image
 ```bash
-singularity instance start jupyterWithROOT.sif mynotebook
+apptainer instance start jupyterWithROOT.sif mynotebook
 ```
 and confirm that the instance is up
 ```bash
-singularity instance list
+apptainer instance list
 ```
 ~~~
 INSTANCE NAME    PID      IP    IMAGE
@@ -234,7 +234,7 @@ If you go to http://localhost:8850 (with SSH tunneling if needed), you will find
 Jupyter webapp will ask for an access token. Fortunately, you can get the token listing the URL of active servers using
 the `jupyter notebook list` command. To execute the command inside the instance, use `sigularity exec`:
 ```bash
-singularity exec instance://notebook jupyter notebook list
+apptainer exec instance://notebook jupyter notebook list
 ```
 ~~~
 Currently running servers:
@@ -255,14 +255,14 @@ h.Draw()
 c.Draw()
 ```
 
-The bottom line: with any Jupyter notebook that you write, you can provide a Singularity image that will
+The bottom line: with any Jupyter notebook that you write, you can provide an Apptainer image that will
 set the environment required to execute the cells. It doesn't matter if yourself or someone else comes in one, five,
-ten years, your code will work independently of the software available in your computer as far as Singularity/Apptainer
+ten years, your code will work independently of the software available in your computer as far as Apptainer/Singularity
 is available!
 
 > ## A Jupyter notebook with Uproot available
 >
-> Can you setup a Jupyter notebook server with [Uproot](https://uproot.readthedocs.io/en/latest/index.html) available in Singularity?
+> Can you setup a Jupyter notebook server with [Uproot](https://uproot.readthedocs.io/en/latest/index.html) available in Apptainer?
 >
 > Hint: Uproot can be installed using `pip`.
 >
