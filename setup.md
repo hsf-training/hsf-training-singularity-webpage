@@ -21,7 +21,7 @@ This tutorial requires at least Apptainer 1.0.x or Singularity 3.5.x. Previous v
 If none is in your [`$PATH`](https://www.makeuseof.com/set-path-variable-in-linux/#what-is-path-in-linux) or if the available version is too old,
 you may still be able to use an updated apptainer via [CVMFS](https://cernvm.cern.ch/fs/): check if you have user namespaces enabled and CVMFS to run singularity that way:
 ```bash
-[[ $(cat /proc/sys/user/max_user_namespaces) -gt 0 ]] && ls /cvmfs/oasis.opensciencegrid.org/mis/ &>/dev/null && { export PATH=/cvmfs/oasis.opensciencegrid.org/mis/apptainer/bin/:"$PATH"; echo "Success: Added to PATH"; singularity --version; } || echo "Failure: Unable to run Singularity/Apptainer via CVMFS"
+[[ $(cat /proc/sys/user/max_user_namespaces) -gt 0 ]] && ls /cvmfs/oasis.opensciencegrid.org/mis/ &>/dev/null && { export PATH=/cvmfs/oasis.opensciencegrid.org/mis/apptainer/bin/:"$PATH"; echo "Success: Added to PATH"; singularity --version; } || echo "Failure: Unable to run Apptainer/Singularity via CVMFS"
 ```
 If this works, it will be added to your path and you will see your apptainer/singularity version.
 

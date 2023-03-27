@@ -1,4 +1,4 @@
-# Introduction to Singularity/Apptainer
+# Introduction to Apptainer/Singularity
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 [![All Contributors](https://img.shields.io/badge/all_contributors-4-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
@@ -12,7 +12,7 @@
 
 This repository generates the corresponding lesson website from [The Carpentries](https://carpentries.org/) repertoire of lessons.
 
-## What is Singularity/Apptainer?
+## What is Apptainer/Singularity?
 
 Apptainer (formerly known as Singularity) is a free and open-source container platform that allows you to create and run applications in isolated images (also called "containers") in a simple, portable, fast, and secure manner. It performs operating system level virtualization known as containerization. Many container platforms are available, but Apptainer is designed to bring containers and reproducibility to the scientific community and High-Performance Computing (HPC) use cases. Using Apptainer, developers can work in reproducible environments of their choice and design, and these complete environments can be easily copied and executed on other platforms.
 

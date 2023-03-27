@@ -9,6 +9,7 @@ objectives:
 - "Learn to search and pull images from the Sylabs Singularity library and Docker Hub."
 - "Interact with the containers using the command-line interface."
 keypoints:
+- Use `singularity --version` to know what you are using and to communicate it if asking for support
 - "A container can be started from a local `.sif` or directly with the URL of the image."
 - "Apptainer is also compatible with Docker images, providing access to the large collection of images hosted by Docker Hub."
 - Get a shell inside of your container with `apptainer shell <path/URL to image>`
