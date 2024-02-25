@@ -31,25 +31,28 @@ system available on the sites.
 
 > ## What about virtual machines?
 > Virtual Machines (VMs) provide the same isolation and reproducibility.
-> However, they emulate the hardware, so they are computationally heavier to run,
+> However, they emulate the hardware, or at least the full OS, so they are computationally heavier to run,
 > require bigger files when distributed and are less flexible than containers, that run only what you require to be different.
+> All containers use the same OS Kernel of the host and contain only Libraries and the App that run in User space.
+> See [this article](https://dockerlabs.collabnix.com/beginners/difference-vm-containers.html) for a more detailed comparison.
 {: .callout}
 
 # Why Apptainer/Singularity?
 
 Many solutions are available to work with containers, for example [Docker](https://www.docker.com/),
-one of the most popular platforms. However, the enterprise-based container frameworks were motivated to provide
+one of the most popular platforms, or the free OSS [Podman](https://podman.io/). However, the enterprise-based container frameworks were motivated to provide
 _micro-services_, a solution that fits well in the models of the industry, where system administrators with root privilege
-install and run applications, each in its own container.
+start the container engine daemon and install and run applications, each in its own container.
 This is not so compatible with the workflow in the High-Performance Computing (HPC) and High Throughput Computing (HTC),
 in which usually complex applications run exhaustively using all the available resources and without any special privilege.
 
 Apptainer/Singularity is a container platform created for the HPC/HTC use case. It allows to build and run containers with just
-a few steps in most of the cases, and its design presents key concepts for the scientific community:
+a few steps in most of the cases, and its design presents key advantages for the scientific community:
 * Single-file based container images, facilitating the distribution, archiving and sharing.
 * Ability to run, and in modern systems also to be installed, without any root daemon or setuid privileges. This makes it safer for large computer centers with shared resources.
 * Preserves the permissions in the environment. The user outside the container can be the same user inside.
 * Simple integration with resource managers and distributed computing frameworks because it runs as a regular application.
+* Minimum overhead. No extra processes after initializing the container (Uses `execv()`).
 
  <a href="https://apptainer.org/docs/user/">
 <img src="https://apptainer.org/docs/user/main/_static/logo.png" alt="Apptainer/Singularity" width="220">
@@ -57,25 +60,24 @@ a few steps in most of the cases, and its design presents key concepts for the s
 
 > ## Docker and Apptainer/Singularity
 > As you will learn in this training module, Apptainer/Singularity [*can* be used with Docker images](https://apptainer.org/docs/user/main/docker_and_oci.html).
-> If you want to learn more about docker, check out [our docker training](https://hsf-training.github.io/hsf-training-docker/index.html).
+> If you want to learn more about Docker or Podman, check out [our podman/docker training](https://hsf-training.github.io/hsf-training-docker/index.html).
 {: .callout}
 
 # Apptainer vs Singularity
 In these lessons you see the name *Apptainer* or *Apptainer/Singularity*, and the command `apptainer`.
 As stated in the [move and renaming announcement](https://apptainer.org/news/community-announcement-20211130/), "Singularity IS Apptainer".
 Currently there are three products derived from the original Singularity project from 2015:
-* *Singularity*: commercial software by [Sylabs](https://sylabs.io/).
+* *SingularityPro*: commercial software by [Sylabs](https://sylabs.io/).
 * [*SingularityCE*](https://sylabs.io/2022/06/singularityce-is-singularity/): open source Singularity supported by Sylabs.
-* *Apptainer*: open source Singularity, recently renamed and hosted by the [Linux Foundation](https://www.linuxfoundation.org/).
-As of Fall 2022 all three Apptainer/Singularity versions are compatible and practically the same, but have different roadmaps.
+* *Apptainer*: open source Singularity, renamed in 2021 and hosted by the [Linux Foundation](https://www.linuxfoundation.org/).
+As of Spring 2024 all three Apptainer/Singularity versions are compatible and practically the same (differ in some additional format support), but have different roadmaps.
 There is hope that in the future they will join forces, but this is not currently the case.
 To understand how this came to be you can read the [Singularity history on Wikipedia](https://en.wikipedia.org/wiki/Singularity_%28software%29#History).
 
 We are following Apptainer, the most adopted variation in the scientific community, so we are using the `apptainer` command.
-If you are using Singularity or SingularityCE, just replace the command `apptainer` with `singularity` and the
+If you are using SingularityPro or SingularityCE, just replace the command `apptainer` with `singularity` and the
 `APPTAINER_` and  `APPTAINERENV_` variable prefixes  with `SINGULARITY_` and  `SINGULARITYENV_`.
- But since its previous version was named Singularity and it
-If you have older scripts still using the `singularity` command they will work also in Apptainer because it is providing the `singularity` alias
+If you have older scripts still using the `singularity` command and `SINGULARITY...` variables, they will work also in Apptainer because it is providing the `singularity` alias
 and [full compatibility with the previous Singularity environment](https://apptainer.org/docs/user/main/singularity_compatibility.html).
 
 # Documentation

@@ -28,15 +28,15 @@ In this chapter we will learn the basics about their capabilities and some use c
 
 ## Instances from image files
 
-To start an instance, Apptainer provides the command `instance`. To exemplify, let's pull the CentOS image used
+To start an instance, Apptainer provides the command `instance`. To exemplify, let's pull the AlmaLinux image used
 in previous chapters
 ```bash
-apptainer pull docker://centos:centos7
+apptainer pull docker://almalinux:9
 ```
 
 The image must be started in the following way:
 ```bash
-apptainer instance start centos_centos7.sif mycentos7
+apptainer instance start almalinux_9.sif myalma9
 ```
 In this example, the `.sif` is the image downloaded from Dockerhub, and `mycentos7` is the name that we have
 assigned to the instance. Instead of opening a shell session or executing a command, the container is running in
@@ -48,7 +48,7 @@ apptainer instance list
 ```
 ~~~
 INSTANCE NAME    PID      IP    IMAGE
-mycentos7        10782          /home/myuser/centos_centos7.sif
+myalma9          3277300        /tmp/myuser/almalinux_9.sif
 ~~~
 {: .output}
 
@@ -56,16 +56,15 @@ To interact with the instance, the commands `exec` and `shell` are available. Th
 `instance://name`.
 For example, to open a shell inside the CentOS instance:
 ```bash
-apptainer shell instance://mycentos7
+apptainer shell instance://myalma9
 ```
 
 Remember that exiting the shell instance will not stop the container. For doing so, use `instance stop`:
 ```bash
-apptainer instance stop mycentos7
+apptainer instance stop myalma9
 ```
 You can confirm the instance doesn't exist with `instance list`.
 
-{% include links.md %}
 
 > ## Instances with bind paths
 >
@@ -73,7 +72,7 @@ You can confirm the instance doesn't exist with `instance list`.
 > an interactive session are available. For example, if you want a directory mounted inside the instance, use the
 > `--bind` option:
 > ```bash
-> apptainer instance start --bind /home/user/mydata:/data centos_centos7.sif mycentos7
+> apptainer instance start --bind /home/user/mydata:/data almalinux_9.sif myalma9
 > ```
 > binding the directory `mydata/` from the host as `/data` inside the instance.
 {: .callout}
@@ -257,7 +256,7 @@ c.Draw()
 
 The bottom line: with any Jupyter notebook that you write, you can provide an Apptainer image that will
 set the environment required to execute the cells. It doesn't matter if yourself or someone else comes in one, five,
-ten years, your code will work independently of the software available in your computer as far as Apptainer/Singularity
+ten years, your code will work independently of the software available in your computer as long as Apptainer/Singularity
 is available!
 
 > ## A Jupyter notebook with Uproot available
@@ -289,3 +288,5 @@ is available!
 >>```
 > {: .solution}
 {: .challenge}
+
+{% include links.md %}

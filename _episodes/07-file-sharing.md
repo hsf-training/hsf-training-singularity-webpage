@@ -17,9 +17,8 @@ keypoints:
 
 One of the key features about containers is the isolation of the processes running inside them. It means,
 files on the host system are not accessible within the container.
-However, it is
-very common that some files on the host system are needed inside the container, or you want to write files from the
-container to some directory in the host.
+However, it is very common that some files on the host system are needed inside the container,
+or you want to write files from the container to some directory in the host.
 
 We have already used the option `--bind` earlier in the module when exploring the options available to run Apptainer
 containers. In this chapter we will explore further options to bind directories from your host system to directories
@@ -90,7 +89,7 @@ Here we present the main points, refer to the
 ### Bind with command-line options
 
 The command-line option `--bind (-B)` will specify the directories that must be linked between the
-host and the container. It is available for `run`, `exec` and `shell` (as well for `instance` that is
+host and the container. It is available for `run`, `exec`, and `shell` (as well for `instance` that is
 not covered yet).
 
 The syntax for using the bind option is `"source:destination"`, and the paths must be absolute (relative
