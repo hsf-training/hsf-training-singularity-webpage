@@ -31,7 +31,7 @@ singularity --version
 ```
 For this training we recommend Apptainer >= 1.0 or Singularity >= 3.5. Older versions may not have some of the features or behave differently.
 If you need to install or upgrade Apptainer/Singularity please refer to the [Setup section]({{ page.root }}{% link setup.md %}).
-When asking for support please remember to include the version of Apptainer or Singularity being used, as in the output of the above commands.
+When asking for support please remember to include the version of Apptainer or Singularity being used, as in the output of the above command.
 
 You can check the available options and subcommands using `--help`:
 
@@ -41,13 +41,23 @@ apptainer --help
 
 # Downloading Images
 
-Apptainer/Singularity can store, search and retrieve images in registries.
+Container Images are executables that bundle together all necessary components for an application or an environment,
+like a template for containers.
+Containers are the runtime instances of images — they are images with a state. CircleCI has a nice
+[explanation of the differences](https://circleci.com/blog/docker-image-vs-container/).
+
+Apptainer/Singularity can store, search and retrieve images in registries (searchable catalogs and repositories for images and containers).
 Images built by other users can be accessible using the CLI, can be pulled down, and become containers at runtime.
 
-Sylabs, the developers of one Singularity flavor, hosts a public image registry, the
+Multiple registry APIs are supported, like [Library](https://singularityhub.github.io/library-api/#/),
+[Docker](https://docs.docker.com/docker-hub/api/latest/) for Docker Hub,
+and [ORAS](https://oras.land/) for OCI (Open Containers Initiative) registries.
+
+Sylabs, the developer of one Singularity flavor, hosts a public image registry, the
 [Singularity Container Library](https://cloud.sylabs.io/library) where many user built images are available.
 
-The Linux Foundation flavor, Apptainer, does not point by default to the Sylab registry as previous versions did.
+Apptainer, the Linux Foundation flavor, does not point by default to the Sylab registry via the
+[Library API](https://singularityhub.github.io/library-api/#/) as previous versions did.
 You can change that running these commands (documented [here](https://apptainer.org/docs/user/main/endpoint.html#restoring-pre-apptainer-library-behavior)):
 ```bash
 apptainer remote add --no-login SylabsCloud cloud.sycloud.io
@@ -79,7 +89,8 @@ SylabsCloud    cloud.sycloud.io     YES     NO      NO
 
 Once you have setup a working registry you can use search and pull.
 The command `search` lists containers of interest
-and shows information about groups and collections. For example:
+and shows information about users (owners or managers of stored containers) and collections (sets of containers).
+For example:
 
 ```bash
 # this command can take around a minute to complete
@@ -184,12 +195,19 @@ bootstrap.sh               external             slc5_amd64_gcc434  slc7_aarch64_
 
 > ## URLs as input
 > Each of the different commands to set a container from a local `.sif` also accepts the URL of the image
-> as input. For example, starting a shell with Scientific Linux 6 is as easy as
+> as input. For example, starting a shell with Rocky Linux 8 is as easy as
 > ```bash
-> apptainer shell docker://sl:6
+> apptainer shell docker://rockylinux:8
 > ```
 > ~~~
-> 2020/12/17 21:42:46  info unpack layer: sha256:e0a6b33502f39d76f7c70213fa5b91688a46c2217ad9ba7a4d1690d33c6675ef
+> INFO:    Converting OCI blobs to SIF format
+> INFO:    Starting build...
+> Getting image source signatures
+> Copying blob 7ecefaa6bd84 done
+> Copying config a8f7ea56a4 done
+> Writing manifest to image destination
+> Storing signatures
+> 2024/02/24 20:32:30  info unpack layer: sha256:7ecefaa6bd84a24f90dbe7872f28a94e88520a07941d553579434034d9dca399
 > INFO:    Creating SIF file...
 > Apptainer>
 > ~~~
@@ -209,16 +227,18 @@ apptainer exec docker://rootproject/root root -b
 ~~~
 INFO:    Converting OCI blobs to SIF format
 INFO:    Starting build...
-
+...
+2024/02/24 20:36:21  info unpack layer: sha256:7aea3382b6b1676fdc2742fef246a9ec593b44cf8ddc81f0f7b1638f2dda6f65
+INFO:    Creating SIF file...
    ------------------------------------------------------------------
-  | Welcome to ROOT 6.22/06                        https://root.cern |
-  | (c) 1995-2020, The ROOT Team; conception: R. Brun, F. Rademakers |
-  | Built for linuxx8664gcc on Nov 27 2020, 15:14:08                 |
-  | From tags/v6-22-06@v6-22-06                                      |
-  | Try '.help', '.demo', '.license', '.credits', '.quit'/'.q'       |
+  | Welcome to ROOT 6.30/04                        https://root.cern |
+  | (c) 1995-2024, The ROOT Team; conception: R. Brun, F. Rademakers |
+  | Built for linuxx8664gcc on Jan 31 2024, 10:01:37                 |
+  | From heads/master@tags/v6-30-04                                  |
+  | With c++ (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0                   |
+  | Try '.help'/'.?', '.demo', '.license', '.credits', '.quit'/'.q'  |
    ------------------------------------------------------------------
 
-/bin/bash: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8)
 root [0]
 
 ~~~
@@ -239,8 +259,8 @@ with Apptainer available.
 > >
 > > ~~~
 > > INFO:    Using cached SIF image
-> > Python 3.8.5 (default, Jul 28 2020, 12:59:40)
-> > [GCC 9.3.0] on linux
+> > Python 3.10.12 (main, Nov 20 2023, 15:14:05) [GCC 11.4.0] on linux
+> > Type "help", "copyright", "credits" or "license" for more information.
 > > >>> import ROOT
 > > >>> # Now you can work with PyROOT, creating a histogram for example
 > > >>> h = ROOT.TH1F("myHistogram", "myTitle", 50, -10, 10)

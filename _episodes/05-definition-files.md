@@ -11,8 +11,8 @@ keypoints:
 ---
 <iframe width="427" height="251" src="https://www.youtube.com/embed/v2ZJ0L3TF48?list=PLKZ9c4ONm-VkxWW98Gcn9H6WwykMiqtnF" title="Intro to Apptainer/Singularity #4 - Definition files"  frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-As shown in the previous chapter, building containers with an interactive session may take several steps, and it can
-become as complicated as the setup is needed.
+As shown in the previous chapter, building containers with an interactive session may take several steps,
+and it can become as complicated as the required setup.
 An Apptainer definition file provides an easy way to build and deploy containers.
 
 
@@ -174,6 +174,9 @@ A few [best practices for your containers](https://apptainer.org/docs/user/1.0/d
 > as far as Apptainer is available on the site.
 >
 > Libraries like [Sylabs Cloud Library](https://cloud.sylabs.io/library) ease the distribution of images.
+> Your institution (e.g. Fermilab or CERN) may provide an [Harbor](https://goharbor.io/) registry.
+> GitHub has a [Container Registry](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry)
+> that Apptainer can access via the ORAS API.
 > Organizations like OSG provide instructions to [use available images](https://portal.osg-htc.org/documentation/htc_workloads/using_software/containers/)
 and [distribute custom images via CVMFS](https://portal.osg-htc.org/documentation/htc_workloads/using_software/containers-docker/).
 >
@@ -187,7 +190,7 @@ and [distribute custom images via CVMFS](https://portal.osg-htc.org/documentatio
 > write a definition file to deploy a container with Pythia8 available.
 >
 > Take a look at
-> [`/opt/pythia/pythia8307/examples/main01.py`](https://gitlab.com/Pythia8/releases/-/blob/pythia8307/examples/main01.py)
+> [`/opt/pythia/pythia8310/examples/main01.py`](https://gitlab.com/Pythia8/releases/-/blob/pythia8307/examples/main01.py)
 > and define the `%runscript` to execute it using `python3`.
 >
 > (Tip: notice that main01.py requires `Makefile.inc`).
@@ -195,46 +198,46 @@ and [distribute custom images via CVMFS](https://portal.osg-htc.org/documentatio
 > > ## Solution
 > > ~~~
 > > BootStrap: docker
-> > From: centos:centos7
+> > From: almalinux:9
 > >
 > > %post
 > >     yum -y groupinstall 'Development Tools'
 > >     yum -y install python3-devel
 > >     mkdir /opt/pythia && cd /opt/pythia
-> >     curl -o pythia8307.tgz https://pythia.org/download/pythia83/pythia8307.tgz
-> >     tar xvfz pythia8307.tgz
-> >     cd pythia8307
+> >     curl -o pythia8310.tgz https://pythia.org/download/pythia83/pythia8310.tgz
+> >     tar xvfz pythia8310.tgz
+> >     cd pythia8310
 > >     ./configure --with-python-include=/usr/include/python3.6m/
 > >     make
 > >
 > > %environment
-> >     export PYTHONPATH=/opt/pythia/pythia8307/lib:$PYTHONPATH
-> >     export LD_LIBRARY_PATH=/opt/pythia/pythia8307/lib:$LD_LIBRARY_PATH
+> >     export PYTHONPATH=/opt/pythia/pythia8310/lib:$PYTHONPATH
+> >     export LD_LIBRARY_PATH=/opt/pythia/pythia8310/lib:$LD_LIBRARY_PATH
 > >
 > > %runscript
-> >     cp /opt/pythia/pythia8307/Makefile.inc .
-> >     python3 /opt/pythia/pythia8307/examples/main01.py
+> >     cp /opt/pythia/pythia8310/Makefile.inc .
+> >     python3 /opt/pythia/pythia8310/examples/main01.py
 > >
 > > %labels
 > >     Author HEPTraining
-> >     Version v0.0.1
+> >     Version v0.0.2
 > >
 > > %help
-> >     Container providing Pythia 8.307. Execute the container to run an example.
-> >     Open it in a shell to use the Pythia installation with Python 3.6
+> >     Container providing Pythia 8.310. Execute the container to run an example.
+> >     Open it in a shell to use the Pythia installation with Python 3.9
 > > ~~~
 > > {: .source}
 > >
 > > Build your container executing
 > >
 > > ```bash
-> > apptainer build pythiaInCentos7.sif myPythia8.def
+> > apptainer build pythiaInAlma9.sif myPythia8.def
 > > ```
 > >
 > > And finally, execute the container to run [`main01.py`](https://gitlab.com/Pythia8/releases/-/blob/pythia8307/examples/main01.py)
 > >
 > > ```bash
-> > ./pythiaInCentos7.sif
+> > ./pythiaInAlma9.sif
 > > ```
 > {: .solution}
 {: .challenge}

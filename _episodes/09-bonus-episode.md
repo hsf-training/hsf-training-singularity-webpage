@@ -1,5 +1,5 @@
 ---
-title: "Bonus Episode: Building and deploying an Apptainer container to Github Packages"
+title: "Bonus Episode: Building and deploying an Apptainer container to GitHub Packages"
 teaching: 40
 exercises: 0
 questions:
@@ -8,12 +8,13 @@ questions:
 objectives:
 - To be able to build an apptainer container and share it via GitHub packages
 keypoints:
--  Python packages can be installed in apptainer images along with ubuntu packages.
--  It is possible to publish and share apptainer images over github packages.
+- Python packages can be installed in apptainer images along with ubuntu packages.
+- It is possible to publish and share apptainer images over github packages.
 ---
 
 > ## Prerequisites
-> For this lesson, you will need,
+> This bonus episode is an extension of the Introduction to Apptainer/Singularity
+> For this lesson, you will also need,
 > * Knowledge of Git [SW Carpentry Git-Novice Lesson](https://swcarpentry.github.io/git-novice/)
 > * Knowledge of GitHub CI/CD [HSF Github CI/CD Lesson](https://hsf-training.github.io/hsf-training-cicd-github/)
 {: .prereq}
@@ -80,14 +81,14 @@ jobs:
       packages: write
 
     container:
-        image: quay.io/singularity/singularity:v3.8.1
+        image: quay.io/singularity/singularity:v4.1.0
         options: --privileged
 
     name: Build Container
     steps:
 
       - name: Check out code for the container builds
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Build Container
         run: |
@@ -100,7 +101,9 @@ jobs:
 ```
 {% endraw %}
 
-The above script is designed to build and publish a Apptainer image with [GitHub packages](https://github.com/features/packages).
+The above script is designed to build and publish an Apptainer image with [GitHub packages](https://github.com/features/packages).
 
 
 * **Step 6**: Add LICENSE and README as recommended in the [SW Carpentry Git-Novice Lesson](https://swcarpentry.github.io/git-novice/), and then the repository is good to go.
+
+{% include links.md %}
