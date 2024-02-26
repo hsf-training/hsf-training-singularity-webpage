@@ -1,7 +1,7 @@
 ---
 title: "Building Containers"
-teaching: 40
-exercises: 30
+teaching: 20
+exercises: 10
 questions:
 - "How to build containers with my requirements?"
 objectives:
@@ -150,7 +150,8 @@ We will automate this in the next section.
 
 > ## Execute Python with PyROOT available
 >
-> Build a container to use uproot in Python 3.9.
+> Build a container to use [Uproot](https://github.com/scikit-hep/uproot5),
+> a library for reading and writing ROOT files in pure Python and NumPy, in Python 3.9.
 >
 > > ## Solution
 > >

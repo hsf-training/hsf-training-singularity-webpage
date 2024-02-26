@@ -13,9 +13,10 @@ keypoints:
 ---
 
 > ## Prerequisites
-> This bonus episode is an extension of the Introduction to Apptainer/Singularity
+> The previous episode ended the Introduction to Apptainer/Singularity.
+> This bonus episode is an optional extension mixing knowledge from different courses.
 > For this lesson, you will also need,
-> * Knowledge of Git [SW Carpentry Git-Novice Lesson](https://swcarpentry.github.io/git-novice/)
+> * Knowledge of Git [SW Carpentry Git-Novice Lesson](https://swcarpentry.github.io/git-novice/) (for simplified authentication with the `gh` CLI, see [this version of the git training](https://mambelli.github.io/git-novice/07-github.html))
 > * Knowledge of GitHub CI/CD [HSF Github CI/CD Lesson](https://hsf-training.github.io/hsf-training-cicd-github/)
 {: .prereq}
 
