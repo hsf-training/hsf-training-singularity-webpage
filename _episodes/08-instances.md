@@ -1,6 +1,6 @@
 ---
 title: "Apptainer/Singularity instances"
-teaching: 60
+teaching: 40
 exercises: 10
 questions:
 - "How can I keep my container running in the background?"
@@ -180,6 +180,8 @@ Remember to stop the instance once you are done.
 
 As an example of the capabilities of instances as services, let's extend our definition file to deploy a
 Jupyter notebook server with a customized environment.
+[Jupyter Notebook](https://jupyter.org/) is a web-based interactive computing platform. The notebook combines live code, equations,
+narrative text, and visualizations.
 
 What if we provide a Jupyter notebook ready to use ROOT? If you remember our example from the
 [definition files chapter]({{ page.root }}{% link _episodes/05-definition-files.md %}),
@@ -233,7 +235,7 @@ If you go to http://localhost:8850 (with SSH tunneling if needed), you will find
 Jupyter webapp will ask for an access token. Fortunately, you can get the token listing the URL of active servers using
 the `jupyter notebook list` command. To execute the command inside the instance, use `sigularity exec`:
 ```bash
-apptainer exec instance://notebook jupyter notebook list
+apptainer exec instance://mynotebook jupyter notebook list
 ```
 ~~~
 Currently running servers:
@@ -241,7 +243,7 @@ http://localhost:8850/?token=12asldc9b2084f9b664b39a6246022312bc9c605b :: /home/
 ~~~
 {: .output}
 
-Open the URL with the token, and you will be able to see the Jupyter interface. Try to open a new notebook and write in
+Open the URL with the token (from http to the first space), and you will be able to see the Jupyter interface. Try to open a new notebook and write in
 a cell to confirm that ROOT is available:
 ```python
 import ROOT

@@ -1,7 +1,7 @@
 ---
 title: "Containers from definition files"
-teaching: 40
-exercises: 30
+teaching: 20
+exercises: 20
 questions:
 - "How to easily build and deploy containers from a single definition file?"
 objectives:
@@ -186,7 +186,8 @@ and [distribute custom images via CVMFS](https://portal.osg-htc.org/documentatio
 
 > ## Write a definition file to build a container with Pythia8 available in Python
 >
-> Following the example of the first section in which a container is built with an interactive session,
+> Following the example of the first section in which a container is built with an interactive session
+> (see the previous episode),
 > write a definition file to deploy a container with Pythia8 available.
 >
 > Take a look at
@@ -207,7 +208,7 @@ and [distribute custom images via CVMFS](https://portal.osg-htc.org/documentatio
 > >     curl -o pythia8310.tgz https://pythia.org/download/pythia83/pythia8310.tgz
 > >     tar xvfz pythia8310.tgz
 > >     cd pythia8310
-> >     ./configure --with-python-include=/usr/include/python3.6m/
+> >     ./configure --with-python-include=/usr/include/python3.9
 > >     make
 > >
 > > %environment
@@ -239,5 +240,9 @@ and [distribute custom images via CVMFS](https://portal.osg-htc.org/documentatio
 > > ```bash
 > > ./pythiaInAlma9.sif
 > > ```
+> >
+> > This solution is building Pythia from scratch and may take several minutes to build the container.
+> > In the previous episode we saw that binary packages of Pythia are available in EPEL.
+> > Use them to build a similar container mych faster.
 > {: .solution}
 {: .challenge}
