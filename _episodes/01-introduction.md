@@ -12,7 +12,7 @@ keypoints:
 - "Single-file based container images facilitates the distribution."
 - "Secure. User inside the container = user outside."
 ---
-<iframe width="427" height="251" src="https://www.youtube.com/embed/v5WbqtRbH6M?list=PLKZ9c4ONm-VkxWW98Gcn9H6WwykMiqtnF" title="Intro to Apptainer/Singularity #1 - Introduction"  frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="427" height="251" src="https://www.youtube.com/embed/yAVeZ3gP2ag?list=PLwN-li4B10E3MtN4620yhGbctjTyQ9jna" title="Intro to Apptainer/Singularity #1 - Introduction"  frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 # Working with containers
 
@@ -35,13 +35,16 @@ system available on the sites.
 > require bigger files when distributed and are less flexible than containers, that run only what you require to be different.
 > All containers use the same OS Kernel of the host and contain only Libraries and the App that run in User space.
 > See [this article](https://dockerlabs.collabnix.com/beginners/difference-vm-containers.html) for a more detailed comparison.
+> And if you are curious about the Linux Kernel mechanisms that make containers possible you can check [this blog pos](https://q15928.github.io/2021/01/09/container-101/
+).
 {: .callout}
 
 # Why Apptainer/Singularity?
 
 Many solutions are available to work with containers, for example [Docker](https://www.docker.com/),
-one of the most popular platforms, or the free OSS [Podman](https://podman.io/). However, the enterprise-based container frameworks were motivated to provide
-_micro-services_, a solution that fits well in the models of the industry, where system administrators with root privilege
+one of the most popular platforms, or the free OSS [Podman](https://podman.io/).
+However, the enterprise-based container frameworks were motivated to provide _micro-services_,
+a solution that fits well in the models of the industry, where system administrators with root privilege
 start the container engine daemon and install and run applications, each in its own container.
 This is not so compatible with the workflow in the High-Performance Computing (HPC) and High Throughput Computing (HTC),
 in which usually complex applications run exhaustively using all the available resources and without any special privilege.

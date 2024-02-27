@@ -22,8 +22,9 @@ and a quick run through to learn just the bare minimum.
 ### Links used for explanation
 
 Episode 1 (Introduction)
-* https://hsf-training.github.io/hsf-training-singularity-webpage/01-introduction/index.html
-* https://www.docker.com/resources/what-container/
+* [https://hsf-training.github.io/hsf-training-singularity-webpage/01-introduction/index.html]
+* [https://www.docker.com/resources/what-container/](https://www.docker.com/resources/what-container/)
+* https://q15928.github.io/2021/01/09/container-101/
 * https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0177459
 * https://docs.sylabs.io/guides/2.6/user-guide/singularity_flow.html
 * https://docs.sylabs.io/guides/2.6/user-guide/_images/flow.png
