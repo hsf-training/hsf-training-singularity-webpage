@@ -16,7 +16,7 @@ keypoints:
 - Execute a command inside of your container with `apptainer exec <path/URL> <command>`
 - Bind outside directories with `--bind`
 ---
-<iframe width="427" height="251" src="https://www.youtube.com/embed/puSbnD415Ow?list=PLKZ9c4ONm-VkxWW98Gcn9H6WwykMiqtnF" title="Intro to Apptainer/Singularity #2 - Containers and Images"  frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="427" height="251" src="https://www.youtube.com/embed/hiWQ1CNlxkE?list=PLwN-li4B10E3MtN4620yhGbctjTyQ9jna" title="Intro to Apptainer/Singularity #2 - Containers and Images"  frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 # The Apptainer Command Line Interface
 
@@ -48,10 +48,6 @@ Containers are the runtime instances of images — they are images with a state.
 
 Apptainer/Singularity can store, search and retrieve images in registries (searchable catalogs and repositories for images and containers).
 Images built by other users can be accessible using the CLI, can be pulled down, and become containers at runtime.
-
-Multiple registry APIs are supported, like [Library](https://singularityhub.github.io/library-api/#/),
-[Docker](https://docs.docker.com/docker-hub/api/latest/) for Docker Hub,
-and [ORAS](https://oras.land/) for OCI (Open Containers Initiative) registries.
 
 Sylabs, the developer of one Singularity flavor, hosts a public image registry, the
 [Singularity Container Library](https://cloud.sylabs.io/library) where many user built images are available.
@@ -86,6 +82,20 @@ SylabsCloud    cloud.sycloud.io     YES     NO      NO
 ...
 ~~~
 {: .output}
+
+> ## Remote Endpoints, Library API and OCI Registries
+> [Remotes](https://apptainer.org/docs/user/main/endpoint.html) are service endpoints Apptainer interacts with.
+> These include [Library API Registries](https://apptainer.org/docs/user/1.0/library_api.html),
+> [OCI Registries](https://apptainer.org/docs/user/1.0/docker_and_oci.html), and keyservers.
+> The first two are used to search, pull and push images.
+> The [Library](https://singularityhub.github.io/library-api/#/) API, `library://`,
+> was designed for SIF images, the [Singularity Image Format](https://github.com/apptainer/sif).
+> The [Docker](https://docs.docker.com/docker-hub/api/latest/)/[ORAS](https://oras.land/) API, `docker://`,
+> is used for Docker Hub, and other OCI ([Open Containers Initiative](https://opencontainers.org/)) registries.
+> These include [Quay.io](https://quay.io), [NVIDIA NGC](https://ngc.nvidia.com/),
+> the [GitHub Container Registry](https://github.com/features/packages),
+> [AWS ECR](https://docs.aws.amazon.com/AmazonECR/latest/userguide/registry_auth.html) and many more.
+{: .callout}
 
 Once you have setup a working registry you can use search and pull.
 The command `search` lists containers of interest
