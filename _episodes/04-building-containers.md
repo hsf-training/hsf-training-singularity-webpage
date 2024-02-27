@@ -75,6 +75,7 @@ First, we need to enable the CRB (Code Ready Builder/PowerTools) and
 [EPEL](https://docs.fedoraproject.org/en-US/epel/) (Extra Packages for Enterprise Linux) repositories
 and to install the development tools (remember that in this interactive session we are superuser):
 ```bash
+Apptainer> dnf install 'dnf-command(config-manager)'
 Apptainer> dnf config-manager --set-enabled crb
 Apptainer> dnf install epel-release
 Apptainer> dnf groupinstall 'Development Tools'
@@ -83,13 +84,7 @@ Apptainer> dnf install python3-devel
 Where `dnf` is the [package manager used in RHEL distributions](https://en.wikipedia.org/wiki/DNF_(software))
 (like AlmaLinux).
 
-Pythia is now distributed as RPM in EPEL so you can use (optionally also pythia8-devel):
-```bash
-Apptainer> dnf install pythia8
-Apptainer> dnf install python3-pythia8
-```
-
-But if you prefer you can follow all the installation steps described in the [Pythia website](https://pythia.org/).
+Now you can follow all the installation steps described in the [Pythia website](https://pythia.org/).
 Here is a summary of the commands you will need (you may need to adjust link and commands if there is a new Pythia version):
 
 ```bash
@@ -104,11 +99,19 @@ location of the Python headers:
 
 ```bash
 Apptainer> cd pythia8310
-Apptainer> ./configure --with-python-include=/usr/include/python3.6m/
+Apptainer> ./configure --with-python-include=/usr/include/python3.9
 Apptainer> make
 
 Apptainer> exit
 ```
+
+> ## Installing Pythia from the package manager
+> Pythia is now distributed as RPM in EPEL so you can use instead (optionally also pythia8-devel):
+> ```bash
+> Apptainer> dnf install pythia8
+> Apptainer> dnf install python3-pythia8
+> ```
+{: .callout}
 
 Now, open an interactive session with your user (no `--fakeroot`). You can use now the container with Pythia8 ready in a
 few steps. Let's use the Python interface:
