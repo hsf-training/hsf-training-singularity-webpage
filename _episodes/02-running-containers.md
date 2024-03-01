@@ -264,8 +264,9 @@ with Apptainer available.
 > > ## Solution
 > >
 > > ```bash
-> > apptainer exec docker://rootproject/root python3
+> > apptainer exec --cleanenv docker://rootproject/root python3
 > > ```
+> > `--cleanenv` is optional but makes the command more robust (see Episode 4)
 > >
 > > ~~~
 > > INFO:    Using cached SIF image

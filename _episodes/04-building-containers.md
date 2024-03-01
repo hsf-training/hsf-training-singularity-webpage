@@ -54,15 +54,28 @@ apptainer build --sandbox myAlma9 docker://almalinux:9
 The container name is `myAlma9`, and it has been initialized from the [official Docker image](https://hub.docker.com/_/almalinux)
 of AlmaLinux9.
 To initialize an interactive session use the `shell` command. And to write files within the sandbox directory use the `--writable` option.
+The `--cleanenv` option is added to make sure that the host environment is not affecting the container.
 Finally, the installation of new components will require superuser access inside the container, so use also the `--fakeroot` option, unless you are already root also outside.
 ```bash
-apptainer shell --writable --fakeroot myAlma9
+apptainer shell --cleanenv --writable --fakeroot myAlma9
 Apptainer> whoami
 ```
 ~~~
 root
 ~~~
 {: .output}
+`--cleanenv` clears the environment. It has been added to make sure that the eventual setting of
+Variables like PYTHONPATH or PYTHONHOME can affect the Python execution inside the container.
+A corrupted Python environment could cause errors like "ModuleNotFoundError: No module named 'encodings'"
+> ## Apptainer environment
+> [Environment variables in Linux](https://www.geeksforgeeks.org/environment-variables-in-linux-unix/)
+> are dynamic values that can affect programs and containers.
+> Apptainer by default preserves most of the outside environment inside the container
+> but has many options to control that.
+> You can clear the environment with the `--cleanenv` option, you can set variables with `--env`.
+> See the [Apptianer manual](https://apptainer.org/docs/user/main/environment_and_metadata.html))
+> for more options and details.
+{: .callout}
 Depending on the Apptainer/Singularity installation (privileged or unprivileged) and the version, you may have some requirements, like the `fakeroot` utility or `newuidmap` and `newgidmap`.
 If you get an error when using `--fakeroot` have a look at the [fakeroot documentation](https://apptainer.org/docs/user/main/fakeroot.html).
 > ## `--fakeroot` is not root
