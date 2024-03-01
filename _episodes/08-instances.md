@@ -130,11 +130,13 @@ apptainer build --fakeroot basicServer.sif basicServer.def
 
 Now, let's start an instance named `myWebService` with the image that we just built
 ```bash
-apptainer instance start --no-mount tmp basicServer.sif myWebService
+apptainer instance start --no-mount tmp --cleanenv basicServer.sif myWebService
 ```
 Reminder from the previous chapter: with `--no-mount tmp` we are asking Apptainer to NOT bind `/tmp` from the host
 to the instance (it is mounted by default), we use instead an isolated `/tmp` inside the instance where index.html has
 been copied.
+And with `--cleanenv` we clear the environment.
+
 
 You can confirm in the terminal that the web service is up using `curl` as
 ```bash
@@ -217,7 +219,8 @@ Save the definition file as `jupyterWithROOT.def`, and let's build an image call
 ```bash
 apptainer build --fakeroot jupyterWithROOT.sif jupyterWithROOT.def
 ```
-Now, start an instance named `mynotebook` with our brand-new image
+Now, start an instance named `mynotebook` with our brand-new image.
+Consider using `--cleanenv` if needed.
 ```bash
 apptainer instance start jupyterWithROOT.sif mynotebook
 ```
@@ -242,6 +245,13 @@ Currently running servers:
 http://localhost:8850/?token=12asldc9b2084f9b664b39a6246022312bc9c605b :: /home/myHome
 ~~~
 {: .output}
+
+> ## Notebook starting on a different port!
+> If the chosen port for the Notebook (8850 stated in the SIF file) is not available,
+> the notebook will not error out, but will start and use the first available port after that.
+> E.g. if you did not terminate the web server from the previous example,
+> The above command "jupyter notebook list" will show you the correct port.
+{: .callout}
 
 Open the URL with the token (from http to the first space), and you will be able to see the Jupyter interface. Try to open a new notebook and write in
 a cell to confirm that ROOT is available:
