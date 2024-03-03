@@ -135,7 +135,8 @@ apptainer instance start --no-mount tmp --cleanenv basicServer.sif myWebService
 Reminder from the previous chapter: with `--no-mount tmp` we are asking Apptainer to NOT bind `/tmp` from the host
 to the instance (it is mounted by default), we use instead an isolated `/tmp` inside the instance where index.html has
 been copied.
-And with `--cleanenv` we clear the environment.
+And with `--cleanenv` we clear the environment. It is not always necessary but it prevents interferences
+from the host environment (see ).
 
 
 You can confirm in the terminal that the web service is up using `curl` as

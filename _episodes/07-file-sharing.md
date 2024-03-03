@@ -29,8 +29,9 @@ And the same happens with permissions and ownership for files in bind directorie
 
 ## Bind paths included by default
 
-For each container executed, Apptainer binds automatically some directories by default, and other defined
-by the system admin in the Apptainer configuration. By default, Apptainer binds:
+For each container executed,
+[Apptainer binds automatically some directories by default](https://apptainer.org/docs/user/main/bind_paths_and_mounts.html#disabling-system-binds),
+and other defined by the system admin in the Apptainer configuration. By default, Apptainer binds:
 * The user's home directory ($HOME)
 * The current directory when the container is executed ($PWD)
 * System-defined paths: `/tmp`, `/proc`, `/dev`, etc.
@@ -68,7 +69,7 @@ mounts automatically your `$HOME` inside the container.
 
 Try this time with
 ```bash
-apptainer shell --no-mount home rootInUbuntu.sif
+apptainer shell --no-mount home,cwd rootInUbuntu.sif
 ```
 and you will notice that `$HOME` is not mounted anymore
 ```bash
@@ -78,6 +79,10 @@ ls /home/myuser
 ls: cannot access '/home/myuser': No such file or directory
 ~~~
 {: .output}
+
+Note how we disabled both `home` and `cwd` (current working directory). This because if you are running the apptainer
+command from your home directory, even if you use `--no-mount home` the home directory may still be mounted
+because it is also your current directory.
 
 ## User-defined bind paths
 

@@ -57,7 +57,7 @@ To initialize an interactive session use the `shell` command. And to write files
 The `--cleanenv` option is added to make sure that the host environment is not affecting the container.
 Finally, the installation of new components will require superuser access inside the container, so use also the `--fakeroot` option, unless you are already root also outside.
 ```bash
-apptainer shell --cleanenv --writable --fakeroot myAlma9
+apptainer shell --writable --cleanenv --fakeroot myAlma9
 Apptainer> whoami
 ```
 ~~~
@@ -65,18 +65,26 @@ root
 ~~~
 {: .output}
 `--cleanenv` clears the environment. It has been added to make sure that the eventual setting of
-Variables like PYTHONPATH or PYTHONHOME can affect the Python execution inside the container.
+variables on the host is not affecting the container.
+Variables like PYTHONPATH or PYTHONHOME are affecting the Python execution inside the container.
 A corrupted Python environment could cause errors like "ModuleNotFoundError: No module named 'encodings'"
 > ## Apptainer environment
 > [Environment variables in Linux](https://www.geeksforgeeks.org/environment-variables-in-linux-unix/)
 > are dynamic values that can affect programs and containers.
+> You can use the environment to pass variables to a container.
 > Apptainer by default preserves most of the outside environment inside the container
 > but has many options to control that.
-> You can clear the environment with the `--cleanenv` option, you can set variables with `--env`.
-> See the [Apptianer manual](https://apptainer.org/docs/user/main/environment_and_metadata.html))
+> You can clear the environment with the `--cleanenv` option and you can set variables with `--env`.
+> See the [Apptianer manual](https://apptainer.org/docs/user/main/environment_and_metadata.html)
 > for more options and details.
+>
+> PYTHONPATH and PYTHONHOME affect the Python execution, but other variables could affect other programs so,
+> if you don't care about the outside environment, you can add `--cleanenv`
+> all the times you start a container (`apptainer shell`, `exec` and `instance start` commands).
 {: .callout}
-Depending on the Apptainer/Singularity installation (privileged or unprivileged) and the version, you may have some requirements, like the `fakeroot` utility or `newuidmap` and `newgidmap`.
+
+Depending on the Apptainer/Singularity installation (privileged or unprivileged) and the version,
+you may have some requirements, like the `fakeroot` utility or `newuidmap` and `newgidmap`.
 If you get an error when using `--fakeroot` have a look at the [fakeroot documentation](https://apptainer.org/docs/user/main/fakeroot.html).
 > ## `--fakeroot` is not root
 > ATTENTION! [`--fakeroot`](https://apptainer.org/docs/user/main/fakeroot.html) allows you to be root inside a container that you own but is not changing who you are outside.
@@ -88,7 +96,7 @@ First, we need to enable the CRB (Code Ready Builder/PowerTools) and
 [EPEL](https://docs.fedoraproject.org/en-US/epel/) (Extra Packages for Enterprise Linux) repositories
 and to install the development tools (remember that in this interactive session we are superuser):
 ```bash
-Apptainer> dnf install 'dnf-command(config-manager)'
+Apptainer> dnf install 'dnf-command(config-manager)'  # this installs dnf-plugins-core
 Apptainer> dnf config-manager --set-enabled crb
 Apptainer> dnf install epel-release
 Apptainer> dnf groupinstall 'Development Tools'
@@ -118,11 +126,12 @@ Apptainer> make
 Apptainer> exit
 ```
 
-> ## Installing Pythia from the package manager
-> Pythia is now distributed as RPM in EPEL so you can use instead (optionally also pythia8-devel):
+> ## Installing the Pythia binary package
+> Pythia is now distributed as RPM in EPEL, so you can use this easier alternative to install it:
 > ```bash
 > Apptainer> dnf install pythia8
 > Apptainer> dnf install python3-pythia8
+> Apptainer> dnf install pythia8-devel  # optional, if you need also the development libraries to compile
 > ```
 {: .callout}
 
@@ -132,7 +141,7 @@ few steps. Let's use the Python interface:
 ```bash
 apptainer shell myAlma9
 
-# These first 2 lines are necessary only if Pythia was installed from source
+# These first 2 lines are necessary only if Pythia was installed from source, not if you used the binary package
 Apptainer> export PYTHONPATH=/opt/pythia/pythia8/lib:$PYTHONPATH
 Apptainer> export LD_LIBRARY_PATH=/opt/pythia/pythia8/lib:$LD_LIBRARY_PATH
 Apptainer> python3

@@ -7,12 +7,13 @@ The main course includes only the first 8 episodes
 The bonus episode 9 "Building and deploying an Apptainer container to Github Packages"
 is optional, also to avoid circular dependencies with Git and CI/CD.
 
-Some more advanced material is interspersed throughout the episodes.
+Some more advanced material is interspersed throughout the episodes,
+normally as a Tip (callout box with the Pin logo).
 This helps understanding how containers and Apptainer work,
 but are not strictly necessary for the basic use of Apptainer.
-Future releases my separate this out in highlighted sections
-to allow both a peruse of the course for a deeper understanding
-and a quick run through to learn just the bare minimum.
+Future releases may separate this out in highlighted sections with a dedicated callout type
+to allow both a peruse of the course for a deeper understanding and a
+quick run through to learn just the bare minimum.
 
 ## Overall
 
@@ -22,30 +23,30 @@ and a quick run through to learn just the bare minimum.
 ### Links used for explanation
 
 Episode 1 (Introduction)
-* [https://hsf-training.github.io/hsf-training-singularity-webpage/01-introduction/index.html](https://hsf-training.github.io/hsf-training-singularity-webpage/01-introduction/index.html)
-* [https://www.docker.com/resources/what-container/](https://www.docker.com/resources/what-container/)
-* [https://q15928.github.io/2021/01/09/container-101/](https://q15928.github.io/2021/01/09/container-101/)
-* [https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0177459](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0177459)
-* [https://docs.sylabs.io/guides/2.6/user-guide/singularity_flow.html](https://docs.sylabs.io/guides/2.6/user-guide/singularity_flow.html)
-* [https://docs.sylabs.io/guides/2.6/user-guide/_images/flow.png](https://docs.sylabs.io/guides/2.6/user-guide/_images/flow.png)
-* [https://en.wikipedia.org/wiki/Singularity_%28software%29#History](https://en.wikipedia.org/wiki/Singularity_%28software%29#History)
-* [https://apptainer.org/documentation/](https://apptainer.org/documentation/)
-* [https://apptainer.org/docs/user/latest/](https://apptainer.org/docs/user/latest/)
-* [https://github.com/hsf-training/hsf-training-singularity-webpage](https://github.com/hsf-training/hsf-training-singularity-webpage)
+* <https://hsf-training.github.io/hsf-training-singularity-webpage/01-introduction/index.html>
+* <https://www.docker.com/resources/what-container/>
+* <https://q15928.github.io/2021/01/09/container-101/>
+* <https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0177459>
+* <https://docs.sylabs.io/guides/2.6/user-guide/singularity_flow.html>
+* <https://docs.sylabs.io/guides/2.6/user-guide/_images/flow.png>
+* <https://en.wikipedia.org/wiki/Singularity_%28software%29#History>
+* <https://apptainer.org/documentation/>
+* <https://apptainer.org/docs/user/latest/>
+* <https://github.com/hsf-training/hsf-training-singularity-webpage>
 
 Episode 2
 * Terminal
-* [https://hsf-training.github.io/hsf-training-singularity-webpage/02-running-containers/index.html](https://hsf-training.github.io/hsf-training-singularity-webpage/02-running-containers/index.html)
-* [https://circleci.com/blog/docker-image-vs-container/](https://circleci.com/blog/docker-image-vs-container/)
-* [https://singularityhub.github.io/library-api/#/?id=library-api](https://singularityhub.github.io/library-api/#/?id=library-api)
-* [https://docs.google.com/presentation/d/1GMDyEHw02AqFnD8IV9YxeilQZ0E7zQuovtvaS0hgE0s/edit#slide=id.g2bb13c81de3_0_295](https://docs.google.com/presentation/d/1GMDyEHw02AqFnD8IV9YxeilQZ0E7zQuovtvaS0hgE0s/edit#slide=id.g2bb13c81de3_0_295)
-* [https://root.cern/](https://root.cern/)
-* [https://apptainer.org/docs/user/latest/](https://apptainer.org/docs/user/latest/)
+* <https://hsf-training.github.io/hsf-training-singularity-webpage/02-running-containers/index.html>
+* <https://circleci.com/blog/docker-image-vs-container/>
+* <https://singularityhub.github.io/library-api/#/?id=library-api>
+* <https://docs.google.com/presentation/d/1GMDyEHw02AqFnD8IV9YxeilQZ0E7zQuovtvaS0hgE0s/edit#slide=id.g2bb13c81de3_0_295>
+* <https://root.cern/>
+* <https://apptainer.org/docs/user/latest/>
 
 Episode 4
 * Terminal
-* [https://hsf-training.github.io/hsf-training-singularity-webpage/04-building-containers/index.html](https://hsf-training.github.io/hsf-training-singularity-webpage/04-building-containers/index.html)
-* [https://circleci.com/blog/docker-image-vs-container/](https://circleci.com/blog/docker-image-vs-container/)
+* <https://hsf-training.github.io/hsf-training-singularity-webpage/04-building-containers/index.html>
+* <https://circleci.com/blog/docker-image-vs-container/>
 * <https://github.com/scikit-hep/uproot5>
 * <https://uproot.readthedocs.io/en/latest/>
 * <https://apptainer.org/docs/user/latest/cli/apptainer_build.html>
