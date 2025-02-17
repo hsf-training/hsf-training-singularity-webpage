@@ -69,6 +69,7 @@ To cite this lesson, please consult with [CITATION](CITATION)
 
 Current maintainers of this lesson are
 
+* Marco Mambelli ([mambelli](https://github.com/mambelli))
 * Michel Villanueva ([michmx](https://github.com/michmx))
 
 Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
