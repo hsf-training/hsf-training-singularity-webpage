@@ -31,15 +31,53 @@ If your local computing system does not have Apptainer/Singularity installed, yo
 ## Option 2: Install Apptainer/Singularity
 
 You will need a **Linux system (including WSL on Windows computers)** to run Apptainer/Singularity natively.
-**MacOS is not supported**.
+On MacOS you need a Linux VM to be able to use Apptainer. There are different solution, here we describe how to use Lima.
+
+### Install on a Mac
+To avoid architecture problems we recommend to use a x86_64 VM also on ARM Macs. It will be a bit less performant but you'll avoid architecture errors when images are available only for x86_64.
+To do so you can use QEMU and LiMa via Homebrew.
+
+Install QEMU and Lima via Homebrew
+```bash
+# Install Homebrew if you don't have it already
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+# Install QEMU and Lima
+brew install qemu lima
+```
+Prepare a x86_64 VM. Here I'm using a Ubuntu image:
+```bash
+cat > ubuntu-x86_64.yaml << EOF
+arch: "x86_64"
+images:
+  - location: "https://cloud-images.ubuntu.com/jammy/current/jammy-server-cloudimg-amd64.img"
+    arch: "x86_64"
+  - location: "https://cloud-images.ubuntu.com/jammy/current/jammy-server-cloudimg-arm64.img"
+    arch: "aarch64"
+# Disable mounts and containerd, otherwise booting up may time out if the host is slow
+mounts: []
+containerd:
+  system: false
+  user: false
+EOF
+# now create and start
+limactl start ubuntu-x86_64.yaml --name=ubuntu
+limactl shell ubuntu
+```
+In the VM install and use apptainer:
+```bash
+sudo add-apt-repository -y ppa:apptainer/ppa
+sudo apt install -y apptainer
+apptainer --version
+apptainer exec docker://rootproject/root root -b
+```
 
 
-### If you have root access
+### On Linux, If you have root access
 
 It is easiest to
 [install if you have root access](https://apptainer.org/docs/user/main/quick_start.html#quick-installation).
 
-### If not
+### On Linux, If not
 
 If the above is not possible and you cannot use the CVMFS distribution you have still an option if user namespace is enabled on your system:
 1. Check if user namespaces are enabled:
