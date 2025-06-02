@@ -53,6 +53,7 @@ To do so you can use [QEMU](https://www.qemu.org/) and [Lima](https://lima-vm.io
     brew install qemu lima
     ```
 2. Prepare a x86_64 VM. Here I'm using a Ubuntu image:
+
     ```bash
     # Prepare the VM configuration file
     cat > ubuntu-x86_64.yaml << EOF
@@ -72,7 +73,8 @@ To do so you can use [QEMU](https://www.qemu.org/) and [Lima](https://lima-vm.io
     limactl start ubuntu-x86_64.yaml --name=ubuntu
     limactl shell ubuntu
     ```
-3. In the VM install and use apptainer:
+
+4. In the VM install and use apptainer:
     ```bash
     sudo add-apt-repository -y ppa:apptainer/ppa
     sudo apt install -y apptainer
