@@ -72,7 +72,7 @@ name: Apptainer Build Deploy
 on:
   pull_request:
   push:
-    branches: master
+    branches: [master, main]
 
 jobs:
   build-test-container:
