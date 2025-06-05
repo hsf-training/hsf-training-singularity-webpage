@@ -82,7 +82,7 @@ jobs:
       packages: write
 
     container:
-        image: quay.io/singularity/singularity:v4.1.0
+        image: ghcr.io/apptainer/apptainer:1.4.1
         options: --privileged
 
     name: Build Container
@@ -93,12 +93,13 @@ jobs:
 
       - name: Build Container
         run: |
-           singularity build container.sif Apptainer
+           apptainer build container.sif Apptainer
 
       - name: Login and Deploy Container
+        # Use default registry user ${{ github.repository_owner }} , or set a secret ${{ secrets.GHCR_USERNAME }}
         run: |
-           echo ${{ secrets.GITHUB_TOKEN }} | singularity remote login -u ${{ secrets.GHCR_USERNAME }} --password-stdin oras://ghcr.io
-           singularity push container.sif oras://ghcr.io/${GITHUB_REPOSITORY}:${tag}
+           echo ${{ secrets.GITHUB_TOKEN }} | apptainer registry login -u ${{ github.repository_owner }} --password-stdin oras://ghcr.io
+           apptainer push container.sif oras://ghcr.io/${GITHUB_REPOSITORY}:${tag}
 ```
 {% endraw %}
 
