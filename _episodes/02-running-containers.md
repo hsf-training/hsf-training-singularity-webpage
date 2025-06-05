@@ -136,6 +136,26 @@ and the image is stored locally as a `.sif` file (`centos7-devel_latest.sif`, in
 > ```
 {: .callout}
 
+
+> ## Docker Hub limit error
+>
+> Docker Hub [limits the number of download](https://docs.docker.com/docker-hub/usage/) you can do from a single IP to 100.
+> This may happen in workshops, also because a single image may require multiple downloads.
+> You will see a TOOMANYREQUESTS error like:
+> ```
+> FATAL:   While making image from oci registry: error fetching image to cache: while building SIF from layers: conveyor failed to get:
+> GET https://index.docker.io/v2/library/almalinux/manifests/8:
+> TOOMANYREQUESTS: You have reached your unauthenticated pull rate limit. https://www.docker.com/increase-rate-limit
+> ```
+> The solution is to authenticate if you have a Docker Hub account, or to change IP address (i.e. work from another computer), or to find a different image registry.
+> For example here is the [Ubuntu gallery on AWS](https://gallery.ecr.aws/ubuntu/ubuntu) where you can find the links.
+> In apptainer you'll have to add the server name not to use the default Docker Hub, e.g.
+> ```bash
+> apptainer pull docker://public.ecr.aws/ubuntu/ubuntu:20.04
+> ```
+> *Keep this in mind for later if you see the error!*
+{: .callout}
+
 # Running Containers
 
 There are several ways to interact with images and start containers. Here we will review how to initialize a shell
