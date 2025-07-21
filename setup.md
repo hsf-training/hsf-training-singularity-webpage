@@ -41,18 +41,21 @@ On MacOS you need as well a Linux VM to be able to use Apptainer.
 There are different solution, here we describe how to use [Lima](https://lima-vm.io/).
 
 ### Install on a Mac
-To avoid architecture problems we recommend to use a x86_64 VM also on ARM Macs.
-It will be less performant but you'll avoid architecture errors when images are available only for x86_64.
+To avoid architecture problems we recommend to use a x86\_64 VM also on ARM Macs.
+It will be less performant but you'll avoid architecture errors when images are available only for x86\_64.
 To do so you can use [QEMU](https://www.qemu.org/) and [Lima](https://lima-vm.io/) via [Homebrew](https://brew.sh/).
 
 1. Install QEMU and Lima via Homebrew:
+
     ```bash
     # Install Homebrew if you don't have it already
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     # Install QEMU and Lima
     brew install qemu lima
     ```
-2. Prepare a x86_64 VM. Here I'm using a Ubuntu image:
+
+2. Prepare a x86\_64 VM. Here I'm using a Ubuntu image:
+
     ```bash
     # Prepare the VM configuration file
     cat > ubuntu-x86_64.yaml << EOF
@@ -72,7 +75,9 @@ To do so you can use [QEMU](https://www.qemu.org/) and [Lima](https://lima-vm.io
     limactl start ubuntu-x86_64.yaml --name=ubuntu
     limactl shell ubuntu
     ```
+
 3. In the VM install and use apptainer:
+
     ```bash
     sudo add-apt-repository -y ppa:apptainer/ppa
     sudo apt install -y apptainer
@@ -80,6 +85,8 @@ To do so you can use [QEMU](https://www.qemu.org/) and [Lima](https://lima-vm.io
     apptainer --version
     # You can exit the VM with Ctrl+D (exit)
     ```
+
+
 Now you're ready to use Apptainer on your Mac. To use Apptainer (and all commands in this tutorial) you have to first
 enter your VM with `limactl shell ubuntu` and when you are done you can go back to the Mac shell using `exit` (Ctrl+d).
 If you reboot your Mac you may have to restart the VM with `limactl start ubuntu`.
@@ -94,6 +101,7 @@ It is easiest to
 
 If the above is not possible and you cannot use the CVMFS distribution you have still an option if user namespace is enabled on your system:
 1. Check if user namespaces are enabled:
+
     ```bash
     # on Debian/Ubuntu
     grep -q 'kernel.unprivileged_userns_clone=1' /etc/sysctl.d/90-unprivileged_userns.conf && \
@@ -104,13 +112,16 @@ If the above is not possible and you cannot use the CVMFS distribution you have 
         echo "User namespaces enabled, continue the Apptainer installation" || \
         echo "User namespaces NOT enabled, your use of Apptainer will be very limited"
     ```
+
    See [these full instructions](https://apptainer.org/docs/admin/main/user_namespace.html#user-namespace-requirements) for more about checking for and enabling user namespaces.
 1. If enabled, install unprivileged Apptainer with one of these three methods (in order of preference):
     1. Chose your `INSTALL_DIR` and [install there the relocatable Apptainer (recommended)](https://apptainer.org/docs/admin/main/installation.html#install-unprivileged-from-pre-built-binaries). Run:
+
         ```bash
         curl -s https://raw.githubusercontent.com/apptainer/apptainer/main/tools/install-unprivileged.sh | \
             bash -s - INSTALL_DIR
         ```
+
     1. Alternatively [install from source without root privileges](https://github.com/apptainer/apptainer/blob/main/INSTALL.md).
     1. Or use [cvmfsexec](https://github.com/cvmfs/cvmfsexec) to get CVMFS. This is a bit more complex, you can follow the instrictions summarized also in
 [this paper](https://indico.cern.ch/event/885212/contributions/4120683/attachments/2181040/3684201/CernVMWorkshopCvmfsExec20210201.pdf).
