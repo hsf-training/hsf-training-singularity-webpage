@@ -131,7 +131,7 @@ Will mount `/cvmfs` inside the container. Try it!
 
 > ## Binding directories with Docker-like syntax using `--mount`
 >
-> The flag --mount provides a method to bind directories using the syntax of Docker.
+> The flag `--mount` provides a method to bind directories using the syntax of Docker.
 > The bind is specified with the format `type=bind,src=<source>,dst=<dest>`.
 > Currently, only `type=bind` is supported. Check the
 > [documentation](https://apptainer.org/docs/user/main/bind_paths_and_mounts.html#mount-examples) for

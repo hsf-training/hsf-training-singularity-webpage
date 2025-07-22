@@ -72,7 +72,7 @@ You can confirm the instance doesn't exist with `instance list`.
 > an interactive session are available. For example, if you want a directory mounted inside the instance, use the
 > `--bind` option:
 > ```bash
-> apptainer instance start --bind /home/user/mydata:/data almalinux_9.sif myalma9
+> apptainer instance start --bind $HOME/mydata:/data almalinux_9.sif myalma9
 > ```
 > binding the directory `mydata/` from the host as `/data` inside the instance.
 {: .callout}
@@ -166,8 +166,8 @@ If you are executing Apptainer locally, try to open http://localhost:8850.
 > ```bash
 > ssh -L <port>:localhost:<port> myuser@<server>
 > ```
-> where <port> is the one used by your service, and <server> is the address of your institutional resources. For example,
-> for connecting to LXPLUS forwarding the port 8850:
+> where `<port>` is the one used by your service, and `<server>` is the address of your institutional resources (`echo "$(whoami)@$(hostname)"` will print your user and host).
+> For example, for connecting to LXPLUS forwarding the port 8850:
 > ```bash
 >  ssh -L 8850:localhost:8850 myuser@lxplus.cern.ch
 > ```
@@ -191,18 +191,18 @@ What if we provide a Jupyter notebook ready to use ROOT? If you remember our exa
 at this point it must be almost straightforward:
 ```
 Bootstrap: docker
-From: ubuntu:20.04
+From: ubuntu:24.04
 
 %post
     apt-get update -y
     apt-get install -y python3
     apt-get install -y python3-pip
-    pip install notebook
+    apt-get install -y python3-notebook
 
     apt-get install wget -y
     export DEBIAN_FRONTEND=noninteractive
     apt-get install dpkg-dev cmake g++ gcc binutils libx11-dev libxpm-dev \
-    libxft-dev libxext-dev python libssl-dev libgsl0-dev libtiff-dev -y
+    libxft-dev libxext-dev libssl-dev libgsl0-dev libtiff-dev libtbb-dev -y
     cd /opt
     wget https://root.cern/download/root_v6.22.06.Linux-ubuntu20-x86_64-gcc9.3.tar.gz
     tar -xzvf root_v6.22.06.Linux-ubuntu20-x86_64-gcc9.3.tar.gz
@@ -276,7 +276,8 @@ is available!
 >
 > Can you setup a Jupyter notebook server with [Uproot](https://uproot.readthedocs.io/en/latest/index.html) available in Apptainer?
 >
-> Hint: Uproot can be installed using `pip`.
+> Hint: Uproot can be installed using `pip`. And use the option `--break-system-packages`.
+> New Python versions complain when installing packages without a virtual environment. You need that option to force the install.
 >
 > > ## Solution
 > >
@@ -288,8 +289,8 @@ is available!
 > >    apt-get update -y
 > >    apt-get install -y python3
 > >    apt-get install -y python3-pip
-> >    pip install notebook
-> >    pip install uproot
+> >    apt-get install -y python3-notebook
+> >    pip install --break-system-packages uproot
 > >
 > >%startscript
 > >   jupyter notebook --port 8850
