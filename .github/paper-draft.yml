@@ -2,8 +2,7 @@ name: Draft JOSE paper
 on:
   push:
     branches:
-      - main
-
+      - jose-paper
 jobs:
   paper:
     runs-on: ubuntu-latest
