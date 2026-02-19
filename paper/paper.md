@@ -203,7 +203,7 @@ proper difficulty level and enough exercises to feel an interactive experience. 
 respondents felt that the number of exercises was "About right" for interactive learning. This
 suggests that the balance of theoretical content and practical application was effective.
 
-![Figure 1 Metrics from the pre-event (post-event) surveys \label{Figure_1}](Apptainer_post_workshop_questions.pdf)
+![Metrics from the pre-event (post-event) surveys \label{Figure_1}](Apptainer_post_workshop_questions.pdf)
 
 Figure 2 shows the pre-survey data collected during the registration for the training events,
 providing insights into user familiarity with various Singularity/Apptainer commands and concepts.
@@ -212,7 +212,7 @@ commands and topics. This trend is consistent across all categories, indicating 
 participants are researchers with no exposure to Apptainer, strongly motivating the need for
 training.
 
-![Figure 2 Pre-survey data collected during the training event registration \label{Figure_2}](Apptainer_pre_workshop_vertical_bars.pdf)
+![Figure 2 Pre-survey data collected during the training event registration, asking about familiarity with various Apptainer commands and concepts \label{Figure_2}](Apptainer_pre_workshop_vertical_bars.pdf)
 
 Figure 3 illustrates the post-survey data collected after the training event. The plots show a
 visible increase in the knowledge of the students when compared with the pre-survey. Users generally
@@ -225,7 +225,7 @@ more directly. On the other hand, it is important to remind that we encourage al
 including those who did not start or complete this training module, to fill out the complete survey.
 This may explain the people who answered "Never heard of it" or "Used it once".
 
-![Figure 3 Post-survey data collected after the training event \label{Figure_3}](Apptainer_post_workshop_vertical_bars.pdf)
+![Figure 3 Post-survey data collected, asking about familiarity with various Apptainer commands and concepts after the training event \label{Figure_3}](Apptainer_post_workshop_vertical_bars.pdf)
 
 # Conclusions
 
