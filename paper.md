@@ -10,28 +10,28 @@ tags:
 authors:
   - name: "Cruz Candelaria, Roy"
     orcid: "0000-0002-7205-0790"
-    affiliation: "7"
+    affiliation: "1"
   - name: "Desai, Aman"
     orcid: "0000-0003-2631-9696"
-    affiliation: "6"
+    affiliation: "2"
   - name: "Fidalgo Rodríguez, Guillermo"
     orcid: "0000-0001-8605-9772"
-    affiliation: "4"
+    affiliation: "3"
   - name: "Hernandez Villanueva, Michel"
     orcid: "0000-0002-6322-5587"
-    affiliation: "1"
+    affiliation: "4"
   - name: "Lieret, Kilian"
     orcid: "0000-0003-2792-7511"
     affiliation: "5"
   - name: "Malik, Sudhir"
     orcid: "0000-0002-6356-2655"
-    affiliation: "3"
+    affiliation: "6"
   - name: "Mambelli, Marco"
     orcid: "0000-0002-9489-2681"
-    affiliation: "2"
+    affiliation: "7"
   - name: "Mazurets, Tetiana"
     orcid: "0009-0001-8158-3644"
-    affiliation: "3"
+    affiliation: "6"
   - name: "Moreno Briceño, Alexander"
     orcid: "0000-0001-8415-2543"
     affiliation: "8"
@@ -40,22 +40,22 @@ authors:
     affiliation: "5"
   - name: "Sharma, Richa"
     orcid: "0000-0002-4656-4683"
-    affiliation: "3"
+    affiliation: "6"
 
 affiliations:
-  - name: Brookhaven National Laboratory
+  - name: University of Wisconsin-Madison
     index: 1
-  - name: Fermi National Accelerator Laboratory
+  - name: Adelaide University
     index: 2
-  - name: University of Puerto Rico Mayaguez
-    index: 3
   - name: University of Alabama
+    index: 3
+  - name: Brookhaven National Laboratory
     index: 4
   - name: Princeton University
     index: 5
-  - name: Adelaide University
+  - name: University of Puerto Rico Mayaguez
     index: 6
-  - name: University of Wisconsin-Madison
+  - name: Fermi National Accelerator Laboratory
     index: 7
   - name: Universidad Antonio Nariño
     index: 8
@@ -197,12 +197,14 @@ sufficient response rate to the surveys while maintaining anonymity, we implemen
 verification process: submitting the survey generates a return code that can be entered into the
 Indico system to confirm that the survey was completed.
 
+![Figure 1](fig/Apptainer_post_workshop_questions.pdf)
 Figure 1 illustrates some of the metrics from the pre-event (post-event) surveys from 360 (82)
 registered participants between 2023 and 2025. Trainees largely agreed that the material had a
 proper difficulty level and enough exercises to feel an interactive experience. Similarly, most
 respondents felt that the number of exercises was "About right" for interactive learning. This
 suggests that the balance of theoretical content and practical application was effective.
 
+![Figure 2](fig/Apptainer_pre_workshop_vertical_bars.pdf)
 Figure 2 shows the pre-survey data collected during the registration for the training events,
 providing insights into user familiarity with various Singularity/Apptainer commands and concepts.
 The significant majority of respondents had "Never heard of it" for most of the listed Apptainer
@@ -210,6 +212,7 @@ commands and topics. This trend is consistent across all categories, indicating 
 participants are researchers with no exposure to Apptainer, strongly motivating the need for
 training.
 
+![Figure 3](fig/Apptainer_post_workshop_vertical_bars.pdf)
 Figure 3 illustrates the post-survey data collected after the training event. The plots show a
 visible increase in the knowledge of the students when compared with the pre-survey. Users generally
 reported being "I am familiar with" or "Very familiar" with core commands like apptainer pull,
