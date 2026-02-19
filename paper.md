@@ -6,19 +6,59 @@ tags:
   - Containers
   - High-Energy Physics
   - Nuclear Physics
-# Note: order is not fixed yet, just collecting info for now
+# Note: alphabetical order by last name
 authors:
-  - name: Michel Hernandez Villanueva
+  - name: "Cruz Candelaria, Roy"
+    orcid: "0000-0002-7205-0790"
+    affiliation: "7"
+  - name: "Desai, Aman"
+    orcid: "0000-0003-2631-9696"
+    affiliation: "6"
+  - name: "Fidalgo Rodríguez, Guillermo"
+    orcid: "0000-0001-8605-9772"
+    affiliation: "4"
+  - name: "Hernandez Villanueva, Michel"
     orcid: "0000-0002-6322-5587"
     affiliation: "1"
-  - name: Marco Mambelli
+  - name: "Lieret, Kilian"
+    orcid: "0000-0003-2792-7511"
+    affiliation: "5"
+  - name: "Malik, Sudhir"
+    orcid: "0000-0002-6356-2655"
+    affiliation: "3"
+  - name: "Mambelli, Marco"
     orcid: "0000-0002-9489-2681"
     affiliation: "2"
+  - name: "Mazurets, Tetiana"
+    orcid: "0009-0001-8158-3644"
+    affiliation: "3"
+  - name: "Moreno Briceño, Alexander"
+    orcid: "0000-0001-8415-2543"
+    affiliation: "8"
+  - name: "Rios-Tascon, Andres"
+    orcid:  "0000-0003-3282-2634"
+    affiliation: "5"
+  - name: "Sharma, Richa"
+    orcid: "0000-0002-4656-4683"
+    affiliation: "3"
+
 affiliations:
   - name: Brookhaven National Laboratory
     index: 1
   - name: Fermi National Accelerator Laboratory
     index: 2
+  - name: University of Puerto Rico Mayaguez
+    index: 3
+  - name: University of Alabama
+    index: 4
+  - name: Princeton University
+    index: 5
+  - name: Adelaide University
+    index: 6
+  - name: University of Wisconsin-Madison
+    index: 7
+  - name: Universidad Antonio Nariño
+    index: 8
 date: "10 November 2025"
 bibliography: "paper.bib"
 nocite: |
