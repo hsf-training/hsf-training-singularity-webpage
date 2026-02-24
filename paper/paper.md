@@ -11,55 +11,60 @@ authors:
   - name: "Cruz Candelaria, Roy"
     orcid: "0000-0002-7205-0790"
     affiliation: "1"
+  - name: "Deconinck, Wouter"
+    orcid: "0000-0003-4033-6716"
+    affiliation: "2"
   - name: "Desai, Aman"
     orcid: "0000-0003-2631-9696"
-    affiliation: "2"
+    affiliation: "3"
   - name: "Fidalgo Rodríguez, Guillermo"
     orcid: "0000-0001-8605-9772"
-    affiliation: "3"
+    affiliation: "4"
   - name: "Hernandez Villanueva, Michel"
     orcid: "0000-0002-6322-5587"
-    affiliation: "4"
+    affiliation: "5"
   - name: "Lieret, Kilian"
     orcid: "0000-0003-2792-7511"
-    affiliation: "5"
+    affiliation: "6"
   - name: "Malik, Sudhir"
     orcid: "0000-0002-6356-2655"
-    affiliation: "6"
+    affiliation: "7"
   - name: "Mambelli, Marco"
     orcid: "0000-0002-9489-2681"
-    affiliation: "7"
+    affiliation: "8"
   - name: "Mazurets, Tetiana"
     orcid: "0009-0001-8158-3644"
-    affiliation: "6"
+    affiliation: "7"
   - name: "Moreno Briceño, Alexander"
     orcid: "0000-0001-8415-2543"
-    affiliation: "8"
+    affiliation: "9"
   - name: "Rios-Tascon, Andres"
     orcid:  "0000-0003-3282-2634"
-    affiliation: "5"
+    affiliation: "6"
   - name: "Sharma, Richa"
     orcid: "0000-0002-4656-4683"
-    affiliation: "6"
+    affiliation: "7"
 
 affiliations:
   - name: University of Wisconsin-Madison
     index: 1
-  - name: Adelaide University
+  - name: University of Manitoba
     index: 2
-  - name: University of Alabama
+  - name: Adelaide University
     index: 3
-  - name: Brookhaven National Laboratory
+  - name: University of Alabama
     index: 4
-  - name: Princeton University
+  - name: Brookhaven National Laboratory
     index: 5
-  - name: University of Puerto Rico Mayaguez
+  - name: Princeton University
     index: 6
-  - name: Fermi National Accelerator Laboratory
+  - name: University of Puerto Rico Mayaguez
     index: 7
-  - name: Universidad Antonio Nariño
+  - name: Fermi National Accelerator Laboratory
     index: 8
-date: "10 November 2025"
+  - name: Universidad Antonio Nariño
+    index: 9
+date: "23 February 2026"
 bibliography: "paper.bib"
 nocite: |
   @*
@@ -74,7 +79,7 @@ Nuclear Physics within containers. Training physicists on containerization techn
 importance in today's research landscape. By embracing these technologies, users can achieve
 enhanced reproducibility, portability, collaboration, and resource efficiency, assuring the
 conditions and integrity of the scientific analysis process. This training
-module, ["Introduction to Apptainer/Singularity"] (https://hsf-training.github.io/hsf-training-singularity-webpage/),
+module, ["Introduction to Apptainer/Singularity"](https://hsf-training.github.io/hsf-training-singularity-webpage/),
 is part of the HEP Software Foundation Training Center, which aims to equip newcomers to the field
 of High Energy Physics with the necessary software skills and best practices.
 
@@ -123,10 +128,10 @@ analysis preservation.
 
 Specific goals for this training module include how to:
 
-Pull Apptainer images from libraries
-Run commands inside Apptainer containers
-Build Apptainer containers with user requirements and from a single file definition
-Share files from the host system to the Apptainer container and vice versa
+* Pull Apptainer images from libraries
+* Run commands inside Apptainer containers
+* Build Apptainer containers with user requirements and from a single file definition
+* Share files from the host system to the Apptainer container and vice versa
 
 ## Prerequisites
 
@@ -135,8 +140,8 @@ have either access to a computing system with Apptainer available, such as an in
 or install Apptainer locally on a Linux system, on a Mac using Lima and Qemu, or in WSL on Windows
 machines.
 The HEP Software Foundation (HSF), a global community that facilitates collaboration and common
-efforts in the development and sustainability of software for high-energy physics, provides in
-its [training center](https://hsf-training.org/training-center/) the basic material to cover the
+efforts in the development and sustainability of software for high-energy physics [@HEPSoftwareFoundation:2017ggl],
+provides in its [training center](https://hsf-training.org/training-center/) the basic material to cover the
 prerequisites listed above. The Setup section in the training module covers Apptainer's installation
 on the different platforms.
 
@@ -167,7 +172,7 @@ similar to a live class.
 
 # Teaching Experience
 
-This module on Apptainer has been used during the HSF/IRIS-HEP training events
+This module on Apptainer has been used during the HSF & IRIS-HEP [@IRIS-HEP-webpage] training events
 on [Analysis Reproducibility](https://indico.cern.ch/event/1508102/) (formerly known
 as [Analysis Preservation](https://indico.cern.ch/event/1219810/)
 and [Analysis Pipelines](https://indico.cern.ch/event/1375507/])). During a week, we covered tools
