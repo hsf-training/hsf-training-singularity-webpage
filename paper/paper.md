@@ -157,18 +157,25 @@ stated learning objectives, a main body that includes exercises with solutions, 
 points to ensure the accomplishment of the learning objective. These are the episodes with their
 corresponding specific objectives:
 
-Introduction. Learning the containerization concepts and design goals behind Apptainer.
-Containers and Images. Learning to search and pull images from the Sylab Singularity library and
+* **Introduction**: Learning the containerization concepts and design goals behind Apptainer.
+* **Containers and Images**: Learning to search and pull images from the Sylab Singularity library and
 Docker Hub, and interacting with the containers using the command line interface.
-Building Containers. Downloading, assembling, and modifying containers from available images in the
+* **Building Containers**: Downloading, assembling, and modifying containers from available images in the
 repositories.
-Containers from Definition Files. Creating a container from a definition file.
-Sharing Files between Host and Container. Mapping directories on your host system to directories
+* **Containers from Definition Files**: Creating a container from a definition file.
+* **Sharing Files between Host and Container**: Mapping directories on your host system to directories
 within your container and learning about the bind paths included automatically in all containers.
-Apptainer Instances. Running containers in a detached mode to keep services up and deploying
+* **Apptainer Instances**: Running containers in a detached mode to keep services up and deploying
 instances via definition files.
-Bonus Episode: Building and Deploying an Apptainer Container to GitHub Packages. Using GitHub
+* **Bonus Episode: Building and Deploying an Apptainer Container to GitHub Packages**: Using GitHub
 actions to build an Apptainer container and share it via GitHub Container Registry (GHCR).
+
+The examples and exercises use ROOT [@Brun:1997pa] and Python, which are widely used in the HEP and Nuclear
+Physics communities. Students practice the usage of containers to run ROOT interactively through PyROOT,
+building containers with the Pythia8 [@Bierlich:2022pfr] event generator and the Uproot [@Pivarski_Uproot] library for
+reading ROOT files, and creating definition files that execute RooFit tutorials. In later episodes,
+participants deploy long-running services such as a Jupyter notebook server with ROOT support and
+learn to share data between the host and the container using bind mounts.
 
 The training module is designed to be used as an aide by instructors teaching live or to be used by
 students learning independently. To facilitate asynchronous learning, each episode also includes a
