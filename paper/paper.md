@@ -26,24 +26,27 @@ authors:
   - name: "Lieret, Kilian"
     orcid: "0000-0003-2792-7511"
     affiliation: "6"
+  - name: "Lukashenko, Valeriia"
+    orcid: "0000-0002-0630-5185"
+    affiliation: "7"
   - name: "Malik, Sudhir"
     orcid: "0000-0002-6356-2655"
-    affiliation: "7"
+    affiliation: "8"
   - name: "Mambelli, Marco"
     orcid: "0000-0002-9489-2681"
-    affiliation: "8"
+    affiliation: "9"
   - name: "Mazurets, Tetiana"
     orcid: "0009-0001-8158-3644"
-    affiliation: "7"
+    affiliation: "8"
   - name: "Moreno Briceño, Alexander"
     orcid: "0000-0001-8415-2543"
-    affiliation: "9"
+    affiliation: "10"
   - name: "Rios-Tascon, Andres"
     orcid:  "0000-0003-3282-2634"
     affiliation: "6"
   - name: "Sharma, Richa"
     orcid: "0000-0002-4656-4683"
-    affiliation: "7"
+    affiliation: "8"
 
 affiliations:
   - name: University of Wisconsin-Madison
@@ -58,12 +61,14 @@ affiliations:
     index: 5
   - name: Princeton University
     index: 6
-  - name: University of Puerto Rico Mayaguez
+  - name: University of Zurich
     index: 7
-  - name: Fermi National Accelerator Laboratory
+  - name: University of Puerto Rico Mayaguez
     index: 8
-  - name: Universidad Antonio Nariño
+  - name: Fermi National Accelerator Laboratory
     index: 9
+  - name: Universidad Antonio Nariño
+    index: 10
 date: "23 February 2026"
 bibliography: "paper.bib"
 nocite: |
@@ -251,7 +256,8 @@ evolving environments.
 # Acknowledgements
 
 We would like to thank all the members of our community in the HEP Software Foundation and
-IRIS-HEP training for their voluntary contributions, big or small. We thank NSF grants OAC-1836650,
+IRIS-HEP training for their voluntary contributions, big or small. We thank NSF grants PHY-2323298
+, OAC-1836650,
 OAC-1829707, and OAC-1829729 for support of the training programs.
 
 # References
