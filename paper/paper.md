@@ -170,10 +170,10 @@ instances via definition files.
 * **Bonus Episode: Building and Deploying an Apptainer Container to GitHub Packages**: Using GitHub
 actions to build an Apptainer container and share it via GitHub Container Registry (GHCR).
 
-The examples and exercises use ROOT [@Brun:1997pa] and Python, which are widely used in the HEP and Nuclear
+The examples and exercises use ROOT [@Brun:1997pa, @Antcheva:2009zz] and Python, which are widely used in the HEP and Nuclear
 Physics communities. Students practice the usage of containers to run ROOT interactively through PyROOT,
-building containers with the Pythia8 [@Bierlich:2022pfr] event generator and the Uproot [@Pivarski_Uproot] library for
-reading ROOT files, and creating definition files that execute RooFit tutorials. In later episodes,
+building containers with the Pythia8 physics event generator [@Bierlich:2022pfr] and the Uproot library [@Pivarski_Uproot] for
+reading ROOT files, and creating definition files that execute RooFit tutorials [@Verkerke:2003ir]. In later episodes,
 participants deploy long-running services such as a Jupyter notebook server with ROOT support and
 learn to share data between the host and the container using bind mounts.
 
