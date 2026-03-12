@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - jose-paper
+      - gh-pages
 jobs:
   paper:
     runs-on: ubuntu-latest
