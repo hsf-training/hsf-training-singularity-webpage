@@ -264,6 +264,7 @@ We would like to thank all the members of our community in the HEP Software Foun
 IRIS-HEP training for their voluntary contributions, big or small. We thank NSF grants PHY-2323298
 , OAC-1836650,
 OAC-1829707, and OAC-1829729 for support of the training programs.
+This work was supported by the U.S. Department of Energy under contract number DE-SC0012704.
 
 # References
 
