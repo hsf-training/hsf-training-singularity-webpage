@@ -14,11 +14,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      # Install standard Pandoc
+      # Install Pandoc
       - name: Setup Pandoc
-        uses: pandoc/actions/setup@v1
-        with:
-          version: 'latest'
+        uses: r-lib/actions/setup-pandoc@v3
 
       # Install a basic LaTeX environment using the maintained action
       - name: Setup TeX Live
