@@ -24,19 +24,21 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y texlive-latex-base texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended
 
-      # Generate the raw LaTeX source
+      # Generate the raw LaTeX source 
       - name: Build LaTeX source for arXiv
+        working-directory: paper
         run: |
-          pandoc paper/paper.md \
+          pandoc paper.md \
             --natbib \
-            -s -o paper/preprint.tex
+            -s -o preprint.tex
 
       # Generate a clean, unbranded PDF
       - name: Build clean PDF
+        working-directory: paper
         run: |
-          pandoc paper/paper.md \
+          pandoc paper.md \
             --citeproc \
-            -s -o paper/preprint.pdf
+            -s -o preprint.pdf
 
       # Upload both files as artifacts
       - name: Upload Artifacts
