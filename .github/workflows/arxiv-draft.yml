@@ -20,9 +20,9 @@ jobs:
         with:
           version: 'latest'
 
-      # Install a basic LaTeX environment to compile the PDF
+      # Install a basic LaTeX environment using the maintained action
       - name: Setup TeX Live
-        uses: teatimeguest/setup-texlive-action@v3
+        uses: zauguin/install-texlive@v4
         with:
           packages: >
             scheme-basic
