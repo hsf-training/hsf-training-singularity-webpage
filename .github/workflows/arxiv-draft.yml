@@ -16,19 +16,13 @@ jobs:
 
       # Install Pandoc
       - name: Setup Pandoc
-        uses: r-lib/actions/setup-pandoc@v2
+        uses: r-lib/actions/setup-pandoc@v3
 
-      # Install a basic LaTeX environment using the maintained action
-      - name: Setup TeX Live
-        uses: zauguin/install-texlive@v4
-        with:
-          packages: >
-            scheme-basic
-            geometry
-            hyperref
-            graphicx
-            cite
-            natbib
+      # Install standard TeX Live
+      - name: Install TeX Live
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y texlive-latex-base texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended
 
       # Generate the raw LaTeX source
       - name: Build LaTeX source for arXiv
