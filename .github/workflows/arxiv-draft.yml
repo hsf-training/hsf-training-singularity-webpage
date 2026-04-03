@@ -16,7 +16,7 @@ jobs:
 
       # Install standard Pandoc
       - name: Setup Pandoc
-        uses: pandoc/actions/setup@v2
+        uses: pandoc/actions/setup@v1
         with:
           version: 'latest'
 
