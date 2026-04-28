@@ -1,0 +1,1 @@
+[[ $(cat /proc/sys/user/max_user_namespaces) -gt 0 ]] && ls /cvmfs/oasis.opensciencegrid.org/mis/ &>/dev/null && { export PATH=/cvmfs/oasis.opensciencegrid.org/mis/apptainer/bin/:"$PATH"; echo "Success: Added to PATH"; singularity --version; } || echo "Failure: Unable to run Apptainer/Singularity via CVMFS"

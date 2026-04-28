@@ -20,7 +20,7 @@ Apptainer (formerly known as Singularity) is a free and open-source container pl
 
 * 🎥 [Jan 2023](https://indico.cern.ch/event/1219810/)
 
-Emoji key: 🎥 (full video recordings availabile), ⛏️ (hackathon)
+Emoji key: 🎥 (full video recordings available), ⛏️ (hackathon)
 
 ## 🤗 Contributing
 <!-- CENTRALLY MAINTAINED SECTION -->
