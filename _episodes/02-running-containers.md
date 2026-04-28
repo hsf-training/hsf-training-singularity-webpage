@@ -151,7 +151,7 @@ and the image is stored locally as a `.sif` file (`centos7-devel_latest.sif`, in
 > For example here is the [Ubuntu gallery on AWS](https://gallery.ecr.aws/ubuntu/ubuntu) where you can find the links.
 > In apptainer you'll have to add the server name not to use the default Docker Hub, e.g.
 > ```bash
-> apptainer pull docker://public.ecr.aws/ubuntu/ubuntu:20.04
+> apptainer pull docker://public.ecr.aws/ubuntu/ubuntu:24.04
 > ```
 > *Keep this in mind for later if you see the error!*
 {: .callout}

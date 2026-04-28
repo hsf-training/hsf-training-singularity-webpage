@@ -30,7 +30,7 @@ The following recipe shows how to build a hello-world container, and run the con
 
   ```bash
   BootStrap: docker
-  From: ubuntu:20.04
+  From: ubuntu:24.04
 
   %runscript
     echo "Hello World"
@@ -79,7 +79,7 @@ the definition file will look like
 
 ~~~
 BootStrap: docker
-From: ubuntu:20.04
+From: ubuntu:24.04
 
 %post
     apt-get update -y
@@ -88,8 +88,8 @@ From: ubuntu:20.04
     apt-get install dpkg-dev cmake g++ gcc binutils libx11-dev libxpm-dev \
         libxft-dev libxext-dev python libssl-dev libgsl0-dev libtiff-dev -y
     cd /opt
-    wget https://root.cern/download/root_v6.22.06.Linux-ubuntu20-x86_64-gcc9.3.tar.gz
-    tar -xzvf root_v6.22.06.Linux-ubuntu20-x86_64-gcc9.3.tar.gz
+    wget https://root.cern/download/root_v6.38.04.Linux-ubuntu24.04-x86_64-gcc13.3.tar.gz
+    tar -xzvf root_v6.38.04.Linux-ubuntu24.04-x86_64-gcc13.3.tar.gz
 
 %environment
     export PATH=/opt/root/bin:$PATH
@@ -146,7 +146,7 @@ RooFit v3.60 -- Developed by Wouter Verkerke and David Kirkby
        NO.  GLOBAL      1      2
         1  0.02723   1.000  0.027
         2  0.02723   0.027  1.000
-[#1] INFO:Minization -- RooMinimizer::optimizeConst: deactivating const optimization
+[#1] INFO:Minimization -- RooMinimizer::optimizeConst: deactivating const optimization
 RooRealVar::mean = 1.01746 +/- 0.0300144  L(-10 - 10)
 RooRealVar::sigma = 2.9787 +/- 0.0219217  L(0.1 - 10)
 Info in <TCanvas::Print>: png file rf101_basics.png has been created

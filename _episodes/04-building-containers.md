@@ -176,13 +176,13 @@ We will automate this in the next section.
 > ## Execute Python with PyROOT available
 >
 > Build a container to use [Uproot](https://github.com/scikit-hep/uproot5),
-> a library for reading and writing ROOT files in pure Python and NumPy, in Python 3.9.
+> a library for reading and writing ROOT files in pure Python and NumPy, in Python 3.12.
 >
 > > ## Solution
 > >
-> > Start from the [Python 3.9 Docker image](https://hub.docker.com/_/python) and create the `myPython` sandbox:
+> > Start from the [Python 3.12 Docker image](https://hub.docker.com/_/python) and create the `myPython` sandbox:
 > > ```bash
-> > apptainer build --sandbox myPython docker://python:3.9
+> > apptainer build --sandbox myPython docker://python:3.12
 > > apptainer shell myPython
 > > ```
 > > Once inside the container, you can install [Uproot](https://uproot.readthedocs.io/en/latest/index.html).
@@ -200,6 +200,7 @@ We will automate this in the next section.
 > > ~~~
 > > {: .output}
 > > Notice how we did not need neither `--writable ` nor `--fakeroot` for the installation, but everything worked fine since pip installs user packages in the user $HOME directory.
+> > You will see new files under $HOME/.local/.
 > > In addition, Apptainer/Singularity by default mounts the user home directory as read+write, even if the container is read-only.
 > > This is why a _sandbox_ is great to test and experiment locally, but should not be used for containers that will be shared or deployed. Manual changes and local directories are difficult to reproduce and control. Once you are happy with the content, you should use definition files, described in the next episode.
 > {: .solution}

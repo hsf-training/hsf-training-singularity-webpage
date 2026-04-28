@@ -162,11 +162,13 @@ If you are executing Apptainer locally, try to open http://localhost:8850.
 > ## SSH tunneling
 >
 > If you are deploying a service in a cluster of your institution (as LXPLUS at CERN) it is likely that you need
-> SSH tunneling for opening pages served by your service with a web browser. A basic port forwarding can be configured as:
+> SSH tunneling for opening pages served by your service with a web browser. A basic Local Port Forwarding can be configured as:
 > ```bash
-> ssh -L <port>:localhost:<port> myuser@<server>
+> ssh -L [local_hostname:]<local_port>:localhost:<dest_port> myuser@<server>
 > ```
-> where `<port>` is the one used by your service, and `<server>` is the address of your institutional resources (`echo "$(whoami)@$(hostname)"` will print your user and host).
+> where `<local_port>` is the one used by your service running on `<server>`, and `<server>` is the address of your institutional resources
+> (`echo "$(whoami)@$(hostname)"` will print your user and host).
+> Finally `localhost:<dest_port>` is how you will access the service locally, e.g. what you type in the laptop browser.
 > For example, for connecting to LXPLUS forwarding the port 8850:
 > ```bash
 >  ssh -L 8850:localhost:8850 myuser@lxplus.cern.ch
@@ -204,8 +206,8 @@ From: ubuntu:24.04
     apt-get install dpkg-dev cmake g++ gcc binutils libx11-dev libxpm-dev \
     libxft-dev libxext-dev libssl-dev libgsl0-dev libtiff-dev libtbb-dev -y
     cd /opt
-    wget https://root.cern/download/root_v6.22.06.Linux-ubuntu20-x86_64-gcc9.3.tar.gz
-    tar -xzvf root_v6.22.06.Linux-ubuntu20-x86_64-gcc9.3.tar.gz
+    wget https://root.cern/download/root_v6.38.04.Linux-ubuntu24.04-x86_64-gcc13.3.tar.gz
+    tar -xzvf root_v6.38.04.Linux-ubuntu24.04-x86_64-gcc13.3.tar.gz
 
 %environment
     export PATH=/opt/root/bin:$PATH
@@ -237,7 +239,7 @@ mynotebook       10720          /home/myuser/jupyterWithROOT.sif
 
 If you go to http://localhost:8850 (with SSH tunneling if needed), you will find out that for security reasons the
 Jupyter webapp will ask for an access token. Fortunately, you can get the token listing the URL of active servers using
-the `jupyter notebook list` command. To execute the command inside the instance, use `sigularity exec`:
+the `jupyter notebook list` command. To execute the command inside the instance, use `apptainer exec`:
 ```bash
 apptainer exec instance://mynotebook jupyter notebook list
 ```
@@ -283,7 +285,7 @@ is available!
 > >
 > >```
 > >Bootstrap: docker
-> >From: ubuntu:20.04
+> >From: ubuntu:24.04
 > >
 > >%post
 > >    apt-get update -y
