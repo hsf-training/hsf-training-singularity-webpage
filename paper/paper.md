@@ -1,5 +1,5 @@
 ---
-title: "Training on Data Analysis Reproducibility via Containerization with Apptainer"
+title: "An HSF Training Module on Data Analysis Reproducibility via Containerization with Apptainer"
 tags:
   - Python
   - Apptainer
