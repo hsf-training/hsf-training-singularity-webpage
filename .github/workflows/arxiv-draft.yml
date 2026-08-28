@@ -1,0 +1,50 @@
+name: Generate arXiv Preprint
+on:
+  push:
+    branches:
+      - jose-paper
+      - arxiv-draft
+      - gh-pages
+
+jobs:
+  build-preprint:
+    runs-on: ubuntu-latest
+    name: Build Clean Preprint
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # Install Pandoc
+      - name: Setup Pandoc
+        uses: r-lib/actions/setup-pandoc@v2
+
+      # Install standard TeX Live
+      - name: Install TeX Live
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y texlive-latex-base texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended
+
+      # Generate the raw LaTeX source 
+      - name: Build LaTeX source for arXiv
+        working-directory: paper
+        run: |
+          pandoc paper.md \
+            --natbib \
+            -s -o preprint.tex
+
+      # Generate a clean, unbranded PDF
+      - name: Build clean PDF
+        working-directory: paper
+        run: |
+          pandoc paper.md \
+            --citeproc \
+            -s -o preprint.pdf
+
+      # Upload both files as artifacts
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: arxiv-preprint-files
+          path: |
+            paper/preprint.pdf
+            paper/preprint.tex
