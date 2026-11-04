@@ -11,12 +11,12 @@ repos:
       - id: check-case-conflict
       - id: check-merge-conflict
       - id: check-symlinks
-      - id: debug-statements
+      - id: check-yaml
       - id: end-of-file-fixer
         files: ^(_episodes|README.md|setup.md)
       - id: mixed-line-ending
       - id: trailing-whitespace
-        files: ^(_episodes|code|README.md|setup.md)
+        files: ^(_episodes|README.md|setup.md)
 
   - repo: https://github.com/codespell-project/codespell
     rev: "v2.4.3"

@@ -1,0 +1,8 @@
+# Example URLs for a service the learner starts locally in 08-instances.md.
+^http://localhost:8850
+# Stack Overflow blocks automated requests (403), but the link works in a browser.
+^https://stackoverflow\.com/
+# Known broken links, left for the lesson maintainers to decide on
+# (see hsf-training/hsf-training-ai-maintenance#4).
+# The Sylabs Cloud Library host no longer resolves (02-running-containers.md, 05-definition-files.md).
+^https://cloud\.sylabs\.io/library
