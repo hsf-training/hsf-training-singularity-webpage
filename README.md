@@ -67,7 +67,7 @@ Current maintainers of this lesson are
 * Marco Mambelli ([mambelli](https://github.com/mambelli))
 * Michel Villanueva ([michmx](https://github.com/michmx))
 
-Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/en/reference/emoji-key/)):
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
@@ -101,7 +101,7 @@ This project follows the [all-contributors](https://github.com/all-contributors/
 [issues]: https://github.com/hsf-training/hsf-training-singularity-webpage/issues
 [progit]: http://git-scm.com/book/en/v2/GitHub-Contributing-to-a-Project
 [jekyll]: https://jekyllrb.com/
-[allcontrib-emoji-key]: https://allcontributors.org/docs/en/emoji-key
+[allcontrib-emoji-key]: https://allcontributors.org/en/reference/emoji-key/
 [gfi-badge]: https://img.shields.io/badge/-good%20first%20issue-gold.svg
 [schools-badge]: https://img.shields.io/badge/upcoming%20events-browse-ff69b4
 [twitter-badge]: https://img.shields.io/twitter/follow/hsftraining?style=social

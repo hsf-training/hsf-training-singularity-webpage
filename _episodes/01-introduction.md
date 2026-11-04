@@ -57,7 +57,7 @@ a few steps in most of the cases, and its design presents key advantages for the
 * Simple integration with resource managers and distributed computing frameworks because it runs as a regular application.
 * Minimum overhead. No extra processes after initializing the container (Uses `execv()`).
 
- <a href="https://apptainer.org/docs/user/">
+ <a href="https://apptainer.org/docs/user/latest/">
 <img src="https://apptainer.org/docs/user/main/_static/logo.png" alt="Apptainer/Singularity" width="220">
 </a>
 

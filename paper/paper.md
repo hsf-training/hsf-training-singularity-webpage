@@ -187,7 +187,7 @@ similar to a live class.
 This module on Apptainer has been used during the HSF & IRIS-HEP [@IRIS-HEP-webpage] training events
 on [Analysis Reproducibility](https://indico.cern.ch/event/1508102/) (formerly known
 as [Analysis Preservation](https://indico.cern.ch/event/1219810/)
-and [Analysis Pipelines](https://indico.cern.ch/event/1375507/])). During a week, we covered tools
+and [Analysis Pipelines](https://indico.cern.ch/event/1375507/)). During a week, we covered tools
 that help the participants to integrate containerization into their scientific workflows for
 enhanced reproducibility. Our focus was to guide researchers with strong backgrounds in data
 analysis through the practical aspects of using Apptainer to encapsulate their analysis pipeline.
