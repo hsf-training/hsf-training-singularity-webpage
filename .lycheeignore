@@ -1,8 +1,12 @@
 # Example URLs for a service the learner starts locally in 08-instances.md.
 ^http://localhost:8850
-# Stack Overflow blocks automated requests (403), but the link works in a browser.
-^https://stackoverflow\.com/
+# Hosts behind bot protection: these return 403 to automated requests (e.g. a
+# Cloudflare challenge on GitHub runners), but the links work in a browser.
+# Stack Overflow answer on /opt (02-running-containers.md).
+^https://stackoverflow\.com/a/12649407/?$
+# cmslpc (UAF) getting-started page (04-building-containers.md).
+^https://(www\.)?uscms\.org/uscms_at_work/computing/getstarted/uaf\.shtml$
 # Known broken links, left for the lesson maintainers to decide on
 # (see hsf-training/hsf-training-ai-maintenance#4).
 # The Sylabs Cloud Library host no longer resolves (02-running-containers.md, 05-definition-files.md).
-^https://cloud\.sylabs\.io/library
+^https://cloud\.sylabs\.io/library/?$
